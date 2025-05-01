@@ -1,0 +1,8 @@
+.link {
+  color: var(--link-color);
+
+  & a {
+    margin-left: 0.5rem;
+    cursor: url("/images/cursor-pointer.png"), auto;
+  }
+}

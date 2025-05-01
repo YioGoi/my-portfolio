@@ -1,28 +1,87 @@
+@use "./app/variables" as *;
+
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
+  --background: #161616;
+  --code-background: #ffffff;
+  --text-color: #f1f4f8de;
+  --code-text-color: #000000;
+  --hover-color: #c5cece;
+  --link-color: #949b9b;
+  --link-hover-color: #808686;
+  --border-color: #eaeaea;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
+.light {
+  --background: #2c8585;
+  --code-background: #000000;
+  --text-color: #1a1a1a;
+  --code-text-color: #ffffff;
+  --link-color: #0a3d5a;
+  --link-hover-color: #0e4e74;
+  --hover-color: #201c1c98;
+  --border-color: #000000;
+}
+
+body {
   margin: 0;
+  padding: 0;
+  font-family: "Rubik", sans-serif;
+  background-color: var(--background);
+  color: var(--text-color);
+  line-height: 1.6;
+  letter-spacing: 0.25px;
+  transition: background 0.4s ease, color 0.4s ease;
+  cursor: url('/images/curly-pointer.png'), auto;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow: hidden;
-  height: 100vh;
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-start-rgb));
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.3px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+strong {
+  font-weight: 600;
+}
+
+section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @media (max-width: $tablet) {
+    padding: 0;
+  }
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: var(--link-color);
+  text-decoration: wavy;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--link-hover-color);
+  }
 }

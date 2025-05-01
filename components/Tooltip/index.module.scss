@@ -1,0 +1,104 @@
+.tooltipContainer {
+  display: inline-flex; // ✅ use inline-flex for better alignment
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  .tooltip {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    white-space: normal;
+    z-index: 1000;
+    opacity: 0.95;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    min-width: 120px; // ✅ added
+    max-width: 320px;
+    white-space: normal; // still allows multi-line
+    word-break: break-word; // just in case
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .oneTime {
+    display: block;
+    padding: 2rem 1rem;
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .closeBtn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    opacity: 0.6;
+    cursor: url("/images/cursor-pointer.png"), pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &.top .tooltip {
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.bottom .tooltip {
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.left .tooltip {
+    right: 120%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &.right .tooltip {
+    left: 120%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.handHint {
+  position: absolute;
+  top: 6px;
+  right: 30px;
+  font-size: 0.8rem;
+  color: var(--text-color);
+  opacity: 0.5;
+  animation: bounce 1.5s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
