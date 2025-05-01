@@ -1,17 +1,6 @@
 @use "./app/variables" as *;
 
 :root {
-  --background: #161616;
-  --code-background: #ffffff;
-  --text-color: #f1f4f8de;
-  --code-text-color: #000000;
-  --hover-color: #c5cece;
-  --link-color: #949b9b;
-  --link-hover-color: #808686;
-  --border-color: #eaeaea;
-}
-
-.light {
   --background: #2c8585;
   --code-background: #000000;
   --text-color: #1a1a1a;
@@ -20,6 +9,17 @@
   --link-hover-color: #0e4e74;
   --hover-color: #201c1c98;
   --border-color: #000000;
+}
+
+.dark {
+  --background: #161616;
+  --code-background: #ffffff;
+  --text-color: #f1f4f8de;
+  --code-text-color: #000000;
+  --hover-color: #c5cece;
+  --link-color: #949b9b;
+  --link-hover-color: #808686;
+  --border-color: #eaeaea;
 }
 
 body {
@@ -31,7 +31,7 @@ body {
   line-height: 1.6;
   letter-spacing: 0.25px;
   transition: background 0.4s ease, color 0.4s ease;
-  cursor: url('/images/curly-pointer.png'), auto;
+  cursor: url("/images/curly-pointer.png"), auto;
 }
 
 h1,

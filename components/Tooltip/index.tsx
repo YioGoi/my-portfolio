@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 import { FiX } from 'react-icons/fi';
-import { FaHandPointRight } from 'react-icons/fa';
+import { FaHandPointLeft } from 'react-icons/fa';
 
 interface TooltipProps {
     content: React.ReactNode;
@@ -64,7 +64,7 @@ export default function Tooltip({
                         <button className={styles.closeBtn} onClick={handleClose} aria-label="Dismiss tooltip">
                             <FiX />
                             <div className={styles.handHint}>
-                                <FaHandPointRight />
+                                <FaHandPointLeft />
                             </div>
                         </button>
                     )}

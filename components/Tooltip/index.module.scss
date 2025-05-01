@@ -63,6 +63,12 @@
     transform: translateX(-50%);
   }
 
+  &.bottom .oneTime {
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   &.left .tooltip {
     right: 120%;
     top: 50%;
@@ -79,12 +85,20 @@
 .handHint {
   position: absolute;
   top: 6px;
-  right: 30px;
-  font-size: 0.8rem;
+  right: -37px; // pushes it outside the tooltip
+  font-size: 1rem;
   color: var(--text-color);
-  opacity: 0.5;
+  opacity: 0.6;
   animation: bounce 1.5s ease infinite;
+  pointer-events: none;
+
+  & svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--text-color);
+  }
 }
+
 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
