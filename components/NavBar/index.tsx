@@ -5,7 +5,7 @@ import { useTheme } from '@/context/ThemeContext';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import Link from "next/link";
 import Image from 'next/image';
-import { isTablet } from '@/utilities/responsive';
+import { isSmallLaptop } from '@/utilities/responsive';
 import Hamburger from '@/components/Hamburger';
 import DownloadResumeButton from '@/components/DownloadResumeButton';
 import styles from "./index.module.scss";
@@ -22,21 +22,21 @@ interface NavBarProps {
 
 export default function NavBar({ items }: NavBarProps) {
   const { theme, toggleTheme } = useTheme();
-  const [_isTablet, _setIsTablet] = useState<boolean | null>(null);
+  const [_isSmallLaptop, _setIsSmallLaptop] = useState<boolean | null>(null);
 
   const isDarkMode = theme === 'dark';
   const logoImage = isDarkMode ? '/images/logo-white.png' : '/images/logo.png';
 
   useEffect(() => {
     const handleResize = () => {
-      _setIsTablet(isTablet());
+      _setIsSmallLaptop(isSmallLaptop());
     }
     handleResize(); // Initial check
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
     }
-  }, [_isTablet]);
+  }, [_isSmallLaptop]);
 
   const ThemeSwitch = () => {
     return (
@@ -48,12 +48,12 @@ export default function NavBar({ items }: NavBarProps) {
     )
   }
 
-  if (_isTablet === null) return null; // Prevent rendering until the state is set
+  if (_isSmallLaptop === null) return null; // Prevent rendering until the state is set
 
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbarContent}>
-        {_isTablet ? (
+        {_isSmallLaptop ? (
           <>
             <div className={styles.hamburgerContainer}>
               <Hamburger />
@@ -70,7 +70,14 @@ export default function NavBar({ items }: NavBarProps) {
               </Link>
             </div>
             <div className={styles.actions}>
-              <Tooltip content="Download CV" position="left">
+              <Tooltip
+                content="Download CV"
+                position="bottom"
+                oneTime
+                autoShow
+                id="download-cv-tooltip"
+                resumeTooltip={true}
+              >
                 <DownloadResumeButton />
               </Tooltip>
               <ThemeSwitch />
@@ -87,7 +94,7 @@ export default function NavBar({ items }: NavBarProps) {
                   height={60}
                   className={styles.logoImage}
                 />
-                Yiğit Doğan
+                YD
               </Link>
             </div>
             <div className={styles.navItems}>

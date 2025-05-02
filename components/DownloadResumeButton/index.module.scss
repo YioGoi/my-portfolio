@@ -7,7 +7,7 @@
   padding-left: 1.5rem;
   border-left: 1px solid var(--text-color);
 
-  @media (max-width: $tablet) {
+  @media (max-width: $laptop) {
     padding-left: 0;
     padding-right: 0.5rem;
     border-left: none;
@@ -27,5 +27,7 @@
 }
 
 .downloadIcon {
+  width: 1.5rem;
+  height: 1.5rem;
   margin-right: 0.5rem;
 }

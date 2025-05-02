@@ -12,6 +12,8 @@ import Dodecahedron from '../Dodecahedron';
 import Icosahedron from '../Icosahedron';
 import TriangularPrism from '../TriangularPrism';
 
+import styles from './index.module.scss';
+
 const PlatonicObjects = () => {
   const pathname = usePathname();
 
@@ -56,7 +58,7 @@ const PlatonicObjects = () => {
   }, [solid]);
 
   return (
-    <Canvas style={{ height: '400px' }}>
+    <Canvas style={{ height: '400px' }} className={styles.canvas}>
       <ambientLight intensity={0.5} />
       <directionalLight position={[0, 0, 5]} />
       <OrbitControls enableZoom={false} />

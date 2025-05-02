@@ -10,7 +10,10 @@ interface TooltipProps {
     children: React.ReactNode;
     position?: 'top' | 'bottom' | 'left' | 'right';
     oneTime?: boolean;
+    autoShow?: boolean;
     id?: string; // required if oneTime is true
+    resumeTooltip?: boolean;
+    objectsTooltip?: boolean;
 }
 
 export default function Tooltip({
@@ -18,7 +21,10 @@ export default function Tooltip({
     children,
     position = 'top',
     oneTime = false,
+    autoShow = false,
     id,
+    resumeTooltip = false,
+    objectsTooltip = false,
 }: TooltipProps) {
     const [visible, setVisible] = useState(false);
     const [dismissed, setDismissed] = useState(false);
@@ -30,7 +36,20 @@ export default function Tooltip({
                 setDismissed(true);
             }
         }
-    }, [oneTime, id]);
+
+        
+        if (autoShow) {
+            // Auto show immediately
+            setVisible(true);
+            const timer = setTimeout(() => {
+                setVisible(false);
+                setDismissed(true);
+                localStorage.setItem(`tooltip_seen_${id}`, 'true');
+            }, 5000); // 5s duration
+
+            return () => clearTimeout(timer);
+        }
+    }, [oneTime, id, autoShow]);
 
     const handleMouseEnter = () => {
         if (oneTime && dismissed) return;
@@ -57,10 +76,18 @@ export default function Tooltip({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            {children}
+            <span className={styles.trigger}>{children}</span>
             {visible && !dismissed && (
-                <div className={`${styles.tooltip} ${oneTime ? styles.oneTime : ''}`}>
-                    {oneTime && (
+                <div 
+                className={`
+                    ${styles.tooltip}
+                    ${oneTime ? styles.oneTime : ''}
+                    ${autoShow ? styles.autoShowBounce : ''}
+                    ${resumeTooltip ? styles.resumeTooltip : ''}
+                    ${objectsTooltip ? styles.objectsTooltip : ''}
+                  `}
+                >
+                    {oneTime && !resumeTooltip && (
                         <button className={styles.closeBtn} onClick={handleClose} aria-label="Dismiss tooltip">
                             <FiX />
                             <div className={styles.handHint}>
@@ -68,7 +95,9 @@ export default function Tooltip({
                             </div>
                         </button>
                     )}
-                    {content}
+                    <article>
+                        {content}
+                    </article>
                 </div>
             )}
         </div>

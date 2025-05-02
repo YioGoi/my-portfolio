@@ -3,11 +3,12 @@
 import { useRef, useEffect, useState } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { FaChevronDown } from 'react-icons/fa';
-import {  TbCube } from 'react-icons/tb';
+import { TbCube } from 'react-icons/tb';
 import { BsChevronDoubleUp } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 import PlatonicObjects from '@/components/PlatonicObjects';
 import Tooltip from '../Tooltip';
+import { isTablet, isSmallLaptop } from '@/utilities/responsive';
 
 
 import styles from './index.module.scss';
@@ -55,6 +56,7 @@ export default function SectionWrapper({
     const [showTopButton, setShowTopButton] = useState(false);
     const motionVariant = variants[variant];
     const contentRef = useRef<HTMLDivElement>(null);
+    const rightSectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -68,7 +70,8 @@ export default function SectionWrapper({
 
     useEffect(() => {
         const el = contentRef.current;
-        if (!el) return;
+        const rightEl = rightSectionRef.current;
+        if (!el || !rightEl) return;
 
         const checkOverflowAndScroll = () => {
             const bounds = el.getBoundingClientRect();
@@ -79,7 +82,8 @@ export default function SectionWrapper({
                 return same ? prev : { left: bounds.left, width: bounds.width };
             });
 
-            const overflows = el.offsetHeight > window.innerHeight;
+            const offsetHeight = isTablet() ? el.offsetHeight + rightEl.offsetHeight : el.offsetHeight;
+            const overflows = offsetHeight > window.innerHeight;
             const bottomVisible = bounds.bottom <= window.innerHeight;
             const shouldShow = overflows && !bottomVisible;
 
@@ -141,13 +145,15 @@ export default function SectionWrapper({
                     </div>
                 )}
             </div>
-            <div className={`${styles.section} ${styles.rightSection}`}>
+            <div className={`${styles.section} ${styles.rightSection}`} ref={rightSectionRef}>
                 <span>
                     <Tooltip 
                         content={<><TbCube /> You can interact with the Platonic objects by clicking and dragging them.</>} 
                         position="bottom"
                         oneTime={true}
+                        autoShow={isSmallLaptop()}
                         id="platonic-objects-tooltip"
+                        objectsTooltip={true}
                     >
                         <PlatonicObjects />
                     </Tooltip>

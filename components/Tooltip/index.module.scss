@@ -1,7 +1,5 @@
 .tooltipContainer {
-  display: inline-flex; // ✅ use inline-flex for better alignment
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   position: relative;
 
   .tooltip {
@@ -12,7 +10,6 @@
     background-color: var(--background);
     color: var(--text-color);
     border: 1px solid var(--border-color);
-    padding: 0.5rem;
     font-size: 0.9rem;
     border-radius: 6px;
     white-space: normal;
@@ -27,12 +24,34 @@
     word-break: break-word; // just in case
     line-height: 1.5;
     text-align: left;
+
+    & article {
+      padding: 0.5rem;
+    }
+  }
+
+  .trigger {
+    display: flex;
   }
 
   .oneTime {
     display: block;
-    padding: 2rem 1rem;
     animation: fadeIn 0.6s ease-out forwards;
+
+    & article {
+      padding: 2rem 1rem;
+    }
+  }
+
+  .autoShowBounce {
+    animation: autoShowBounce 1.2s ease-in-out infinite;
+  }
+
+  .resumeTooltip {
+    & article {
+      padding: 1rem;
+      white-space: nowrap;
+    }
   }
 
   .closeBtn {
@@ -45,40 +64,37 @@
     font-size: 1.5rem;
     opacity: 0.6;
     cursor: url("/images/cursor-pointer.png"), pointer;
-
-    &:hover {
-      opacity: 1;
-    }
   }
 
   &.top .tooltip {
-    bottom: 120%;
+    bottom: 100%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-8px);
   }
 
   &.bottom .tooltip {
-    top: 120%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  &.bottom .oneTime {
-    top: 80%;
-    left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(8px);
   }
 
   &.left .tooltip {
-    right: 120%;
+    right: 100%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateX(-8px) translateY(-50%);
   }
 
   &.right .tooltip {
-    left: 120%;
+    left: 100%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateX(8px) translateY(-50%);
+  }
+
+  &.bottom .resumeTooltip {
+    top: 100%;
+    left: -100%;
+  }
+
+  &.bottom .objectsTooltip {
+    top: 75%;
   }
 }
 
@@ -99,12 +115,31 @@
   }
 }
 
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+@keyframes autoShowBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(3px);
+  }
 }
 
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
 
 @keyframes fadeIn {
   from {

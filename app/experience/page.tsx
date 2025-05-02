@@ -93,7 +93,7 @@ export default function ExperiencePage() {
         Customized e-commerce workflows, added B2B features, and integrated SEO tools.
       </p>
 
-      <h2>Doğan Defter San. ve Ticaret</h2>
+      <h2>Dogan Defter San. ve Ticaret</h2>
       <p><strong>Web Developer</strong> (2008 – 2013)</p>
       <p><strong>Stack:</strong> HTML, CSS, CMS</p>
       <p>
