@@ -57,6 +57,11 @@
   &:hover {
     color: var(--hover-color);
   }
+
+  &:focus {
+    outline: none;
+    font-weight: 500;
+  }
 }
 
 .themeToggle {
@@ -94,5 +99,5 @@
 }
 
 .hamburgerContainer {
-  min-width: 80px;
+  min-width: 111px;
 }
