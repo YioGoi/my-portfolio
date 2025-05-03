@@ -1,8 +1,24 @@
 .link {
   color: var(--link-color);
 
+  & article {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--link-color);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  & svg {
+    margin-right: 0.5rem;
+    cursor: url("/images/cursor-pointer.png"), auto;
+  }
+
   & a {
-    margin-left: 0.5rem;
+    display: block;
+    width: fit-content;
     cursor: url("/images/cursor-pointer.png"), auto;
   }
 }
