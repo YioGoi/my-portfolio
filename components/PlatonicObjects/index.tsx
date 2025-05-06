@@ -22,19 +22,19 @@ const PlatonicObjects = () => {
   const solid = useMemo(() => {
     switch (pathname) {
       case '/':
-        return 'tetrahedron';
+        return 'dodecahedron';
       case '/about':
         return 'cube';
       case '/experience':
         return 'octahedron';
       case '/skills':
-        return 'dodecahedron';
+        return 'tetrahedron';
       case '/education':
         return 'triangularPrism';
       case '/contact':
         return 'icosahedron';
       default:
-        return 'tetrahedron';
+        return 'dodecahedron';
     }
   }, [pathname]);
 

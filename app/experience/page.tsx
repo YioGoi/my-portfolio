@@ -1,5 +1,6 @@
 import SectionWrapper from '@/components/SectionWrapper';
 import { GoRocket } from 'react-icons/go';
+import Image from 'next/image';
 import styles from './page.module.scss';
 
 export default function ExperiencePage() {
@@ -7,7 +8,10 @@ export default function ExperiencePage() {
     <SectionWrapper variant="slideRight">
       <h1>Experience</h1>
 
-      <h2>The Lab – New York, USA</h2>
+      <article className={styles.headerWithLogo}>
+        <Image src="/images/thelab-logo.png" alt="the Lab logo" width={39} height={39} />
+        <h2>The Lab – New York, USA</h2>
+      </article>
       <p><strong>Fullstack Senior Software Developer</strong> (2023 – Present)</p>
       <p><strong>Stack:</strong> React, Python, Django</p>
       <p>
@@ -22,7 +26,10 @@ export default function ExperiencePage() {
         </a>
       </div>
 
-      <h2>Ammega Group</h2>
+      <article className={styles.headerWithLogo}>
+        <Image src="/images/ammega-logo.png" alt="the Lab logo" width={50} height={16} />
+        <h2>Ammega Group</h2>
+      </article>
       <p><strong>Senior Frontend Developer</strong> (2023 – 2024)</p>
       <p><strong>Stack:</strong> React, Next.js, .NET</p>
       <p>
@@ -36,7 +43,10 @@ export default function ExperiencePage() {
         </a>
       </div>
 
-      <h2>MDS Translation</h2>
+      <article className={styles.headerWithLogo}>
+        <Image src="/images/mds-logo.png" alt="the Lab logo" width={40} height={40} />
+        <h2>MDS Translation</h2>
+      </article>
       <p><strong>Fullstack Developer</strong> (2024)</p>
       <p><strong>Stack:</strong> Next.js, React, TypeScript, SCSS Modules, i18n</p>
       <p>
@@ -51,7 +61,10 @@ export default function ExperiencePage() {
         </a>
       </div>
 
-      <h2>Path Product and Software House</h2>
+      <article className={styles.headerWithLogo}>
+        <Image src="/images/path-logo.png" alt="the Lab logo" width={40} height={40} />
+        <h2>Path Product and Software House</h2>
+      </article>
       <p><strong>Senior Frontend Developer</strong> (2022 – 2023)</p>
       <p><strong>Stack:</strong> React, Next.js, RxJS, Node.js, MongoDB, SignalR</p>
       <p>
@@ -66,7 +79,10 @@ export default function ExperiencePage() {
         </a>
       </div>
 
-      <h2>Kafein Software</h2>
+      <article className={styles.headerWithLogo}>
+        <Image src="/images/kafein-logo.png" alt="the Lab logo" width={40} height={40} />
+        <h2>Kafein Software</h2>
+      </article>
       <p><strong>Senior Frontend Developer</strong> (2021 – 2022)</p>
       <p><strong>Stack:</strong> React, Redux, Redux-Saga</p>
       <p>
@@ -81,6 +97,10 @@ export default function ExperiencePage() {
       </div>
 
       <h2>NTT Data</h2>
+      <article className={styles.headerWithLogo}>
+        <Image src="/images/nttdata-logo.png" alt="the Lab logo" width={40} height={40} />
+        <h2>NTT Data</h2>
+      </article>
       <p><strong>Senior Frontend Developer</strong> (2019 – 2021)</p>
       <p><strong>Stack:</strong> React, Redux, .NET, JWT</p>
       <p>

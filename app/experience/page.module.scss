@@ -22,3 +22,18 @@
     cursor: url("/images/cursor-pointer.png"), auto;
   }
 }
+
+.headerWithLogo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &:not(:first-child) {
+    margin-top: 2rem;
+  }
+
+  & h2 {
+    margin: 0;
+    padding-left: 0.5rem;
+  }
+}
