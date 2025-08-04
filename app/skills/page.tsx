@@ -15,6 +15,7 @@ export default function SkillsPage() {
           <li>UI/UX Design, Responsive/Adaptive Design, Adobe XD, Figma, Sketch</li>
           <li>Agile, Scrum, Jira, Kanban, Planio</li>
           <li>Claude Sonnet 4, OpenAI API, ChatGPT 4.1, Langchain, LangGraph, CrewAI, Agentic Frameworks</li>
+          <li>Web3, Blockchain, Smart Contracts, Solidity, ethers.js, hardhat, polygon, ipfs</li>
         </ul>
       </SectionWrapper>
     );

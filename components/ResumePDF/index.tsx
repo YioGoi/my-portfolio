@@ -114,6 +114,7 @@ const ResumePDF = () => (
         <Text>- UI/UX Design, Responsive/Adaptive Design, Adobe XD, Figma, Sketch</Text>
         <Text>- Agile, Scrum, Jira, Kanban, Planio</Text>
         <Text>- Claude Sonnet 4, OpenAI API, ChatGPT 4.1, Langchain, LangGraph, CrewAI, Agentic Frameworks</Text>
+        <Text>- Web3, Blockchain, Smart Contracts, Solidity, ethers.js, hardhat, polygon, ipfs</Text>
       </View>
 
       <View style={styles.section}>

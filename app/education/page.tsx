@@ -36,8 +36,8 @@ export default function EducationPage() {
             </div>
             <div>
               <span className={styles.date}>2005 - 2008</span>
-              <h2>Political Science</h2>
-              <p>Istanbul University – Master’s in Political Science</p>
+              <h2>Political Sciences</h2>
+              <p>Istanbul University – Master’s in Political Sciences</p>
             </div>
           </div>
           <div className={styles.educationItem}>
@@ -52,8 +52,8 @@ export default function EducationPage() {
             </div>
             <div>
               <span className={styles.date}>2000 - 2005</span>
-              <h2>Political Science</h2>
-              <p>Istanbul University – Bachelor’s in Political Science</p>
+              <h2>Political Sciences</h2>
+              <p>Istanbul University – Bachelor’s in Political Sciences</p>
             </div>
           </div>
           <div className={styles.educationItem}>
