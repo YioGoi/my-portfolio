@@ -1,3 +1,46 @@
 .welcomeTitle {
-    text-align: left;
+  text-align: left;
+}
+
+.name {
+  color: #526d82;
+  text-decoration: underline;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.profileImage {
+  border-radius: 50%;
+  border: 8px solid #526d82;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  padding-top: 0;
+
+  & > a {
+    cursor: url("/images/cursor-pointer.png"), auto;
+    display: inline-block;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  & > a:not(:first-child) {
+    margin-left: 1rem;
+  }
+
+  & > img {
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
 }

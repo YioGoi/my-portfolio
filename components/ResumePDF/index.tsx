@@ -10,22 +10,23 @@ import {
   Link,
 } from '@react-pdf/renderer';
 
-// Optional: Register Rubik if custom
+// Register Poppins font family for PDF
 Font.register({
-  family: 'Rubik',
+  family: 'Poppins',
   fonts: [
-    { src: '/fonts/Rubik-Regular.ttf', fontWeight: 'normal' },
-    { src: '/fonts/Rubik-Medium.ttf', fontWeight: 500 },
-    { src: '/fonts/Rubik-Bold.ttf', fontWeight: 700 },
+    { src: '/fonts/Poppins-Regular.ttf', fontWeight: 'normal' },
+    { src: '/fonts/Poppins-Medium.ttf', fontWeight: 500 },
+    { src: '/fonts/Poppins-SemiBold.ttf', fontWeight: 600 },
+    { src: '/fonts/Poppins-Bold.ttf', fontWeight: 700 },
   ]
 });
 
 const styles = StyleSheet.create({
   page: {
-    fontFamily: 'Rubik',
+    fontFamily: 'Poppins',
     padding: 40,
     fontSize: 11,
-    backgroundColor: '#161616',
+    backgroundColor: '#222831',
     color: '#f1f4f8de',
   },
   section: {
@@ -55,13 +56,20 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   link: {
-    color: '#2c8585',
+    color: '#526d82',
     textDecoration: 'none',
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
+  },
+  profileImage: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    border: '4px solid #526d82',
+    marginRight: 15,
   },
   logo: {
     width: 36,
@@ -77,12 +85,14 @@ const ResumePDF = () => (
 
       <View style={styles.section}>
         <View style={styles.header}>
-          <Image src="/images/logo-white.png" style={styles.logo} />
-          <Text style={styles.heading}>Yiğit Doğan</Text>
+          <Image src="/images/profile.png" style={styles.profileImage} />
+          <View>
+            <Text style={styles.heading}>Yiğit Doğan</Text>
+            <Text>Email: ydogan.dev@gmail.com</Text>
+            <Text>Phone: +90 532 510 1204</Text>
+            <Text>Location: Istanbul, Türkiye</Text>
+          </View>
         </View>
-        <Text>Email: ydogan.dev@gmail.com</Text>
-        <Text>Phone: +90 532 510 1204</Text>
-        <Text>Location: Istanbul, Türkiye</Text>
       </View>
 
       <View style={styles.section}>
@@ -103,6 +113,7 @@ const ResumePDF = () => (
         <Text>- GitHub, GitLab, Bitbucket</Text>
         <Text>- UI/UX Design, Responsive/Adaptive Design, Adobe XD, Figma, Sketch</Text>
         <Text>- Agile, Scrum, Jira, Kanban, Planio</Text>
+        <Text>- Claude Sonnet 4, OpenAI API, ChatGPT 4.1, Langchain, LangGraph, CrewAI, Agentic Frameworks</Text>
       </View>
 
       <View style={styles.section}>
@@ -223,7 +234,6 @@ const ResumePDF = () => (
 
       <View style={styles.section}>
         <Text style={styles.heading}>Links</Text>
-        <Text>Portfolio: https://www.yigit-dogan.dev/</Text>
         <Text>
           Portfolio:{' '}
           <Link style={styles.link} src="https://www.yigit-dogan.dev/">yigit-dogan.dev/</Link>
@@ -233,6 +243,14 @@ const ResumePDF = () => (
           <Link style={styles.link} src="https://www.linkedin.com/in/yi%C4%9Fit-do%C4%9Fan-709b2a37">
             linkedin.com/in/yigit-dogan
           </Link>
+        </Text>
+        <Text>
+          GitHub:{' '}
+          <Link style={styles.link} src="https://github.com/YioGoi">github.com/yigit-dogan</Link>
+        </Text>
+        <Text>
+          Email:{' '}
+          <Link style={styles.link} src="mailto:ydogan.dev@gmail.com">ydogan.dev@gmail.com</Link>
         </Text>
       </View>
 

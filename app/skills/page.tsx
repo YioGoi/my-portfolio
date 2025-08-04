@@ -6,7 +6,7 @@ export default function SkillsPage() {
       <SectionWrapper variant="scaleUp">
         <h1>Skills</h1>
         <ul className={styles.skillsList}>
-          <li>React, React Native, Next, Redux, Redux Saga, RxJS</li>
+          <li>React, React Native, Next, Redux, Redux Saga, RxJS, Zustand</li>
           <li>Typescript, Javascript, ES6</li>
           <li>CSS, SASS, Tailwind, Module Scss</li>
           <li>Webpack, Jest, Storybook, Puppeteer, Playwright, Eslint, Prettier</li>
@@ -14,6 +14,7 @@ export default function SkillsPage() {
           <li>GitHub, GitLab, Bitbucket</li>
           <li>UI/UX Design, Responsive/Adaptive Design, Adobe XD, Figma, Sketch</li>
           <li>Agile, Scrum, Jira, Kanban, Planio</li>
+          <li>Claude Sonnet 4, OpenAI API, ChatGPT 4.1, Langchain, LangGraph, CrewAI, Agentic Frameworks</li>
         </ul>
       </SectionWrapper>
     );
