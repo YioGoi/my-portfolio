@@ -1,16 +1,78 @@
 import SectionWrapper from '@/components/SectionWrapper';
+import Image from 'next/image';
+
 import styles from './page.module.scss';
 
 export default function EducationPage() {
     return (
-      <SectionWrapper variant="slideUp">
+      <SectionWrapper variant="slideUp" customSectionClass={styles.educationSection}>
         <h1>Education</h1>
-        <ul className={styles.educationList}>
-          <li>Technical University of America (2018 - 2022) – Bachelor’s in Software Engineering</li>
-          <li>Istanbul University (2005 - 2008) – Master’s in Political Science</li>
-          <li>Istanbul University (2000 - 2005) – Bachelor’s in Political Science</li>
-          <li>BEMAR Career School (2013) – Web Design and Programming Certification</li>
-        </ul>
+        <section className={styles.educationList}>
+          <div className={styles.educationItem}>
+            <div>
+              <Image
+                src="/images/education.png"
+                alt="Education Icon"
+                width={50}
+                height={50}
+                className={styles.educationIcon}
+              />
+            </div>
+            <div>
+              <span className={styles.date}>2018 - 2022</span>
+              <h2>Software Engineering</h2>
+              <p>Technical University of America – Bachelor’s in Software Engineering</p>
+            </div>
+          </div>
+          <div className={styles.educationItem}>
+            <div>
+              <Image
+                src="/images/education.png"
+                alt="Education Icon"
+                width={50}
+                height={50}
+                className={styles.educationIcon}
+              />
+            </div>
+            <div>
+              <span className={styles.date}>2005 - 2008</span>
+              <h2>Political Science</h2>
+              <p>Istanbul University – Master’s in Political Science</p>
+            </div>
+          </div>
+          <div className={styles.educationItem}>
+            <div>
+              <Image
+                src="/images/education.png"
+                alt="Education Icon"
+                width={50}
+                height={50}
+                className={styles.educationIcon}
+              />
+            </div>
+            <div>
+              <span className={styles.date}>2000 - 2005</span>
+              <h2>Political Science</h2>
+              <p>Istanbul University – Bachelor’s in Political Science</p>
+            </div>
+          </div>
+          <div className={styles.educationItem}>
+            <div>
+              <Image
+                src="/images/education.png"
+                alt="Education Icon"
+                width={50}
+                height={50}
+                className={styles.educationIcon}
+              />
+            </div>
+            <div>
+              <span className={styles.date}>2013</span>
+              <h2>Web Design and Programming</h2>
+              <p>BEMAR Career School – Web Design and Programming Certification</p>
+            </div>
+          </div>
+        </section>
       </SectionWrapper>
     );
   }

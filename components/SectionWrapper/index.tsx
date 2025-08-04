@@ -16,6 +16,7 @@ import styles from './index.module.scss';
 interface SectionWrapperProps {
     children: React.ReactNode;
     variant?: 'slideUp' | 'slideLeft' | 'slideRight' | 'scaleUp' | 'fade';
+    customSectionClass?: string; // Optional custom class for the section
 }
 
 const variants = {
@@ -49,6 +50,7 @@ const variants = {
 export default function SectionWrapper({
     children,
     variant = 'slideUp', // default variant
+    customSectionClass = '',
 }: SectionWrapperProps) {
     const { theme } = useTheme();
     const [showHint, setShowHint] = useState(false);
@@ -126,6 +128,7 @@ export default function SectionWrapper({
                     initial={motionVariant.initial}
                     animate={motionVariant.animate}
                     exit={motionVariant.exit}
+                    className={customSectionClass}
                     transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                     {children}

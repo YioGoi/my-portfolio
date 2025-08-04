@@ -9,7 +9,9 @@ export default function ExperiencePage() {
       <h1>Experience</h1>
 
       <article className={styles.headerWithLogo}>
-        <Image src="/images/thelab-logo.png" alt="the Lab logo" width={39} height={39} />
+        <div style={{ backgroundColor: '#f0ece7', display: 'flex', borderRadius: 6 }}>
+          <Image src="/images/thelab-logo.png" alt="the Lab logo" width={39} height={39} />
+        </div>
         <h2>The Lab – New York, USA</h2>
       </article>
       <p><strong>Fullstack Senior Software Developer</strong> (2023 – Present)</p>

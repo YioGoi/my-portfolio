@@ -3,7 +3,7 @@
 }
 
 .name {
-  color: #526d82;
+  color: var(--fancy-blue);
   text-decoration: underline;
 }
 
@@ -16,7 +16,7 @@
 
 .profileImage {
   border-radius: 50%;
-  border: 8px solid #526d82;
+  border: 8px solid var(--fancy-blue);
 }
 
 .socialLinks {
