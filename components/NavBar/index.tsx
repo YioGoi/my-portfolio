@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import Link from "next/link";
-import Image from 'next/image';
 import { isSmallLaptop } from '@/utilities/responsive';
 import Hamburger from '@/components/Hamburger';
 import DownloadResumeButton from '@/components/DownloadResumeButton';
@@ -23,9 +22,6 @@ interface NavBarProps {
 export default function NavBar({ items }: NavBarProps) {
   const { theme, toggleTheme } = useTheme();
   const [_isSmallLaptop, _setIsSmallLaptop] = useState<boolean | null>(null);
-
-  const isDarkMode = theme === 'dark';
-  const logoImage = isDarkMode ? '/images/logo-white.png' : '/images/logo.png';
 
   useEffect(() => {
     const handleResize = () => {
