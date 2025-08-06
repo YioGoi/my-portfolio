@@ -100,7 +100,7 @@ const ResumePDF = () => (
         <Text style={styles.paragraph}>My journey into software development began with a deep curiosity about how websites and applications function. This fascination led me to immerse myself in coding, where I found joy in bringing ideas to life through code.</Text>
         <Text style={styles.paragraph}>Over the years, I&apos;ve honed my skills in JavaScript, React, and Next.js, building scalable and high-performance web applications. My passion for creating intuitive user experiences has driven me to explore the depths of frontend development, ensuring that each project not only functions seamlessly but also delights users.</Text>
         <Text style={styles.paragraph}>Currently, I am part of the talented team at The Lab in New York, where I contribute to expanding full-stack capabilities using React, Python, and Django within a complex multi-site ecosystem. My role involves leading frontend performance optimization efforts and conducting thorough code reviews to maintain high-quality standards.</Text>
-        <Text style={styles.paragraph}>Beyond my professional endeavors, I continuously seek opportunities to learn and grow, staying updated with the latest technologies and best practices in the ever-evolving world of web development.</Text>
+        <Text style={[styles.paragraph, { marginBottom: 0 }]}>Beyond my professional endeavors, I continuously seek opportunities to learn and grow, staying updated with the latest technologies and best practices in the ever-evolving world of web development.</Text>
       </View>
 
       <View style={styles.section}>

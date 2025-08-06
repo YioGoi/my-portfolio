@@ -27,10 +27,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
-  &:not(:first-child) {
-    margin-top: 2rem;
-  }
+  margin-top: 4rem;
 
   & h2 {
     margin: 0;
