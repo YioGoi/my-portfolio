@@ -6,7 +6,7 @@ import styles from './page.module.scss';
 export default function ExperiencePage() {
   return (
     <SectionWrapper variant="slideRight">
-      <h1>Experience</h1>
+      <h1 className='underline-title'>Experience</h1>
 
       <article className={styles.headerWithLogo}>
         <div style={{ backgroundColor: '#f0ece7', display: 'flex', borderRadius: 6 }}>
@@ -86,7 +86,7 @@ export default function ExperiencePage() {
         <h2>Path Product and Software House</h2>
       </article>
       <p><strong>Senior Frontend Developer</strong> (2022 – 2023)</p>
-      <p><strong>Stack:</strong> React, Next.js, RxJS, Node.js, MongoDB, SignalR</p>
+      <p><strong>Stack:</strong> React, Next.js, RxJS, Node.js, MongoDB, Socket Connection</p>
       <p>
         Path is an Istanbul-based technology company delivering high-performance, real-time software solutions for finance, betting, and e-commerce sectors.
       </p>
@@ -137,7 +137,7 @@ export default function ExperiencePage() {
         <h2>NTT Data</h2>
       </article>
       <p><strong>Senior Frontend Developer</strong> (2019 – 2021)</p>
-      <p><strong>Stack:</strong> React, Redux, .NET, JWT</p>
+      <p><strong>Stack:</strong> React, Redux, .NET, JWT, SignalR, SSO</p>
       <p>
         NTT Data is a global IT services provider delivering enterprise solutions in sectors such as finance, insurance, and telecommunications.
       </p>

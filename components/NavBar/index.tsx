@@ -59,14 +59,8 @@ export default function NavBar({ items }: NavBarProps) {
               <Hamburger />
             </div>
             <div className={styles.logo}>
-              <Link href="/">
-                <Image
-                  src={logoImage}
-                  alt="Flower of Life Logo"
-                  width={60}
-                  height={60}
-                  className={styles.logoImage}
-                />
+              <Link href="/" className={styles.logoLink}>
+                {`<YD/>`}
               </Link>
             </div>
             <div className={styles.actions}>
@@ -87,14 +81,7 @@ export default function NavBar({ items }: NavBarProps) {
           <>
             <div className={styles.logo}>
               <Link href="/" className={styles.logoLink}>
-                <Image
-                  src={logoImage}
-                  alt="Flower of Life Logo"
-                  width={60}
-                  height={60}
-                  className={styles.logoImage}
-                />
-                YD
+                {`<YD/>`}
               </Link>
             </div>
             <div className={styles.navItems}>

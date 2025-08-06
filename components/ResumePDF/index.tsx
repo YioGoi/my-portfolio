@@ -105,16 +105,19 @@ const ResumePDF = () => (
 
       <View style={styles.section}>
         <Text style={styles.heading}>Skills</Text>
-        <Text>- React, React Native, Next, Redux, Redux Saga, RxJS</Text>
-        <Text>- Typescript, Javascript, ES6+</Text>
-        <Text>- CSS, SASS, Tailwind, Module Scss</Text>
-        <Text>- Webpack, Jest, Storybook, Puppeteer, Playwright, Eslint, Prettier</Text>
-        <Text>- Python, Django, Node.js, Express.js, MySQL, MongoDB, REST, GraphQL, JWT, SSO, SignalR, SEO Optimization</Text>
-        <Text>- GitHub, GitLab, Bitbucket</Text>
+        <Text>- Javascript, Typescript, ES6</Text>
+        <Text>- React, React Native, Next, Redux, Redux Saga, RxJS, Zustand, React Query, React Hook Form, Formik, Framer Motion</Text>
+        <Text>- CSS, Sass/SCSS, Tailwind, Module Scss, Styled Components, Material UI, Bootstrap, Ant Design</Text>
+        <Text>- Webpack, Vite, Babel</Text>
+        <Text>- Jest, Storybook, Puppeteer, Playwright, Vitest, React Testing Library, Cypress</Text>
+        <Text>- ESLint, Prettier</Text>
+        <Text>- SEO Optimization, Lighthouse, Web Vitals, Next.js Image Optimization, Lazy Loading</Text>
+        <Text>- Python, Django, Wagtail, Node.js, Express.js, RESTful API, MySQL, MongoDB, REST, GraphQL, PostgreSQL, Firebase, JWT, OAuth2, Auth0, NextAuth.js, SSO, SignalR, PHP, .NET, .NET Core, C#</Text>
+        <Text>- GitHub, GitLab, Bitbucket, Vercel, Netlify, Docker</Text>
         <Text>- UI/UX Design, Responsive/Adaptive Design, Adobe XD, Figma, Sketch</Text>
-        <Text>- Agile, Scrum, Jira, Kanban, Planio</Text>
-        <Text>- Claude Sonnet 4, OpenAI API, ChatGPT 4.1, Langchain, LangGraph, CrewAI, Agentic Frameworks</Text>
+        <Text>- Claude Sonnet 4, OpenAI API, ChatGPT 4.1, Github Copilot, Cursor, Langchain, LangGraph, CrewAI, Agentic Frameworks</Text>
         <Text>- Web3, Blockchain, Smart Contracts, Solidity, ethers.js, hardhat, polygon, ipfs</Text>
+        <Text>- Agile, Scrum, Jira, Kanban, Planio</Text>
       </View>
 
       <View style={styles.section}>

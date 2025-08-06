@@ -3,7 +3,9 @@
 :root {
   --background: #222831;
   --code-background: #ffffff;
+  --white-text-color: #ffffff;
   --text-color: #f1f4f8de;
+  --skill-color: #f1f4f8de;
   --code-text-color: #222831;
   --hover-color: #c5cece;
   --link-color: #949b9b;
@@ -15,6 +17,7 @@
 .light {
   --background: #f1f1f1;
   --code-background: #222831;
+  --white-text-color: #949b9b;
   --text-color: #1a1a1a;
   --code-text-color: #ffffff;
   --link-color: #0a3d5a;
@@ -22,6 +25,7 @@
   --hover-color: #201c1c98;
   --border-color: #222831;
   --fancy-blue: #526d82;
+  --skill-color: #f1f4f8de;
 }
 
 html {
@@ -92,7 +96,6 @@ strong {
 section {
   max-width: 960px;
   margin: 0 auto;
-  padding: 2rem;
 
   @media (max-width: $tablet) {
     padding: 0;
@@ -107,4 +110,12 @@ a {
   &:hover {
     color: var(--link-hover-color);
   }
+}
+
+.underline-title {
+  text-decoration: underline;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 6px;
 }

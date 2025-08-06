@@ -11,7 +11,7 @@ export default function ContactPage() {
 
   return (
     <SectionWrapper variant="fade">
-      <h1>Contact</h1>
+      <h1 className="underline-title">Contact</h1>
       <SyntaxHighlighter language="json" style={duotoneDark} customStyle={{
         borderRadius: '10px',
         padding: '1.5rem',

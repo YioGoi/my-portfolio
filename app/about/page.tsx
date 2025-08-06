@@ -3,7 +3,7 @@ import SectionWrapper from '@/components/SectionWrapper';
 export default function AboutPage() {
   return (
     <SectionWrapper variant="slideLeft">
-      <h1>About Me</h1>
+      <h1 className="underline-title">About Me</h1>
       <p>
         My journey into software development began with a deep curiosity about how websites and applications function. This fascination led me to immerse myself in coding, where I found joy in bringing ideas to life through code.
       </p>
