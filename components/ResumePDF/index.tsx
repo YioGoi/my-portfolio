@@ -98,9 +98,10 @@ const ResumePDF = () => (
       <View style={styles.section}>
         <Text style={styles.heading}>About</Text>
         <Text style={styles.paragraph}>My journey into software development began with a deep curiosity about how websites and applications function. This fascination led me to immerse myself in coding, where I found joy in bringing ideas to life through code.</Text>
-        <Text style={styles.paragraph}>Over the years, I&apos;ve honed my skills in JavaScript, React, and Next.js, building scalable and high-performance web applications. My passion for creating intuitive user experiences has driven me to explore the depths of frontend development, ensuring that each project not only functions seamlessly but also delights users.</Text>
-        <Text style={styles.paragraph}>Currently, I am part of the talented team at The Lab in New York, where I contribute to expanding full-stack capabilities using React, Python, and Django within a complex multi-site ecosystem. My role involves leading frontend performance optimization efforts and conducting thorough code reviews to maintain high-quality standards.</Text>
-        <Text style={[styles.paragraph, { marginBottom: 0 }]}>Beyond my professional endeavors, I continuously seek opportunities to learn and grow, staying updated with the latest technologies and best practices in the ever-evolving world of web development.</Text>
+        <Text style={styles.paragraph}>Experienced Senior Software Developer with expertise in JavaScript, React, and Next.js, specializing in building scalable and high-performance web applications.</Text>
+        <Text style={styles.paragraph}>Currently leading frontend performance optimization at The Lab, contributing to full-stack capabilities using React, Python, and Django.</Text>
+        <Text style={styles.paragraph}>Proven track record in developing reusable components and design systems, enhancing development efficiency by 40%.</Text>
+        <Text style={[styles.paragraph, { marginBottom: 0 }]}>Eager to leverage skills in React development to create intuitive user experiences and drive project success.</Text>
       </View>
 
       <View style={styles.section}>
@@ -121,30 +122,37 @@ const ResumePDF = () => (
       </View>
 
       <View style={styles.section}>
+      </View>
+
+      <View style={styles.section}>
         <Text style={styles.heading}>Experience</Text>
         <Text style={styles.subheading}>The Lab – Fullstack Senior Software Developer (2023 – Present)</Text>
         <Text style={styles.paragraph}>The Lab is a New York-based creative technology agency delivering digital experiences for major retail and consumer brands.</Text>
         <Text>• Led frontend architecture across 10+ white-labeled retail websites, ensuring performance, accessibility, and consistency.</Text>
-        <Text>• Developed reusable components and design systems with React and SCSS modules, cutting development time by 40%.</Text>
-        <Text>• Integrated backend APIs using Django and DRF, enabling dynamic pricing, multi-language, and inventory syncing.</Text>
-        <Text>• Collaborated with designers and PMs to launch responsive, SEO-optimized interfaces across desktop and mobile.</Text>
-        <Text>• Implemented CI/CD workflows and testing pipelines to improve code quality and reduce regression bugs by 30%.</Text>
+        <Text>• Implement SSR components with the power of Python, reactivated and React, retrieve data from html literals directly and reduce rendering times by 35%.</Text>
+        <Text>• Created Server Side utilities and React&apos;s hooks like memo, useMemo, useCallback, useLayoutEffect etc. to optimize performance and reduce client-side rendering.</Text>
+        <Text>• Developed reusable components and our own component library and design systems with React and SCSS modules, cutting development time by 40%.</Text>
+        <Text>• Integrated backend AWS APIs using Django and DRF, enabling dynamic pricing, multi-language, and inventory syncing.</Text>
+        <Text>• Collaborated with designers and PMs to launch responsive, SEO-optimized, and WCAG-compliant accessible interfaces across desktop and mobile.</Text>
+        <Text>• Implemented CI/CD workflows and testing pipelines with Playwright and Puppeteer to improve code quality and reduce regression bugs by 30%.</Text>
+        <Text>• Built up and operated all projects database and client-side with Docker.</Text>
         <Text>New York - Remote</Text>
 
-        <Text style={styles.subheading}>Ammega Group – Senior Frontend Developer (2023 – 2024)</Text>
+        <Text style={styles.subheading}>Ammega Group – Lead Senior Frontend Developer (2023 – 2024)</Text>
         <Text style={styles.paragraph}>Ammega Group is a global leader in industrial manufacturing, specializing in conveyor belts and power transmission systems across multiple sectors.</Text>
         <Text>• Built internal dashboards and production interfaces using React and Next.js, improving operational visibility across factories.</Text>
         <Text>• Collaborated with .NET backend team to integrate complex APIs for real-time data visualization and machine telemetry.</Text>
-        <Text>• Developed role-based access systems and component-level authorization for secure industrial workflows.</Text>
-        <Text>• Refactored legacy frontends into modular, maintainable codebases, reducing future dev effort by 35%.</Text>
-        <Text>• Worked directly with engineers and operations leads to map UI features to real-world production processes.</Text>
+        <Text>• Developed role-based access systems and component-level authorization for secure industrial workflows, implemented with React Router and Redux.</Text>
+        <Text>• Refactored legacy frontends into modular, maintainable codebases, resolved bugs that were increasing rendering times in initial rendering process and reduced future dev effort by 35%.</Text>
+        <Text>• Worked directly with engineers and operations leads to map UI features to real-world production processes, including charts and data visualizations, graphics rendering with Ant Design UI Package.</Text>
         <Text>Amsterdam - Remote</Text>
 
-        <Text style={styles.subheading}>MDS Translation – Fullstack Developer (2024)</Text>
+        <Text style={styles.subheading}>MDS Translation – Lead Fullstack Developer (2024)</Text>
         <Text style={styles.paragraph}>MDS Translation is a boutique language services provider focused on delivering professional translations across Europe.</Text>
         <Text>• Designed and developed a multilingual marketing site using Next.js, TypeScript, and i18n routing.</Text>
         <Text>• Achieved high SEO scores (90+ Lighthouse, indexed in 3 languages) without dedicated SEO work, thanks to server-rendered, semantically structured pages.</Text>
         <Text>• Implemented dynamic routing with locale-based content, improving UX and engagement across target markets.</Text>
+        <Text>• Created snap-scroll and animation transition effects with Sass in Home Page for visually engaging experiences.</Text>
         <Text>• Used Next.js Image Optimization and static generation to ensure fast load times across all geographies.</Text>
         <Text>• Built CMS-agnostic content structure for future integration with a headless backend.</Text>
         <Text>İstanbul - Remote</Text>
@@ -154,12 +162,14 @@ const ResumePDF = () => (
         <Text>• Contributed to <Text style={{ fontWeight: 'bold' }}>Tuttur.com</Text>, one of Turkey’s largest online sports betting platforms, building real-time betting interfaces and user flows.</Text>
         <Text>• Developed dynamic UI components for live match data, odds tracking, and bet slip management using React, RxJS, and Socket Connection.</Text>
         <Text>• Engineered reactive data streams to support thousands of simultaneous users with minimal latency and consistent state.</Text>
-        <Text>• Optimized frontend performance under high traffic (~100k+ concurrent users), reducing interaction lag and memory usage.</Text>
+        <Text>• Optimized frontend performance with React rendering strategies under high traffic (~100k+ concurrent users), reducing interaction lag and memory usage.</Text>
+        <Text>• Structured Next.js application and used SSR, CSR and SSG with getServerSideProps and getStaticProps to ensure optimal performance and SEO.</Text>
         <Text>• Collaborated with cross-functional teams to ensure compliance with industry regulations and transactional accuracy.</Text>
         <Text>İstanbul - Remote</Text>
 
-        <Text style={styles.subheading}>Kafein Software (2021 – 2022)</Text>
+        <Text style={styles.subheading}>Kafein Software - Lead Senior Frontend Developer (2021 – 2022)</Text>
         <Text style={styles.paragraph}>Kafein is a Turkish software and consultancy company providing enterprise-level solutions in telecom, finance, and IT security domains.</Text>
+        <Text>• Led the frontend development team in building scalable web applications. Determined the structure of the frontend architecture.</Text>
         <Text>• Built modular and scalable UI components using React and Redux-Saga for enterprise applications.</Text>
         <Text>• Developed async workflows and complex state management logic to handle nested user interactions.</Text>
         <Text>• Created custom form builders and data visualization components tailored to enterprise reporting needs.</Text>
@@ -167,29 +177,30 @@ const ResumePDF = () => (
         <Text>• Participated in code reviews and mentored junior developers on best practices for clean, testable code.</Text>
         <Text>İstanbul - Remote</Text>
 
-        <Text style={styles.subheading}>NTT Data (2019 – 2021)</Text>
+        <Text style={styles.subheading}>NTT Data - Senior Frontend Developer (2019 – 2021)</Text>
         <Text style={styles.paragraph}>NTT Data is a global IT services provider delivering enterprise solutions in sectors such as finance, insurance, and telecommunications.</Text>
         <Text>• Developed Single Page Applications (SPA) using React and integrated them with .NET-based backend systems.</Text>
         <Text>• Built secure authentication flows including role-based access, SSO, and JWT token management.</Text>
         <Text>• Collaborated with backend teams to design RESTful API contracts for frontend integration.</Text>
+        <Text>• Implemented React Router and Redux State Management for seamless navigation and state handling in order to create Performance Management System for the leader company of Türkiye</Text>
         <Text>• Maintained and refactored legacy components to align with modern frontend standards and accessibility guidelines.</Text>
         <Text>• Participated in agile ceremonies and collaborated with international teams in a distributed environment.</Text>
         <Text>İstanbul - Onsite / Remote</Text>
 
         <Text style={styles.subheading}>Bulut Software – Frontend Developer (2019)</Text>
         <Text style={styles.paragraph}>Bulut Software is a Turkish tech company building vendor systems and online payment platforms for SMEs.</Text>
-        <Text>• Developed vendor management interfaces using React, tailored for inventory and supplier workflows.</Text>
-        <Text>• Integrated frontend with legacy PHP APIs, working with tools like Postman to test and debug data exchanges.</Text>
-        <Text>• Built custom checkout and payment UIs to support seamless online transactions and order submissions.</Text>
-        <Text>• Refactored input flows to reduce user errors and improve data accuracy in critical payment and order forms.</Text>
+        <Text>• Developed vendor management interfaces using React, tailored for inventory and supplier workflows, which improved operational efficiency and user satisfaction.</Text>
+        <Text>• Integrated frontend with legacy PHP APIs, working with tools like Postman to test and debug data exchanges, resulting in smoother data flow and reduced system downtime.</Text>
+        <Text>• Built custom checkout and payment UIs to support seamless online transactions and order submissions, enhancing user experience and increasing transaction success rates.</Text>
+        <Text>• Refactored input flows to reduce user errors and improve data accuracy in critical payment and order forms, leading to fewer transaction errors and improved customer satisfaction.</Text>
         <Text>İstanbul - Onsite / Remote</Text>
 
         <Text style={styles.subheading}>Tıkla Kutla – Frontend Developer (2018 – 2019)</Text>
         <Text style={styles.paragraph}>Tıkla Kutla was a startup serving the event and entertainment industry, providing vendor management tools for organizing campaigns, parties, and experiences.</Text>
         <Text>• Built dynamic frontend modules using AngularJS for managing vendors, bookings, and event listings.</Text>
-        <Text>• Focused on SEO-friendly markup and routing to maximize organic reach and indexability in Google Search.</Text>
-        <Text>• Created responsive interfaces tailored for both vendors and end-users across web and mobile.</Text>
-        <Text>• Collaborated with backend developers to improve page speed and optimize crawlable content.</Text>
+        <Text>• Enhanced SEO-friendly markup and routing, leading to improved organic reach and better indexability in Google Search.</Text>
+        <Text>• Developed responsive interfaces for vendors and end-users, improving user experience across web and mobile platforms.</Text>
+        <Text>• Collaborated with backend developers to enhance page speed and optimize crawlable content, resulting in faster load times and improved search engine rankings.</Text>
         <Text>İstanbul - Onsite</Text>
 
         <Text style={styles.subheading}>Noviente Informatics Systems – Cofounder & Fullstack Developer (2015 – 2018)</Text>
@@ -211,17 +222,17 @@ const ResumePDF = () => (
 
         <Text style={styles.subheading}>Ofism.com – Founder & Fullstack Developer (2013 – 2015)</Text>
         <Text style={styles.paragraph}>Ofism.com was an online stationery e-commerce platform I independently designed and developed from the ground up.</Text>
-        <Text>• Built the entire system using PHP and OpenCart, including custom theming, cart logic, and payment integration.</Text>
-        <Text>• Designed the UI/UX, product categorization, and checkout flows to provide a smooth shopping experience.</Text>
-        <Text>• Handled backend features such as inventory management, shipping rules, and order tracking.</Text>
-        <Text>• Managed hosting, database configuration, and ongoing site maintenance independently.</Text>
-        <Text>• Gained hands-on experience in running a tech-driven product—from development to customer support.</Text>
+        <Text>• Built the entire system using PHP and OpenCart, including custom theming, cart logic, and payment integration, resulting in a fully functional e-commerce platform.</Text>
+        <Text>• Designed the UI/UX, product categorization, and checkout flows to provide a smooth shopping experience, enhancing user satisfaction and engagement.</Text>
+        <Text>• Handled backend features such as inventory management, shipping rules, and order tracking, ensuring efficient operations and accurate order processing.</Text>
+        <Text>• Managed hosting, database configuration, and ongoing site maintenance independently, ensuring high availability and performance of the platform.</Text>
+        <Text>• Gained hands-on experience in running a tech-driven product, from development to customer support, improving my ability to manage end-to-end processes effectively.</Text>
         <Text>İzmir - Onsite</Text>
 
 
         <Text style={styles.subheading}>Doğan Defter – Web Developer (2008 – 2013)</Text>
         <Text style={styles.paragraph}>Doğan Defter is a Turkish manufacturer and exporter of notebooks and stationery products, serving both local and international markets.</Text>
-        <Text>• Designed and developed the company’s official website to showcase products and support global outreach.</Text>
+        <Text>• Designed and developed the company’s official website to showcase products and support global outreach with HTML, CSS and Javascript.</Text>
         <Text>• Built a custom CMS to allow the internal team to manage product catalogs, announcements, and inquiries with ease.</Text>
         <Text>• Structured the site with multilingual support and SEO-friendly markup to attract international buyers.</Text>
         <Text>• Contributed to increasing the brand’s global visibility and inbound requests through improved digital presence.</Text>
@@ -231,9 +242,9 @@ const ResumePDF = () => (
       <View style={styles.section}>
         <Text style={styles.heading}>Education</Text>
         <Text>- Technical University of America (2018 - 2022) – Bachelor’s in Software Engineering</Text>
+        <Text>- BEMAR Career School (2012 - 2013) – Web Design and Programming Certification</Text>
         <Text>- Istanbul University (2005 - 2008) – Master’s in Political Science</Text>
         <Text>- Istanbul University (2000 - 2005) – Bachelor’s in Political Science</Text>
-        <Text>- BEMAR Career School (2013) – Web Design and Programming Certification</Text>
       </View>
 
       <View style={styles.section}>
