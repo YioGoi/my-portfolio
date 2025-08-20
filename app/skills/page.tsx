@@ -26,6 +26,7 @@ export default function SkillsPage() {
             <span>Zustand</span>
             <span>React Query</span>
             <span>React Hook Form / Formik</span>
+            <span>React Navigation</span>
             <span>Framer Motion</span>
           </div>
         </div>

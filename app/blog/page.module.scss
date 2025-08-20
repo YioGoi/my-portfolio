@@ -1,0 +1,36 @@
+@use "./app/variables" as *;
+
+.blog {
+    padding: 4rem 1rem 1rem;
+}
+
+.articles {
+  padding-top: 2rem;
+}
+
+.article {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  max-width: 680px;
+  border-bottom: 1px solid var(--border-color-2);
+  padding: 1rem 0;
+
+  & h2 {
+    margin-top: 0;
+  }
+
+  & p {
+    font-size: 0.875rem;
+  }
+
+  & img {
+    margin-left: 56px;
+  }
+
+  @media (max-width: $tablet) {
+    & img {
+        width: 80px;
+        height: 53px;
+    }
+  }
+}

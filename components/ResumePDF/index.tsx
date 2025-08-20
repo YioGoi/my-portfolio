@@ -77,7 +77,51 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginBottom: 10,
   },
+  skillBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  skillName: {
+    width: 80,
+    fontSize: 10,
+    fontWeight: 500,
+  },
+  skillBarContainer: {
+    flex: 1,
+    height: 8,
+    backgroundColor: '#3a3f47',
+    borderRadius: 4,
+    marginLeft: 10,
+    marginRight: 10,
+    position: 'relative',
+  },
+  skillBarFill: {
+    height: '100%',
+    backgroundColor: '#526d82',
+    borderRadius: 4,
+  },
+  skillYears: {
+    fontSize: 9,
+    width: 30,
+    textAlign: 'right',
+  },
 });
+
+// Calculate years of experience (starting from 2015 for React, etc.)
+const currentYear = 2025;
+const skills = [
+  { name: 'JavaScript', years: currentYear - 2010, startYear: 2010 },
+  { name: 'React', years: currentYear - 2013, startYear: 2013 },
+  { name: 'TypeScript', years: currentYear - 2014, startYear: 2014 },
+  { name: 'React Native', years: currentYear - 2015, startYear: 2015 },
+  { name: 'Node.js', years: currentYear - 2015, startYear: 2015 },
+  { name: 'Next.js', years: currentYear - 2016, startYear: 2016 },
+  { name: 'Python', years: currentYear - 2018, startYear: 2018 },
+  { name: 'Django', years: currentYear - 2018, startYear: 2018 },
+];
+
+const maxYears = Math.max(...skills.map(skill => skill.years));
 
 const ResumePDF = () => (
   <Document>
@@ -105,9 +149,27 @@ const ResumePDF = () => (
       </View>
 
       <View style={styles.section}>
+        <Text style={styles.heading}>Core Technologies</Text>
+        {skills.map((skill, index) => (
+          <View key={index} style={styles.skillBar}>
+            <Text style={styles.skillName}>{skill.name}</Text>
+            <View style={styles.skillBarContainer}>
+              <View
+                style={[
+                  styles.skillBarFill,
+                  { width: `${(skill.years / maxYears) * 100}%` }
+                ]}
+              />
+            </View>
+            <Text style={styles.skillYears}>{skill.years}y</Text>
+          </View>
+        ))}
+      </View>
+
+      <View style={styles.section}>
         <Text style={styles.heading}>Skills</Text>
         <Text>- Javascript, Typescript, ES6</Text>
-        <Text>- React, React Native, Next, Redux, Redux Saga, RxJS, Zustand, React Query, React Hook Form, Formik, Framer Motion</Text>
+        <Text>- React, React Native, Next, Redux, Redux Saga, RxJS, Zustand, React Query, React Hook Form, Formik, React Navigation, Framer Motion</Text>
         <Text>- CSS, Sass/SCSS, Tailwind, Module Scss, Styled Components, Material UI, Bootstrap, Ant Design</Text>
         <Text>- Webpack, Vite, Babel</Text>
         <Text>- Jest, Storybook, Puppeteer, Playwright, Vitest, React Testing Library, Cypress</Text>
@@ -149,7 +211,7 @@ const ResumePDF = () => (
 
         <Text style={styles.subheading}>MDS Translation – Lead Fullstack Developer (2024)</Text>
         <Text style={styles.paragraph}>MDS Translation is a boutique language services provider focused on delivering professional translations across Europe.</Text>
-        <Text>• Designed and developed a multilingual marketing site using Next.js, TypeScript, and i18n routing.</Text>
+        <Text>• Designed and developed a multilingual marketing site using React-Native, TypeScript, and React Navigation routing.</Text>
         <Text>• Achieved high SEO scores (90+ Lighthouse, indexed in 3 languages) without dedicated SEO work, thanks to server-rendered, semantically structured pages.</Text>
         <Text>• Implemented dynamic routing with locale-based content, improving UX and engagement across target markets.</Text>
         <Text>• Created snap-scroll and animation transition effects with Sass in Home Page for visually engaging experiences.</Text>
@@ -179,7 +241,7 @@ const ResumePDF = () => (
 
         <Text style={styles.subheading}>NTT Data - Senior Frontend Developer (2019 – 2021)</Text>
         <Text style={styles.paragraph}>NTT Data is a global IT services provider delivering enterprise solutions in sectors such as finance, insurance, and telecommunications.</Text>
-        <Text>• Developed Single Page Applications (SPA) using React and integrated them with .NET-based backend systems.</Text>
+        <Text>• Developed Single Page Applications (SPA) using React and React-Native and integrated them with .NET-based backend systems.</Text>
         <Text>• Built secure authentication flows including role-based access, SSO, and JWT token management.</Text>
         <Text>• Collaborated with backend teams to design RESTful API contracts for frontend integration.</Text>
         <Text>• Implemented React Router and Redux State Management for seamless navigation and state handling in order to create Performance Management System for the leader company of Türkiye</Text>
@@ -189,7 +251,7 @@ const ResumePDF = () => (
 
         <Text style={styles.subheading}>Bulut Software – Frontend Developer (2019)</Text>
         <Text style={styles.paragraph}>Bulut Software is a Turkish tech company building vendor systems and online payment platforms for SMEs.</Text>
-        <Text>• Developed vendor management interfaces using React, tailored for inventory and supplier workflows, which improved operational efficiency and user satisfaction.</Text>
+        <Text>• Developed vendor management interfaces using React and React-Native, tailored for inventory and supplier workflows, which improved operational efficiency and user satisfaction.</Text>
         <Text>• Integrated frontend with legacy PHP APIs, working with tools like Postman to test and debug data exchanges, resulting in smoother data flow and reduced system downtime.</Text>
         <Text>• Built custom checkout and payment UIs to support seamless online transactions and order submissions, enhancing user experience and increasing transaction success rates.</Text>
         <Text>• Refactored input flows to reduce user errors and improve data accuracy in critical payment and order forms, leading to fewer transaction errors and improved customer satisfaction.</Text>
@@ -205,7 +267,7 @@ const ResumePDF = () => (
 
         <Text style={styles.subheading}>Noviente Informatics Systems – Cofounder & Fullstack Developer (2015 – 2018)</Text>
         <Text style={styles.paragraph}>Noviente is a boutique tech company I co-founded, delivering tailored software solutions across sectors including accounting, social media management, real estate, and e-commerce.</Text>
-        <Text>• Built vendor systems for creative brands like Creafity, enabling streamlined order, inventory, and delivery workflows.</Text>
+        <Text>• Built vendor systems with React, React-Native and TypeScript for creative brands like Creafity, enabling streamlined order, inventory, and delivery workflows.</Text>
         <Text>• Developed custom platforms for Instagram campaign management, apartment billing systems, and small business invoicing tools.</Text>
         <Text>• Used React for frontend components and WooCommerce/WordPress for e-commerce integrations.</Text>
         <Text>• Led product design and client communication from concept to deployment across multiple verticals.</Text>
@@ -214,7 +276,7 @@ const ResumePDF = () => (
 
         <Text style={styles.subheading}>ROS Inc. – Web Developer (2015 – 2017)</Text>
         <Text style={styles.paragraph}>ROS Inc. is a construction company for which I built a complete digital presence from scratch, including a modern website and marketing integrations.</Text>
-        <Text>• Designed and developed the company website using HTML, CSS, and JavaScript, optimized for mobile and desktop.</Text>
+        <Text>• Designed and developed the company website using React, React-Native and TypeScript, optimized for mobile and desktop.</Text>
         <Text>• Integrated Google Maps for location visibility and Google Ads for targeted traffic acquisition.</Text>
         <Text>• Improved the company’s online discoverability and credibility through SEO best practices and Google Business setup.</Text>
         <Text>• Enabled measurable growth in web traffic and lead generation through analytics-driven iteration.</Text>
