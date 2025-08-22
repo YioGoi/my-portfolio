@@ -35,6 +35,20 @@ const articles = [
         content: "React and functional programming (FP) have always shared DNA. From the very beginning, React emphasised declarative UI and pure rendering…",
         thumbnail: "https://miro.medium.com/v2/resize:fill:160:107/1*bCfrQLSO8jVDDR7TFEBACA.png",
         url: "https://medium.com/@ydogan.dev/react-v19-1-and-the-power-of-functional-programming-08a31136694a"
+    },
+    {
+        id: 3,
+        title: "Fullstack Type Safety with Django, React, and Reactivated",
+        content: "If you’ve ever built a Django + React app, you’ve probably run into this:",
+        thumbnail: "https://miro.medium.com/v2/resize:fill:160:107/1*wKq_Y-rbaVzJiZ4g41qF9Q.jpeg",
+        url: "https://medium.com/@ydogan.dev/fullstack-type-safety-with-django-react-and-reactivated-ceaa9633e73a"
+    },
+    {
+        id: 4,
+        title: "From Zero to Insight: Logging & Performance Monitoring in React Native (Emulator + Real Device)",
+        content: "If you build React Native apps, two things make or break your day: seeing the right logs and knowing where your frames go to die. This…",
+        thumbnail: "https://miro.medium.com/v2/resize:fill:160:107/1*OHeqAEVUVabg6FSUVok78A.png",
+        url: "https://medium.com/@ydogan.dev/from-zero-to-insight-logging-performance-monitoring-in-react-native-emulator-real-device-9fb49eb43b44"
     }
 ]
 

@@ -22,29 +22,56 @@ interface NavBarProps {
 export default function NavBar({ items }: NavBarProps) {
   const { theme, toggleTheme } = useTheme();
   const [_isSmallLaptop, _setIsSmallLaptop] = useState<boolean | null>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  // Track component lifecycle
+  useEffect(() => {
+    setIsClient(true); // Mark as client-side
+  }, []);
 
   useEffect(() => {
+    let debounceTimer: NodeJS.Timeout;
+
     const handleResize = () => {
-      _setIsSmallLaptop(isSmallLaptop());
+      // Clear existing timer
+      clearTimeout(debounceTimer);
+      
+      // Debounce the resize handling
+      debounceTimer = setTimeout(() => {
+        const newIsSmallLaptop = isSmallLaptop();
+        _setIsSmallLaptop(newIsSmallLaptop);
+      }, 100); // 100ms debounce
     }
-    handleResize(); // Initial check
+
+    // Initial check without debounce
+    const initialIsSmallLaptop = isSmallLaptop();
+    _setIsSmallLaptop(initialIsSmallLaptop);
+    
     window.addEventListener('resize', handleResize);
+    
     return () => {
+      clearTimeout(debounceTimer);
       window.removeEventListener('resize', handleResize);
     }
-  }, [_isSmallLaptop]);
+  }, []);
 
   const ThemeSwitch = () => {
     return (
       <div className={styles.themeToggle}>
-        <button onClick={toggleTheme} className={styles.toggleBtn}>
+        <button 
+          onClick={toggleTheme}
+          className={styles.toggleBtn}
+        >
           {theme === 'dark' ? <BsSun /> : <BsMoon />}
         </button>
       </div>
     )
   }
 
-  if (_isSmallLaptop === null) return null; // Prevent rendering until the state is set
+  // Don't render until client-side hydration is complete
+  if (!isClient || _isSmallLaptop === null) {
+    return null;
+  }
 
   return (
     <nav className={styles.navbar}>
