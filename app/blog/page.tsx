@@ -14,7 +14,7 @@ const variants = {
     }
 };
 
-const articles = [
+const myArticles = [
     {
         id: 0,
         title: "React Native in 2025: Best Package Decisions for Building a Mobile App",
@@ -52,39 +52,123 @@ const articles = [
     }
 ]
 
+const otherArticles = [
+    {
+        id: 0,
+        title: "Impossible Components",
+        content: "Suppose I want to greet you in my favorite color. This would require combining information from two different computers. Your name would be coming from your computer. The color would be on my computer.",
+        thumbnail: "/images/overreacted.png",
+        url: "https://overreacted.io/impossible-components/"
+    },
+    {
+        id: 1,
+        title: "What Does 'use client' Do?",
+        content: "React Server Components (in?)famously has no API surface. It’s an entire programming paradigm largely stemming from two directives:",
+        thumbnail: "/images/dan.jpg",
+        url: "https://overreacted.io/what-does-use-client-do/"
+    },
+    {
+        id: 2,
+        title: "Before You memo()",
+        content: "There are many articles written about React performance optimizations. In general, if some state update is slow, you need to:",
+        thumbnail: "/images/memo.png",
+        url: "https://overreacted.io/before-you-memo/"
+    }, 
+    {
+        id: 3,
+        title: "What Are the React Team Principles?",
+        content: "During my time on the React team, I’ve been lucky to see how Jordan, Sebastian, Sophie and other tenured team members approach problems. In this post, I’m distilling what I learned from them into a few high-level technical principles.",
+        thumbnail: "/images/react.jpg",
+        url: "https://overreacted.io/what-are-the-react-team-principles/"
+    },
+    {
+        id: 4,
+        title: "A Complete Guide to useEffect",
+        content: "You wrote a few components with Hooks. Maybe even a small app. You’re mostly satisfied. You’re comfortable with the API and picked up a few tricks along the way.",
+        thumbnail: "/images/useEffect.png",
+        url: "https://overreacted.io/a-complete-guide-to-useeffect/"
+    },
+    {
+        id: 5,
+        title: "Making setInterval Declarative with React Hooks",
+        content: "If you played with React Hooks for more than a few hours, you probably ran into an intriguing problem: using setInterval just doesn’t work as you’d expect.",
+        thumbnail: "/images/setInterval.jpg",
+        url: "https://overreacted.io/making-setinterval-declarative-with-react-hooks/"
+    },
+    {
+        id: 6,
+        title: "The Elements of UI Engineering",
+        content: "In my previous post, I talked about admitting our knowledge gaps. You might conclude that I suggest settling for mediocrity. I don’t! This is a broad field.",
+        thumbnail: "/images/ui-engineering.png",
+        url: "https://overreacted.io/the-elements-of-ui-engineering/"
+    }
+]
+
 export default function BlogPage() {
     const motionVariant = variants['slideUp'];
     return (
         <section className={styles.blog}>
-            <motion.section
-                initial={motionVariant.initial}
-                animate={motionVariant.animate}
-                exit={motionVariant.exit}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
-            >
-                <h1 className='underline-title'>Blog</h1>
-                <div
-                    className={styles.articles}
+            <h1 className='underline-title'>Blog</h1>
+            <div className={styles.content}>
+                <motion.section
+                    initial={motionVariant.initial}
+                    animate={motionVariant.animate}
+                    exit={motionVariant.exit}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
-                    {articles.map(article => (
-                        <a
-                            className={styles.article}
-                            key={article.id}
-                            href={article.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <div>
-                                <h2>{article.title}</h2>
-                                <p>{article.content}</p>
-                            </div>
-                            <div>
-                                <Image src={article.thumbnail} width={160} height={107} alt={article.title} />
-                            </div>
-                        </a>
-                    ))}
-                </div>
-            </motion.section>
+                    <h2>What I focus on</h2>
+                    <div
+                        className={styles.articles}
+                    >
+                        {myArticles.map(article => (
+                            <a
+                                className={styles.article}
+                                key={article.id}
+                                href={article.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <div>
+                                    <h2>{article.title}</h2>
+                                    <p>{article.content}</p>
+                                </div>
+                                <div>
+                                    <Image src={article.thumbnail} width={160} height={107} alt={article.title} />
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </motion.section>
+                <motion.section
+                    initial={motionVariant.initial}
+                    animate={motionVariant.animate}
+                    exit={motionVariant.exit}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                >
+                    <h2>Popular Articles I Read</h2>
+                    <div
+                        className={styles.articles}
+                    >
+                        {otherArticles.map(article => (
+                            <a
+                                className={styles.article}
+                                key={article.id}
+                                href={article.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <div>
+                                    <h2>{article.title}</h2>
+                                    <p>{article.content}</p>
+                                </div>
+                                <div>
+                                    <Image src={article.thumbnail} width={160} height={107} alt={article.title} />
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </motion.section>
+            </div>
         </section>
     );
 }

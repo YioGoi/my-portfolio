@@ -1,7 +1,17 @@
 @use "./app/variables" as *;
 
 .blog {
-    padding: 4rem 1rem 1rem;
+  padding: 4rem 1rem 1rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .articles {
@@ -25,12 +35,13 @@
 
   & img {
     margin-left: 56px;
+    object-fit: contain;
   }
 
   @media (max-width: $tablet) {
     & img {
-        width: 80px;
-        height: 53px;
+      width: 80px;
+      height: 53px;
     }
   }
 }
