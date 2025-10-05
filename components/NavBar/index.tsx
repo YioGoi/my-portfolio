@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
 import { isSmallLaptop } from '@/utilities/responsive';
 import Hamburger from '@/components/Hamburger';
 import DownloadResumeButton from '@/components/DownloadResumeButton';
@@ -21,13 +22,47 @@ interface NavBarProps {
 
 export default function NavBar({ items }: NavBarProps) {
   const { theme, toggleTheme } = useTheme();
+  const pathname = usePathname();
   const [_isSmallLaptop, _setIsSmallLaptop] = useState<boolean | null>(null);
   const [isClient, setIsClient] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   // Track component lifecycle
   useEffect(() => {
     setIsClient(true); // Mark as client-side
   }, []);
+
+  // Detect navigation completion
+  useEffect(() => {
+    // When pathname changes, navigation is complete
+    setIsNavigating(false);
+    
+    // Trigger loading cursor stop event
+    window.dispatchEvent(new Event('navigationEnd'));
+  }, [pathname]);
+
+  // Handle navigation link clicks
+  const handleNavLinkClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Ensure the event is properly handled
+    e.stopPropagation(); // Prevent event bubbling
+    
+    // If already navigating, prevent clicks
+    if (isNavigating) {
+      e.preventDefault();
+      return;
+    }
+
+    // If clicking the current page, don't set loading state
+    if (pathname === href) {
+      e.preventDefault();
+      return;
+    }
+
+    setIsNavigating(true);
+    
+    // Trigger loading cursor event
+    window.dispatchEvent(new Event('navigationStart'));
+  }, [isNavigating, pathname]);
 
   useEffect(() => {
     let debounceTimer: NodeJS.Timeout;
@@ -108,11 +143,27 @@ export default function NavBar({ items }: NavBarProps) {
               </Link>
             </div>
             <div className={styles.navItems}>
-              {items.map((item, idx) => (
-                <Link key={`${item.href}-${idx}`} href={item.href ?? '/'} className={styles.navItem}>
-                  {item.label}
-                </Link>
-              ))}
+              {items.map((item, idx) => {
+                const isActive = pathname === item.href;
+                
+                return (
+                  <Link 
+                    key={`${item.href}-${idx}`} 
+                    href={item.href ?? '/'} 
+                    className={`${styles.navItem} ${isActive ? styles.active : ''}`}
+                    onClick={(e) => handleNavLinkClick(e, item.href)}
+                    aria-current={isActive ? 'page' : undefined}
+                    aria-disabled={isNavigating}
+                    tabIndex={isNavigating ? -1 : 0}
+                    style={{
+                      pointerEvents: isNavigating ? 'none' : 'auto',
+                      cursor: isNavigating ? 'wait' : undefined,
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
               <DownloadResumeButton />
               <ThemeSwitch />
             </div>

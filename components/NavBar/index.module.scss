@@ -48,12 +48,27 @@
 }
 
 .navItem {
+  display: inline-block; // Ensures padding applies correctly
   font-size: 1rem;
   color: var(--text-color);
   text-decoration: none;
-  transition: color 0.3s;
-  padding: 22px 0;
+  transition: color 0.3s, opacity 0.3s;
+  padding: 22px 12px; // Increased horizontal padding for better clickability
   cursor: url("/images/cursor-pointer.png"), auto;
+  position: relative;
+  user-select: none; // Prevents text selection on double-click
+  -webkit-tap-highlight-color: transparent; // Removes tap highlight on mobile
+
+  // Expand clickable area without affecting layout
+  &::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+    z-index: -1;
+  }
 
   &:hover {
     color: var(--hover-color);
@@ -62,6 +77,21 @@
   &:focus {
     outline: none;
     font-weight: 500;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--hover-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  &.active {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  @media (max-width: $desktop) {
+    padding: 22px 0;
   }
 }
 

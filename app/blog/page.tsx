@@ -17,34 +17,41 @@ const variants = {
 const myArticles = [
     {
         id: 0,
+        title: "Building Next‑Gen AI Agents with LangChain, LangGraph & LangSmith — A Python + React Demo",
+        content: "Over the past couple of years, LangChain has emerged as one of the go-to frameworks for building applications around large language models (LLMs). But recently,…",
+        thumbnail: "https://miro.medium.com/v2/resize:fit:0/1*OWZLff-hQ4Q1_TMo1ZWDLQ.png",
+        url: "https://medium.com/@ydogan.dev/building-next-gen-ai-agents-with-langchain-langgraph-langsmith-a-python-react-demo-27aadb2affd2"
+    },
+    {
+        id: 1,
         title: "React Native in 2025: Best Package Decisions for Building a Mobile App",
         content: "React Native gives us the power to build cross-platform apps with a single codebase. But while the framework itself provides the…",
         thumbnail: "https://miro.medium.com/v2/resize:fill:160:107/1*7Ist7q8EJvij2k08Gf_bXQ.png",
         url: "https://medium.com/@ydogan.dev/react-native-in-2025-best-package-decisions-for-building-a-mobile-app-c582efd4fa57"
     },
     {
-        id: 1,
+        id: 2,
         title: "Next.js Beyond the Buzzwords: Choosing Between SSR, CSR, and SSG in Real Projects",
         content: "If you’ve touched React in the last few years, chances are you’ve worked with Next.js. It’s become the go-to framework for React developers…",
         thumbnail: "https://miro.medium.com/v2/resize:fill:160:107/1*HgH6RdztNuAfW10J4uxyEQ.png",
         url: "https://medium.com/@ydogan.dev/next-js-beyond-the-buzzwords-choosing-between-ssr-csr-and-ssg-in-real-projects-cd37ada70fc5"
     },
     {
-        id: 2,
+        id: 3,
         title: "React v19.1 and the Power of Functional Programming",
         content: "React and functional programming (FP) have always shared DNA. From the very beginning, React emphasised declarative UI and pure rendering…",
         thumbnail: "https://miro.medium.com/v2/resize:fill:160:107/1*bCfrQLSO8jVDDR7TFEBACA.png",
         url: "https://medium.com/@ydogan.dev/react-v19-1-and-the-power-of-functional-programming-08a31136694a"
     },
     {
-        id: 3,
+        id: 4,
         title: "Fullstack Type Safety with Django, React, and Reactivated",
         content: "If you’ve ever built a Django + React app, you’ve probably run into this:",
         thumbnail: "https://miro.medium.com/v2/resize:fill:160:107/1*wKq_Y-rbaVzJiZ4g41qF9Q.jpeg",
         url: "https://medium.com/@ydogan.dev/fullstack-type-safety-with-django-react-and-reactivated-ceaa9633e73a"
     },
     {
-        id: 4,
+        id: 5,
         title: "From Zero to Insight: Logging & Performance Monitoring in React Native (Emulator + Real Device)",
         content: "If you build React Native apps, two things make or break your day: seeing the right logs and knowing where your frames go to die. This…",
         thumbnail: "https://miro.medium.com/v2/resize:fill:160:107/1*OHeqAEVUVabg6FSUVok78A.png",
