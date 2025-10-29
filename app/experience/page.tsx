@@ -38,7 +38,7 @@ export default function ExperiencePage() {
 
       <article className={styles.headerWithLogo}>
         <Image src="/images/ammega-logo.png" alt="the Lab logo" width={50} height={16} />
-        <h2>Ammega Group</h2>
+        <h2>Ammega Group - Contractor</h2>
       </article>
       <p><strong>Lead Senior Frontend Developer</strong> (2023 – 2024)</p>
       <p><strong>Stack:</strong> React, Next.js, .NET</p>
@@ -61,7 +61,7 @@ export default function ExperiencePage() {
 
       <article className={styles.headerWithLogo}>
         <Image src="/images/mds-logo.png" alt="the Lab logo" width={40} height={40} />
-        <h2>MDS Translation</h2>
+        <h2>MDS Translation - Contractor</h2>
       </article>
       <p><strong>Lead Fullstack Developer</strong> (2024)</p>
       <p><strong>Stack:</strong> Next.js, React, TypeScript, SCSS Modules, i18n</p>

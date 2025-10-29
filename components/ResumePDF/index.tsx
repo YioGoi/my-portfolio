@@ -106,6 +106,10 @@ const styles = StyleSheet.create({
     width: 30,
     textAlign: 'right',
   },
+  linksSection: {
+    marginTop: 40,
+    marginBottom: 20,
+  },
 });
 
 // Calculate years of experience (starting from 2015 for React, etc.)
@@ -200,7 +204,7 @@ const ResumePDF = () => (
         <Text>• Built up and operated all projects database and client-side with Docker.</Text>
         <Text>New York - Remote</Text>
 
-        <Text style={styles.subheading}>Ammega Group – Lead Senior Frontend Developer (2023 – 2024)</Text>
+        <Text style={styles.subheading}>Ammega Group (Contractor) – Lead Senior Frontend Developer (2023 – 2024)</Text>
         <Text style={styles.paragraph}>Ammega Group is a global leader in industrial manufacturing, specializing in conveyor belts and power transmission systems across multiple sectors.</Text>
         <Text>• Built internal dashboards and production interfaces using React and Next.js, improving operational visibility across factories.</Text>
         <Text>• Collaborated with .NET backend team to integrate complex APIs for real-time data visualization and machine telemetry.</Text>
@@ -209,7 +213,7 @@ const ResumePDF = () => (
         <Text>• Worked directly with engineers and operations leads to map UI features to real-world production processes, including charts and data visualizations, graphics rendering with Ant Design UI Package.</Text>
         <Text>Amsterdam - Remote</Text>
 
-        <Text style={styles.subheading}>MDS Translation – Lead Fullstack Developer (2024)</Text>
+        <Text style={styles.subheading}>MDS Translation (Contractor) – Lead Fullstack Developer (2024)</Text>
         <Text style={styles.paragraph}>MDS Translation is a boutique language services provider focused on delivering professional translations across Europe.</Text>
         <Text>• Designed and developed a multilingual marketing site using React-Native, TypeScript, and React Navigation routing.</Text>
         <Text>• Achieved high SEO scores (90+ Lighthouse, indexed in 3 languages) without dedicated SEO work, thanks to server-rendered, semantically structured pages.</Text>
@@ -303,13 +307,18 @@ const ResumePDF = () => (
 
       <View style={styles.section}>
         <Text style={styles.heading}>Education</Text>
+        <Text>- Meta Back-End Developer Professional Certificate (2024) – Taught by Meta Staff</Text>
+        <Text>- Node.js, Express, MongoDB & More: The Complete Bootcamp (2023) – Jonas Schmedtmann</Text>
         <Text>- Technical University of America (2018 - 2022) – Bachelor’s in Software Engineering</Text>
+        <Text>- Next.js 15 & React - The Complete Guide (2018) – Udemy - Maximilian Schwarzmüller</Text>
+        <Text>- React - The Complete Guide (2017) – Udemy - Maximilian Schwarzmüller</Text>
+        <Text>- JavaScript - The Complete Guide (2015) – Udemy - Maximilian Schwarzmüller</Text>
         <Text>- BEMAR Career School (2012 - 2013) – Web Design and Programming Certification</Text>
         <Text>- Istanbul University (2005 - 2008) – Master’s in Political Science</Text>
         <Text>- Istanbul University (2000 - 2005) – Bachelor’s in Political Science</Text>
       </View>
 
-      <View style={styles.section}>
+      <View style={styles.linksSection}>
         <Text style={styles.heading}>Links</Text>
         <Text>
           Portfolio:{' '}
