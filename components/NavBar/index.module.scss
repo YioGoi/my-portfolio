@@ -34,7 +34,7 @@
   text-decoration: none;
   color: var(--text-color);
   transition: color 0.3s;
-  cursor: url("/images/cursor-pointer.png"), auto;
+  cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
 
   &:hover {
     color: var(--hover-color);
@@ -54,7 +54,7 @@
   text-decoration: none;
   transition: color 0.3s, opacity 0.3s;
   padding: 22px 12px; // Increased horizontal padding for better clickability
-  cursor: url("/images/cursor-pointer.png"), auto;
+  cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
   position: relative;
   user-select: none; // Prevents text selection on double-click
   -webkit-tap-highlight-color: transparent; // Removes tap highlight on mobile
@@ -111,7 +111,7 @@
     justify-content: center;
     background: none;
     border: none;
-    cursor: url("/images/cursor-pointer.png"), auto;
+    cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
     font-size: 1.25rem;
     color: inherit;
     transition: transform 0.2s ease;
