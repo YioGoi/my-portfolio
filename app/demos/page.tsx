@@ -46,8 +46,12 @@ const demos: Demo[] = [
 
 export default function DemosPage() {
   return (
-    <SectionWrapper variant="slideUp">
-      <h1 className="underline-title">Demos & Sample Projects</h1>
+    <SectionWrapper 
+        variant="slideUp"
+        customLeftWrapperClass={styles.demosLeftWrapper}
+        customSectionClass={styles.demosSection}
+    >
+      <h1 className="underline-title">Demos</h1>
       <p className={styles.intro}>
         Here are some of my personal projects and code samples that showcase different technologies and approaches to solving various problems.
       </p>

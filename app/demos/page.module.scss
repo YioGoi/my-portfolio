@@ -1,3 +1,12 @@
+@use "./app/variables" as *;
+
+.demosLeftWrapper {
+  @media (min-width: $tablet) and (max-width: $laptop) {
+    padding: 0;
+    overflow: unset;
+  }
+}
+
 .intro {
   margin-bottom: 2rem;
   font-size: 1.1rem;
@@ -31,6 +40,10 @@
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     border-color: var(--fancy-blue, #4a90e2);
+  }
+
+  @media (min-width: $tablet) and (max-width: $laptop) {
+    padding: 1rem;
   }
 }
 
