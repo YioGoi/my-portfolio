@@ -62,7 +62,11 @@ body {
   line-height: 1.6;
   letter-spacing: 0.25px;
   transition: background 0.4s ease, color 0.4s ease;
-  cursor: url("/images/curly-pointer.png"), auto;
+  cursor: url("/images/cursor-default-new.svg") 16 16, auto;
+}
+
+.light body {
+  cursor: url("/images/cursor-default-light-new.svg") 16 16, auto;
 }
 
 h1,
@@ -110,10 +114,16 @@ a {
   color: var(--link-color);
   text-decoration: wavy;
   transition: color 0.3s ease;
+  cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
 
   &:hover {
     color: var(--link-hover-color);
   }
+}
+
+button,
+[role="button"] {
+  cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
 }
 
 .underline-title {
