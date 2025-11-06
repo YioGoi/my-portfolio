@@ -13,6 +13,12 @@ interface Demo {
 
 const demos: Demo[] = [
   {
+    title: "Graphics Canvas",
+    description: "A real-time collaborative canvas application with high-performance graphics rendering, featuring drawing tools, multi-user cursor tracking, and WebSocket-based synchronization.",
+    technologies: ["TypeScript", "React 18", "Canvas API", "WebSocket", "Node.js", "Express", "Webpack 5"],
+    githubUrl: "https://github.com/YioGoi/graphics-canvas",
+  },
+  {
     title: "Next Notes App",
     description: "A modern note-taking application built with Next.js, featuring real-time updates, markdown support, and a clean user interface for organizing your thoughts and ideas.",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
