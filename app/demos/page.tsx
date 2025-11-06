@@ -19,6 +19,12 @@ const demos: Demo[] = [
     githubUrl: "https://github.com/YioGoi/graphics-canvas",
   },
   {
+    title: "Spring Boot Microservice",
+    description: "A modern microservice architecture demonstrating integration with Apache Kafka for messaging, PostgreSQL for data persistence, and AWS S3 for file storage. Features user and order management with event-driven architecture.",
+    technologies: ["Java 17", "Spring Boot", "Spring Data JPA", "Apache Kafka", "PostgreSQL", "AWS S3", "Docker", "Maven"],
+    githubUrl: "https://github.com/YioGoi/spring-boot-kafka-postgres",
+  },
+  {
     title: "Next Notes App",
     description: "A modern note-taking application built with Next.js, featuring real-time updates, markdown support, and a clean user interface for organizing your thoughts and ideas.",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
