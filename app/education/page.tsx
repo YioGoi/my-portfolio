@@ -35,6 +35,22 @@ export default function EducationPage() {
             />
           </div>
           <div>
+            <span className={styles.date}>2024</span>
+            <h2>GraphQL Fundamentals–Design APIs, Schema, Frontend Integration</h2>
+            <p>Taught by Board Infinity</p>
+          </div>
+        </div>
+        <div className={styles.educationItem}>
+          <div>
+            <Image
+              src="/images/education.png"
+              alt="Education Icon"
+              width={50}
+              height={50}
+              className={styles.educationIcon}
+            />
+          </div>
+          <div>
             <span className={styles.date}>2023</span>
             <h2>Node.js, Express, MongoDB & More: The Complete Bootcamp</h2>
             <p>Jonas Schmedtmann</p>

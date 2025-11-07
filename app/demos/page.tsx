@@ -19,6 +19,12 @@ const demos: Demo[] = [
     githubUrl: "https://github.com/YioGoi/graphics-canvas",
   },
   {
+    title: "GraphQL Fundamentals with React",
+    description: "A simple example demonstrating CRUD operations using GraphQL with React and Apollo Client.",
+    technologies: ["Apollo Client", "GraphQL", "React", "Express", "Express GraphQL"],
+    githubUrl: "https://github.com/YioGoi/grapql-fundamentals",
+  },
+  {
     title: "Spring Boot Microservice",
     description: "A modern microservice architecture demonstrating integration with Apache Kafka for messaging, PostgreSQL for data persistence, and AWS S3 for file storage. Features user and order management with event-driven architecture.",
     technologies: ["Java 17", "Spring Boot", "Spring Data JPA", "Apache Kafka", "PostgreSQL", "AWS S3", "Docker", "Maven"],

@@ -308,6 +308,7 @@ const ResumePDF = () => (
       <View style={styles.section}>
         <Text style={styles.heading}>Education</Text>
         <Text>- Meta Back-End Developer Professional Certificate (2024) – Taught by Meta Staff</Text>
+        <Text>- GraphQL Fundamentals–Design APIs, Schema, Frontend Integration (2024) – Taught by Board Infinity</Text>
         <Text>- Node.js, Express, MongoDB & More: The Complete Bootcamp (2023) – Jonas Schmedtmann</Text>
         <Text>- Technical University of America (2018 - 2022) – Bachelor’s in Software Engineering</Text>
         <Text>- Next.js 15 & React - The Complete Guide (2018) – Udemy - Maximilian Schwarzmüller</Text>
