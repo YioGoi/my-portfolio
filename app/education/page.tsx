@@ -1,9 +1,23 @@
+'use client';
+
+import { useState } from 'react';
 import SectionWrapper from '@/components/SectionWrapper';
+import Modal from '@/components/Modal';
 import Image from 'next/image';
 
 import styles from './page.module.scss';
 
 export default function EducationPage() {
+  const [modalContent, setModalContent] = useState<string | null>(null);
+
+  const openModal = (certificateImage: string) => {
+    setModalContent(certificateImage);
+  };
+
+  const closeModal = () => {
+    setModalContent(null);
+  };
+
   return (
     <SectionWrapper variant="slideUp" customSectionClass={styles.educationSection}>
       <h1 className="underline-title">Education</h1>
@@ -22,6 +36,12 @@ export default function EducationPage() {
             <span className={styles.date}>2024</span>
             <h2>Meta Back-End Developer Professional Certificate</h2>
             <p>Taught by Meta Staff</p>
+            <button
+              className={styles.openCertificateButton}
+              onClick={() => openModal('/images/backend-certificate.png')}
+            >
+              Open Certificate
+            </button>
           </div>
         </div>
         <div className={styles.educationItem}>
@@ -38,6 +58,12 @@ export default function EducationPage() {
             <span className={styles.date}>2024</span>
             <h2>GraphQL Fundamentals–Design APIs, Schema, Frontend Integration</h2>
             <p>Taught by Board Infinity</p>
+            <button
+              className={styles.openCertificateButton}
+              onClick={() => openModal('/images/graphql-certificate.png')}
+            >
+              Open Certificate
+            </button>
           </div>
         </div>
         <div className={styles.educationItem}>
@@ -70,6 +96,12 @@ export default function EducationPage() {
             <span className={styles.date}>2018 - 2022</span>
             <h2>Software Engineering</h2>
             <p>Technical University of America – Bachelor’s in Software Engineering</p>
+            <button
+              className={styles.openCertificateButton}
+              onClick={() => openModal('/images/diploma.jpg')}
+            >
+              Open Diploma
+            </button>
           </div>
         </div>
         <div className={styles.educationItem}>
@@ -169,6 +201,19 @@ export default function EducationPage() {
           </div>
         </div>
       </section>
+
+      <Modal isOpen={modalContent !== null} onClose={closeModal}>
+        {modalContent && (
+          <Image
+            className={styles.modalImage}
+            src={modalContent}
+            alt="Certificate"
+            width={1200}
+            height={900}
+            style={{ width: '100%', height: 'auto' }}
+          />
+        )}
+      </Modal>
     </SectionWrapper>
   );
 }
