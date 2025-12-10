@@ -12,6 +12,7 @@ export default function HomePage() {
           src="/images/profile.png"
           alt="Yiğit Doğan"
           className={styles.profileImage}
+          loading="eager"
           width={248}
           height={248}
         />
