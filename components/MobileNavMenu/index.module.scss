@@ -20,7 +20,7 @@
   color: var(--text);
   text-decoration: none;
   transition: transform 0.2s ease;
-  cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.05);

@@ -13,13 +13,13 @@
 
   & svg {
     margin-right: 0.5rem;
-    cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
+    cursor: pointer;
   }
 
   & a {
     display: block;
     width: fit-content;
-    cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
+    cursor: pointer;
   }
 }
 

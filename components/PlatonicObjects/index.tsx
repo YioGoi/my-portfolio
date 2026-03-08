@@ -1,9 +1,8 @@
-// components/PlatonicObjects.tsx
 'use client';
 
 import { Canvas } from '@react-three/fiber';
 import { usePathname } from 'next/navigation';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { OrbitControls } from '@react-three/drei';
 import Tetrahedron from '../Tetrahedron';
 import Cube from '../Cube';
@@ -17,6 +16,12 @@ import styles from './index.module.scss';
 
 const PlatonicObjects = () => {
   const pathname = usePathname();
+  const [hovered, setHovered] = useState(false);
+  const [tablet, setTablet] = useState(false);
+
+  useEffect(() => {
+    setTablet(isTablet());
+  }, []);
 
   // Determine which solid to display based on the current route
   const solid = useMemo(() => {
@@ -60,13 +65,15 @@ const PlatonicObjects = () => {
 
   return (
     <Canvas
-      style={{ 
-        width: `${isTablet() ? '250px' : '300px'}`, 
+      style={{
+        width: `${tablet ? '250px' : '300px'}`,
         height: '400px',
       }}
       className={styles.canvas}
+      onPointerEnter={() => setHovered(true)}
+      onPointerLeave={() => setHovered(false)}
     >
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={hovered ? 0.9 : 0.5} />
       <directionalLight position={[0, 0, 5]} />
       <OrbitControls enableZoom={false} />
       {SolidComponent}

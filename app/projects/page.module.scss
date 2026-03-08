@@ -76,7 +76,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
+  cursor: pointer;
 
   &:hover {
     color: var(--fancy-blue, #4a90e2);

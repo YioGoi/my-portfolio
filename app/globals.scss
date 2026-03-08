@@ -114,7 +114,7 @@ a {
   color: var(--link-color);
   text-decoration: wavy;
   transition: color 0.3s ease;
-  cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
+  cursor: pointer;
 
   &:hover {
     color: var(--link-hover-color);
@@ -123,7 +123,7 @@ a {
 
 button,
 [role="button"] {
-  cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
+  cursor: pointer;
 }
 
 .underline-title {

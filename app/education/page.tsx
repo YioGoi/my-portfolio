@@ -20,7 +20,7 @@ export default function EducationPage() {
 
   return (
     <SectionWrapper variant="slideUp" customSectionClass={styles.educationSection}>
-      <h1 className="underline-title">Education</h1>
+      <h1>Education</h1>
       <section className={styles.educationList}>
         <div className={styles.educationItem}>
           <div>

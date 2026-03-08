@@ -1,5 +1,28 @@
+@mixin buttonStyle {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--fancy-blue, #4a90e2);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
 .welcomeTitle {
-  text-align: left;
+  text-align: center;
+}
+
+.description {
+  text-align: center;
 }
 
 .name {
@@ -24,8 +47,8 @@
   justify-content: center;
   padding-top: 0;
 
-  & > a {
-    cursor: url("/images/cursor-pointer-new.svg") 16 16, pointer;
+  &>a {
+    cursor: pointer;
     display: inline-block;
     transition: transform 0.3s ease;
 
@@ -34,13 +57,41 @@
     }
   }
 
-  & > a:not(:first-child) {
+  &>a:not(:first-child) {
     margin-left: 1rem;
   }
 
-  & > img {
+  &>img {
     width: 32px;
     height: 32px;
     display: block;
+  }
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.buttonStyle {
+  @include buttonStyle;
+
+  padding: 0.9rem 1.5rem;
+}
+
+.resumeButtonWrapper {
+  & a {
+    @include buttonStyle;
+
+    border-right: none;
+    border-left: none;
+
+    & button {
+      font-weight: 600;
+      background-color: var(--fancy-blue, #4a90e2);
+    }
   }
 }

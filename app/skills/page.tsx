@@ -4,7 +4,7 @@ import styles from './page.module.scss';
 export default function SkillsPage() {
   return (
     <SectionWrapper variant="scaleUp">
-      <h1 className="underline-title">Skills</h1>
+      <h1>Skills</h1>
       <section className={styles.skillsList}>
         <div className={styles.skillCategory}>
           <div className={styles.categoryIcon}>📜</div>

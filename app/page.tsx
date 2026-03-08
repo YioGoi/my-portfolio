@@ -1,8 +1,9 @@
 import SectionWrapper from '@/components/SectionWrapper';
 import Image from 'next/image';
+import Link from 'next/link';
+import DownloadResumeButton from '@/components/DownloadResumeButton';
 
 import styles from './page.module.scss';
-import Link from 'next/link';
 
 export default function HomePage() {
   return (
@@ -18,16 +19,24 @@ export default function HomePage() {
         />
       </section>
       <h1 className={styles.welcomeTitle}>
-        Hello, I&apos;am <span className={styles.name}>Yiğit Doğan</span>
+        Senior Frontend / Fullstack Engineer
         <br />
-        Welcome to my portfolio!
+        <span className={styles.name}>Yiğit Doğan</span>
       </h1>
-      <p>
-        Hi, I’m Yiğit Doğan — a frontend-focused software engineer with a strong foundation in JavaScript, React, and Next.js. I also work confidently on the backend, especially with Python and Django.
+      <p className={styles.description}>
+        Designing scalable product experiences with React, Next.js and Node.js
       </p>
-      <p>
-        Use the navigation bar above to explore my projects, skills, background, and how to get in touch.
-      </p>
+      <section className={styles.actionButtons}>
+        <Link
+          className={styles.buttonStyle}
+          href="/projects"
+        >
+          View Projects
+        </Link>
+        <div className={styles.resumeButtonWrapper}>
+          <DownloadResumeButton />
+        </div>
+      </section>
       <section className={styles.socialLinks}>
         <Link href="https://www.linkedin.com/in/yi%C4%9Fit-do%C4%9Fan-709b2a37" target="_blank" rel="noopener noreferrer">
           <Image

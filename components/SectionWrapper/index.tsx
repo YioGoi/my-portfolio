@@ -8,7 +8,7 @@ import { BsChevronDoubleUp } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 import PlatonicObjects from '@/components/PlatonicObjects';
 import Tooltip from '../Tooltip';
-import { isTablet, isSmallLaptop } from '@/utilities/responsive';
+import { isTablet } from '@/utilities/responsive';
 
 
 import styles from './index.module.scss';
@@ -125,8 +125,8 @@ export default function SectionWrapper({
 
     return (
         <div className={styles.sectionWrapper}>
-            <div 
-                className={`${styles.section} ${styles.leftSection} ${customLeftWrapperClass}`} 
+            <div
+                className={`${styles.section} ${styles.leftSection} ${customLeftWrapperClass}`}
                 ref={contentRef}
             >
                 <motion.section
@@ -155,11 +155,13 @@ export default function SectionWrapper({
             </div>
             <div className={`${styles.section} ${styles.rightSection}`} ref={rightSectionRef}>
                 <span>
-                    <Tooltip 
-                        content={<><TbCube /> You can interact with the Platonic objects by clicking and dragging them.</>} 
+                    <Tooltip
+                        content={<><TbCube /> Platonic solids represent perfect geometric structures.
+                            I like using them as a metaphor for system design and architecture.
+                            You can interact by clicking and dragging them.</>}
                         position="bottom"
                         oneTime={true}
-                        autoShow={isSmallLaptop()}
+                        autoShow={true}
                         id="platonic-objects-tooltip"
                         objectsTooltip={true}
                     >

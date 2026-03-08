@@ -6,7 +6,7 @@ import styles from './page.module.scss';
 export default function ExperiencePage() {
   return (
     <SectionWrapper variant="slideRight">
-      <h1 className='underline-title'>Experience</h1>
+      <h1>Experience</h1>
 
       <article className={styles.headerWithLogo}>
         <div style={{ backgroundColor: '#f0ece7', display: 'flex', borderRadius: 6 }}>

@@ -115,7 +115,7 @@ export default function BlogPage() {
     const motionVariant = variants['slideUp'];
     return (
         <section className={styles.blog}>
-            <h1 className='underline-title'>Blog</h1>
+            <h1>Blog</h1>
             <div className={styles.content}>
                 <motion.section
                     initial={motionVariant.initial}

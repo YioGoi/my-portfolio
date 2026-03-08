@@ -3,7 +3,7 @@ import SectionWrapper from '@/components/SectionWrapper';
 export default function AboutPage() {
   return (
     <SectionWrapper variant="slideLeft">
-      <h1 className="underline-title">About Me</h1>
+      <h1>About Me</h1>
       <p>
         I've been building web applications with React since 2013, evolving alongside the ecosystem as it matured into a foundation for modern frontend architecture. Today, I focus on scalable systems, design system governance, and building products designed for long-term evolution.
       </p>
