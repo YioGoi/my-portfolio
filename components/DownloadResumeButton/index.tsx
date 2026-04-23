@@ -57,7 +57,7 @@ export default function DownloadResumeButton() {
     }
 
     return (
-        <PDFDownloadLink document={resumeDocument} fileName="Yigit-Dogan-CV.pdf" className={styles.downloadButton}>
+        <PDFDownloadLink document={resumeDocument} fileName="Yigit-Dogan-Resume.pdf" className={styles.downloadButton}>
             {({ loading }) =>
                 <button>
                     <TbDownload className={styles.downloadIcon} />

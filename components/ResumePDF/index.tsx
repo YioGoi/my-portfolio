@@ -103,7 +103,7 @@ const ResumePDF = () => (
       <View style={styles.section}>
         <Text style={styles.heading}>Professional Summary</Text>
         <Text style={styles.paragraph}>
-          Frontend-leaning Fullstack Engineer with 12+ years of experience building scalable web products using React, Next.js, TypeScript, Node.js, and API-driven architectures. Experienced in designing maintainable frontend systems while contributing across backend integrations, service architecture, and product delivery. Strong background in modern web performance, technical ownership, and modernizing legacy platforms into scalable product ecosystems.
+          Senior Frontend Engineer with 12+ years of experience building scalable web applications with React, Next.js, TypeScript, and Node.js. Strong focus on frontend architecture, performance, design systems, and product delivery, with hands-on experience contributing to backend integrations and API-driven systems. Experienced in modernizing legacy platforms, improving developer experience, and shipping maintainable products in cross-functional teams.
         </Text>
       </View>
 
@@ -114,8 +114,8 @@ const ResumePDF = () => (
         <Text>TypeScript (2014–Present) – 9+ years</Text>
         <Text>Node.js (2014–Present) – 9+ years</Text>
         <Text>Next.js (2016–Present) – 8+ years</Text>
+        <Text>React Native (2017–Present) – 8+ years</Text>
         <Text>Python (2017–Present) – 5+ years</Text>
-        <Text>PostgreSQL (2016–Present) – 6+ years</Text>
       </View>
 
       <View style={styles.section}>
@@ -127,7 +127,7 @@ const ResumePDF = () => (
         <Text>Styling: CSS3 • SCSS/Sass • Tailwind CSS • Styled Components • CSS Modules • Material UI</Text>
 
         <Text style={styles.label}>Backend Engineering & APIs</Text>
-        <Text>Node.js • Express • Python • Django • REST APIs • GraphQL • PostgreSQL • MongoDB • Authentication • API Integration • WebSockets • Event-driven systems • API orchestration</Text>
+        <Text>Node.js • Express • Python • Django • REST APIs • GraphQL • PostgreSQL • MongoDB • Authentication • Third-party API Integration • WebSockets • Event-Driven Systems • API Orchestration</Text>
 
         <Text style={styles.label}>Architecture & Product Engineering</Text>
         <Text>Scalable Web Applications • Component Architecture • API-driven Systems • Technical Ownership • Performance Optimization • Design Systems</Text>
@@ -217,10 +217,10 @@ const ResumePDF = () => (
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.heading}>Education</Text>
-        <Text>Bachelor of Science in Software Engineering – Technical University of America</Text>
-        <Text>Master of Arts in Political Science – Istanbul University</Text>
-        <Text>Meta Back-End Developer Professional Certificate – Meta (2024)</Text>
+        <Text style={styles.heading}>Education & Certifications</Text>
+        <Text>B.Sc. in Software Engineering – Technical University of America</Text>
+        <Text>M.A. in Political Science – Istanbul University</Text>
+        <Text>Meta Back-End Developer Professional Certificate – Meta, 2024</Text>
       </View>
 
       <View style={styles.linksSection}>
@@ -238,14 +238,6 @@ const ResumePDF = () => (
           GitHub: <Link style={styles.link} src="https://github.com/YioGoi">github.com/YioGoi</Link>
         </Text>
 
-        <Text>
-          Email: <Link style={styles.link} src="mailto:ydogan.dev@gmail.com">ydogan.dev@gmail.com</Link>
-        </Text>
-
-      </View>
-
-      <View>
-        <Text>* References available upon request</Text>
       </View>
 
     </Page>
