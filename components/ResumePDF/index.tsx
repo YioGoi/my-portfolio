@@ -103,7 +103,7 @@ const ResumePDF = () => (
       <View style={styles.section}>
         <Text style={styles.heading}>Professional Summary</Text>
         <Text style={styles.paragraph}>
-          Senior Frontend Engineer with 12+ years of experience building scalable web applications with React, Next.js, TypeScript, and Node.js. Strong focus on frontend architecture, performance, design systems, and product delivery, with hands-on experience contributing to backend integrations and API-driven systems. Experienced in modernizing legacy platforms, improving developer experience, and shipping maintainable products in cross-functional teams.
+          Senior Frontend Engineer with 12+ years of experience building scalable web applications with React, Next.js, TypeScript, and Node.js. Strong focus on frontend architecture, performance, design systems, and product delivery, with hands-on experience contributing to backend integrations and API-driven systems. Experienced in modernizing legacy platforms, improving developer experience, and shipping maintainable products in cross-functional teams. Experienced in AI-assisted engineering workflows using tools such as OpenAI Codex, Claude Code, and Cursor to accelerate prototyping, debugging, refactoring, test generation, and implementation planning while maintaining strong engineering judgment, code quality, and architectural ownership.
         </Text>
       </View>
 
@@ -121,8 +121,8 @@ const ResumePDF = () => (
       <View style={styles.section}>
         <Text style={styles.heading}>Technical Skills</Text>
 
-        <Text style={styles.label}>Frontend Engineering</Text>
-        <Text>React • TypeScript • Next.js • JavaScript ES6+ • React Native</Text>
+        <Text style={styles.label}>Senior Frontend / Product Engineer</Text>
+        <Text>React • TypeScript • Next.js • JavaScript ES6+ • React Native • AI-Assisted Engineering</Text>
         <Text>State Management: Redux • Redux Saga • Zustand • React Query • RxJS • Context API</Text>
         <Text>Styling: CSS3 • SCSS/Sass • Tailwind CSS • Styled Components • CSS Modules • Material UI</Text>
 
@@ -138,6 +138,9 @@ const ResumePDF = () => (
         <Text style={styles.label}>Development Tools & CI/CD</Text>
         <Text>Git • GitHub • GitLab • Docker • Webpack • Vite • ESLint • Prettier • CI/CD Pipelines</Text>
         <Text>Agile/Scrum • Jira • Code Review • Vercel • Netlify</Text>
+
+        <Text style={styles.label}>AI-Assisted Engineering</Text>
+        <Text>OpenAI Codex • Claude Code • Cursor • AI-assisted debugging • Refactoring workflows • Test generation • Technical planning • Prompt-driven implementation review</Text>
       </View>
 
       <View style={styles.section}>
@@ -149,6 +152,7 @@ const ResumePDF = () => (
         <Text>• Built shared UI component libraries documented with Storybook, improving development velocity and cross-team consistency</Text>
         <Text>• Integrated Django backend services with modern React architecture, enabling type-safe data flow and scalable frontend patterns</Text>
         <Text>• Implemented automated testing workflows using Playwright and Cypress, strengthening product reliability and CI/CD confidence</Text>
+        <Text>• Used AI-assisted development workflows to accelerate debugging, refactoring, implementation planning, and test coverage while preserving code review standards and architectural consistency.</Text>
 
         <Text style={styles.subheading}>Senior Frontend Engineer – Ammega Group</Text>
         <Text style={styles.paragraph}>Amsterdam, Netherlands (Remote) | 2023 – 2024</Text>
