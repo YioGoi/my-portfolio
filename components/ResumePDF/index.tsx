@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import {
   Page,
   Text,
@@ -6,7 +5,6 @@ import {
   Document,
   StyleSheet,
   Font,
-  Image,
   Link,
 } from '@react-pdf/renderer';
 
@@ -23,87 +21,83 @@ Font.register({
 const styles = StyleSheet.create({
   page: {
     fontFamily: 'Poppins',
-    padding: 40,
-    fontSize: 11,
-    backgroundColor: '#222831',
-    color: '#f1f4f8de',
+    padding: 36,
+    fontSize: 10,
+    backgroundColor: '#ffffff',
+    color: '#1f2933',
   },
   section: {
-    marginBottom: 20,
+    marginBottom: 14,
   },
   heading: {
-    fontSize: 18,
+    fontSize: 13,
     fontWeight: 700,
-    marginBottom: 10,
-    color: '#ffffff',
+    marginBottom: 6,
+    color: '#111827',
+    textTransform: 'uppercase',
   },
   subheading: {
-    fontSize: 14,
+    fontSize: 11,
     fontWeight: 600,
-    marginTop: 12,
-    marginBottom: 5,
-    color: '#f1f4f8de',
+    marginTop: 8,
+    marginBottom: 2,
+    color: '#111827',
   },
   paragraph: {
-    marginBottom: 8,
+    marginBottom: 5,
   },
   label: {
     fontWeight: 600,
-    color: '#ffffff',
+    color: '#111827',
+    marginTop: 4,
   },
   link: {
-    color: '#526d82',
+    color: '#075985',
     textDecoration: 'none',
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 12,
+    paddingBottom: 10,
+    borderBottom: '1px solid #d1d5db',
   },
-  profileImage: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    border: '4px solid #526d82',
-    marginRight: 15,
+  name: {
+    fontSize: 18,
+    fontWeight: 700,
+    color: '#111827',
+    marginBottom: 8,
   },
-  linksSection: {
-    marginTop: 40,
-    marginBottom: 20,
+  title: {
+    fontSize: 12,
+    fontWeight: 600,
+    color: '#374151',
+    marginBottom: 8,
+  },
+  contactLine: {
+    fontSize: 9,
+    color: '#374151',
+    marginBottom: 2,
   },
 });
-
-const skills = [
-  { name: 'React', years: 12 },
-  { name: 'TypeScript', years: 9 },
-  { name: 'JavaScript', years: 15 },
-  { name: 'Next.js', years: 8 },
-  { name: 'React Native', years: 8 },
-  { name: 'Node.js', years: 9 },
-  { name: 'Python', years: 5 },
-  { name: 'PostgreSQL', years: 6 },
-];
 
 const ResumePDF = () => (
   <Document>
     <Page size="A4" style={styles.page}>
 
-      <View style={styles.section}>
-        <View style={styles.header}>
-          <Image src="/images/profile.png" style={styles.profileImage} />
-          <View>
-            <Text style={styles.heading}>Yiğit Doğan</Text>
-            <Text>Email: ydogan.dev@gmail.com</Text>
-            <Text>Phone: +90 532 510 1204</Text>
-            <Text>Location: Istanbul, Türkiye</Text>
-          </View>
-        </View>
+      <View style={styles.header}>
+        <Text style={styles.name}>Yiğit Doğan</Text>
+        <Text style={styles.title}>Senior Frontend / Product Engineer</Text>
+        <Text style={styles.contactLine}>Email: ydogan.dev@gmail.com | Phone: +90 532 510 1204 | Location: Amsterdam, Netherlands</Text>
+        <Text style={styles.contactLine}>
+          Portfolio: <Link style={styles.link} src="https://www.yigit-dogan.dev/">yigit-dogan.dev</Link>
+          {' | '}LinkedIn: <Link style={styles.link} src="https://www.linkedin.com/in/yigit-dogan-709b2a37">linkedin.com/in/yigit-dogan-709b2a37</Link>
+          {' | '}GitHub: <Link style={styles.link} src="https://github.com/YioGoi">github.com/YioGoi</Link>
+        </Text>
       </View>
 
       <View style={styles.section}>
         <Text style={styles.heading}>Professional Summary</Text>
         <Text style={styles.paragraph}>
-          Senior Frontend Engineer with 12+ years of experience building scalable web applications with React, Next.js, TypeScript, and Node.js. Strong focus on frontend architecture, performance, design systems, and product delivery, with hands-on experience contributing to backend integrations and API-driven systems. Experienced in modernizing legacy platforms, improving developer experience, and shipping maintainable products in cross-functional teams. Experienced in AI-assisted engineering workflows using tools such as OpenAI Codex, Claude Code, and Cursor to accelerate prototyping, debugging, refactoring, test generation, and implementation planning while maintaining strong engineering judgment, code quality, and architectural ownership.
+          Senior Frontend / Product Engineer with 12+ years of experience building scalable web applications with React, Next.js, TypeScript, and Node.js. Strong focus on frontend architecture, design systems, performance optimization, accessibility, and product delivery, with hands-on experience contributing to backend integrations and API-driven systems. Experienced in modernizing legacy platforms, improving developer experience, and shipping maintainable products in cross-functional teams. Practical user of AI-assisted engineering workflows with OpenAI Codex, Cursor, Claude Code, and GitHub Copilot for prototyping, debugging, refactoring, test generation, and implementation planning while maintaining strong engineering judgment and code quality.
         </Text>
       </View>
 
@@ -121,8 +115,8 @@ const ResumePDF = () => (
       <View style={styles.section}>
         <Text style={styles.heading}>Technical Skills</Text>
 
-        <Text style={styles.label}>Senior Frontend / Product Engineer</Text>
-        <Text>React • TypeScript • Next.js • JavaScript ES6+ • React Native • AI-Assisted Engineering</Text>
+        <Text style={styles.label}>Frontend & Product Engineering</Text>
+        <Text>React • TypeScript • Next.js • JavaScript ES6+ • React Native • Frontend Architecture • Product Engineering</Text>
         <Text>State Management: Redux • Redux Saga • Zustand • React Query • RxJS • Context API</Text>
         <Text>Styling: CSS3 • SCSS/Sass • Tailwind CSS • Styled Components • CSS Modules • Material UI</Text>
 
@@ -130,7 +124,7 @@ const ResumePDF = () => (
         <Text>Node.js • Express • Python • Django • REST APIs • GraphQL • PostgreSQL • MongoDB • Authentication • Third-party API Integration • WebSockets • Event-Driven Systems • API Orchestration</Text>
 
         <Text style={styles.label}>Architecture & Product Engineering</Text>
-        <Text>Scalable Web Applications • Component Architecture • API-driven Systems • Technical Ownership • Performance Optimization • Design Systems</Text>
+        <Text>Scalable Web Applications • Component Architecture • API-driven Systems • Technical Ownership • Performance Optimization • Design Systems • Accessibility</Text>
 
         <Text style={styles.label}>Testing & Quality Assurance</Text>
         <Text>Jest • React Testing Library • Cypress • Playwright • Vitest • Storybook</Text>
@@ -140,7 +134,7 @@ const ResumePDF = () => (
         <Text>Agile/Scrum • Jira • Code Review • Vercel • Netlify</Text>
 
         <Text style={styles.label}>AI-Assisted Engineering</Text>
-        <Text>OpenAI Codex • Claude Code • Cursor • AI-assisted debugging • Refactoring workflows • Test generation • Technical planning • Prompt-driven implementation review</Text>
+        <Text>OpenAI Codex • Cursor • Claude Code • GitHub Copilot • AI-assisted debugging • Refactoring workflows • Test generation • Technical planning • Prompt-driven implementation review</Text>
       </View>
 
       <View style={styles.section}>
@@ -148,11 +142,11 @@ const ResumePDF = () => (
 
         <Text style={styles.subheading}>Senior Software Engineer – The Lab (Creative Technology Agency)</Text>
         <Text style={styles.paragraph}>New York, NY (Remote) | 2023 – Present</Text>
-        <Text>• Defined technical standards for white-labeled e-commerce platforms and established reusable component patterns using React, TypeScript, and SCSS modules</Text>
+        <Text>• Defined frontend technical standards for white-labeled e-commerce platforms and established reusable component patterns using React, TypeScript, and SCSS modules</Text>
         <Text>• Built shared UI component libraries documented with Storybook, improving development velocity and cross-team consistency</Text>
         <Text>• Integrated Django backend services with modern React architecture, enabling type-safe data flow and scalable frontend patterns</Text>
         <Text>• Implemented automated testing workflows using Playwright and Cypress, strengthening product reliability and CI/CD confidence</Text>
-        <Text>• Used AI-assisted development workflows to accelerate debugging, refactoring, implementation planning, and test coverage while preserving code review standards and architectural consistency.</Text>
+        <Text>• Used AI-assisted engineering workflows to accelerate debugging, refactoring, implementation planning, and test coverage while preserving code review standards and architectural consistency</Text>
 
         <Text style={styles.subheading}>Senior Frontend Engineer – Ammega Group</Text>
         <Text style={styles.paragraph}>Amsterdam, Netherlands (Remote) | 2023 – 2024</Text>
@@ -167,7 +161,7 @@ const ResumePDF = () => (
         <Text>• Implemented scalable internationalization architecture with next-intl supporting multiple European locales</Text>
         <Text>• Designed CMS-agnostic content architecture allowing flexible integration with headless CMS platforms</Text>
 
-        <Text style={styles.subheading}>Senior Frontend Developer – Path Product</Text>
+        <Text style={styles.subheading}>Senior Frontend / Product Engineer – Path Product</Text>
         <Text style={styles.paragraph}>Istanbul, Turkey (Remote) | 2022 – 2023</Text>
         <Text>• Architected real-time product features using React, RxJS, and WebSocket integrations</Text>
         <Text>• Designed scalable state management strategies enabling responsive UI updates across concurrent users</Text>
@@ -180,7 +174,7 @@ const ResumePDF = () => (
         <Text>• Built modular UI architecture using React and Redux-Saga enabling scalable code reuse across teams</Text>
         <Text>• Mentored frontend developers through code reviews and architectural guidance improving overall code quality</Text>
 
-        <Text style={styles.subheading}>Senior Frontend Developer – NTT Data</Text>
+        <Text break style={styles.subheading}>Senior Frontend Developer – NTT Data</Text>
         <Text style={styles.paragraph}>Istanbul, Turkey (Onsite/Remote) | 2019 – 2021</Text>
         <Text>• Developed enterprise SPA applications using React and React Native integrated with .NET backend systems</Text>
         <Text>• Implemented secure authentication workflows including JWT token handling and role-based access control</Text>
@@ -196,7 +190,7 @@ const ResumePDF = () => (
         <Text>• Developed booking and vendor management modules using AngularJS for event marketplace platform</Text>
         <Text>• Optimized responsive UI performance improving mobile load times and SEO visibility</Text>
 
-        <Text style={styles.subheading}>Cofounder & Fullstack Developer – Noviente Informatics Systems</Text>
+        <Text style={styles.subheading}>Co-founder & Fullstack Developer – Noviente Informatics Systems</Text>
         <Text style={styles.paragraph}>Izmir, Turkey | 2015 – 2018</Text>
         <Text>• Built full-stack platforms using React, React Native, Node.js and API-driven services</Text>
         <Text>• Developed admin dashboards and custom workflows for e-commerce and marketing automation tools</Text>
@@ -225,23 +219,6 @@ const ResumePDF = () => (
         <Text>B.Sc. in Software Engineering – Technical University of America</Text>
         <Text>M.A. in Political Science – Istanbul University</Text>
         <Text>Meta Back-End Developer Professional Certificate – Meta, 2024</Text>
-      </View>
-
-      <View style={styles.linksSection}>
-        <Text style={styles.heading}>Links</Text>
-
-        <Text>
-          Portfolio: <Link style={styles.link} src="https://www.yigit-dogan.dev/">https://yigit-dogan.dev</Link>
-        </Text>
-
-        <Text>
-          LinkedIn: <Link style={styles.link} src="https://www.linkedin.com/in/yigit-dogan-709b2a37">linkedin.com/in/yigit-dogan-709b2a37</Link>
-        </Text>
-
-        <Text>
-          GitHub: <Link style={styles.link} src="https://github.com/YioGoi">github.com/YioGoi</Link>
-        </Text>
-
       </View>
 
     </Page>

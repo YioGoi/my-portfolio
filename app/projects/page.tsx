@@ -17,7 +17,7 @@ const demos: Demo[] = [
     title: "Translation Agent App",
     keyFocus: ["AI", "LLM", "Translation Workflow"],
     description:
-      "An AI-powered translation platform designed to explore context-aware translation workflows. The application integrates large language models and external APIs to generate more accurate translations while preserving contextual meaning across multiple languages.",
+      "A product-oriented AI translation platform exploring how context, terminology, and multilingual workflows can improve delivery quality. The project highlights practical AI integration, user-facing product thinking, and modern frontend architecture.",
     technologies: [
       "React",
       "TypeScript",
@@ -32,7 +32,7 @@ const demos: Demo[] = [
     title: "ContextLang",
     keyFocus: ["Language Design", "Context Systems", "Interpreter"],
     description:
-      "An experimental programming language designed for context-aware applications. The project explores how contextual information can influence execution flow, enabling adaptive state management and behavior in complex software systems.",
+      "An experimental context-aware programming language exploring how runtime context can influence execution flow. It demonstrates systems thinking across tooling, adaptive behavior, and AI-adjacent software design.",
     technologies: [
       "Python",
       "FastAPI",
@@ -54,7 +54,7 @@ const demos: Demo[] = [
     title: "Reactivated Sample",
     keyFocus: ["Django + React", "SSR", "Type-safe APIs"],
     description:
-      "A fullstack example demonstrating the integration of Django with React using the Reactivated framework. The project showcases server-side rendering, shared typing between backend and frontend, and type-safe communication across the application stack.",
+      "A fullstack architecture sample showing Django and React integration through Reactivated. The project focuses on server-side rendering, shared typing, and safer collaboration between backend and frontend layers.",
     technologies: ["Django", "React", "Python", "TypeScript", "Reactivated", "SSR"],
     githubUrl: "https://github.com/YioGoi/reactivated-sample",
   },
@@ -62,7 +62,7 @@ const demos: Demo[] = [
     title: "Headless CMS Architecture (Strapi + Next.js)",
     keyFocus: ["Headless CMS", "API-driven frontend", "Content architecture"],
     description:
-      "A headless CMS architecture built with Strapi and Next.js, demonstrating how structured content can be delivered through APIs and rendered dynamically in a modern React-based frontend.",
+      "A content architecture sample built with Strapi and Next.js, demonstrating structured content, API delivery, and maintainable frontend patterns for content-backed platforms.",
     technologies: [
       "Next.js",
       "React",
@@ -141,7 +141,7 @@ export default function DemosPage() {
     >
       <h1>Projects</h1>
       <p className={styles.intro}>
-        Here are some of my personal projects and code samples that showcase different technologies and approaches to solving various problems.
+        Selected projects showing how I think across product engineering, modern frontend architecture, fullstack systems, and practical AI workflows.
       </p>
 
       <div className={styles.demosGrid}>
@@ -176,7 +176,7 @@ export default function DemosPage() {
             <p className={styles.description}>{demo.description}</p>
 
             <p className={styles.keyFocus}>
-              Key Focus: {demo.keyFocus.join(" · ")}
+              Engineering Focus: {demo.keyFocus.join(" · ")}
             </p>
 
             <div className={styles.techStack}>

@@ -19,12 +19,12 @@ export default function HomePage() {
         />
       </section>
       <h1 className={styles.welcomeTitle}>
-        Senior Frontend / Fullstack Engineer
+        Senior Frontend / Product Engineer
         <br />
         <span className={styles.name}>Yiğit Doğan</span>
       </h1>
       <p className={styles.description}>
-        Designing scalable product experiences with React, Next.js and Node.js
+        Building scalable product experiences with React, Next.js, and practical AI-assisted engineering workflows.
       </p>
       <section className={styles.actionButtons}>
         <Link
