@@ -86,7 +86,7 @@ const ResumePDF = () => (
       <View style={styles.header}>
         <Text style={styles.name}>Yiğit Doğan</Text>
         <Text style={styles.title}>Senior Frontend / Product Engineer</Text>
-        <Text style={styles.contactLine}>Email: ydogan.dev@gmail.com | Phone: +90 532 510 1204 | Location: Amsterdam, Netherlands</Text>
+        <Text style={styles.contactLine}>Email: ydogan.dev@gmail.com | Phone: +90 532 510 1204 | Location: İstanbul, Türkiye</Text>
         <Text style={styles.contactLine}>
           Portfolio: <Link style={styles.link} src="https://www.yigit-dogan.dev/">yigit-dogan.dev</Link>
           {' | '}LinkedIn: <Link style={styles.link} src="https://www.linkedin.com/in/yigit-dogan-709b2a37">linkedin.com/in/yigit-dogan-709b2a37</Link>

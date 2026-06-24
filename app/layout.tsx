@@ -12,7 +12,7 @@ import "./globals.scss";
 
 export const metadata: Metadata = {
   title: "Yiğit Doğan | Senior Frontend / Product Engineer",
-  description: "Amsterdam-based Senior Frontend / Product Engineer building scalable React, Next.js, and TypeScript products with practical AI-assisted engineering workflows.",
+  description: "Istanbul-based Senior Frontend / Product Engineer building scalable React, Next.js, and TypeScript products with practical AI-assisted engineering workflows.",
 };
 
 const navItems = [
