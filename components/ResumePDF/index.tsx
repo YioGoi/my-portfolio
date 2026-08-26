@@ -1,11 +1,11 @@
 import {
-  Page,
-  Text,
-  View,
   Document,
-  StyleSheet,
   Font,
   Link,
+  Page,
+  StyleSheet,
+  Text,
+  View,
 } from '@react-pdf/renderer';
 
 Font.register({
@@ -15,212 +15,457 @@ Font.register({
     { src: '/fonts/Poppins-Medium.ttf', fontWeight: 500 },
     { src: '/fonts/Poppins-SemiBold.ttf', fontWeight: 600 },
     { src: '/fonts/Poppins-Bold.ttf', fontWeight: 700 },
-  ]
+  ],
 });
+
+// Prevent react-pdf from inserting hyphens into words at line breaks.
+// This keeps extracted PDF text cleaner for ATS parsers.
+Font.registerHyphenationCallback((word: string) => [word]);
 
 const styles = StyleSheet.create({
   page: {
     fontFamily: 'Poppins',
-    padding: 36,
-    fontSize: 10,
+    paddingTop: 30,
+    paddingRight: 34,
+    paddingBottom: 30,
+    paddingLeft: 34,
+    fontSize: 8.8,
+    lineHeight: 1.34,
     backgroundColor: '#ffffff',
-    color: '#1f2933',
+    color: '#26313d',
   },
-  section: {
-    marginBottom: 14,
+  header: {
+    marginBottom: 11,
+    paddingBottom: 9,
+    borderBottomWidth: 1,
+    borderBottomColor: '#cbd5e1',
   },
-  heading: {
-    fontSize: 13,
+  name: {
+    fontSize: 20,
     fontWeight: 700,
+    lineHeight: 1.1,
+    color: '#111827',
+    marginBottom: 3,
+  },
+  title: {
+    fontSize: 11.8,
+    fontWeight: 600,
+    color: '#25364a',
     marginBottom: 6,
-    color: '#111827',
-    textTransform: 'uppercase',
   },
-  subheading: {
-    fontSize: 11,
-    fontWeight: 600,
-    marginTop: 8,
+  locationLine: {
+    fontSize: 8.8,
+    fontWeight: 500,
+    color: '#374151',
     marginBottom: 2,
-    color: '#111827',
   },
-  paragraph: {
-    marginBottom: 5,
-  },
-  label: {
-    fontWeight: 600,
-    color: '#111827',
-    marginTop: 4,
+  contactLine: {
+    fontSize: 8.3,
+    color: '#4b5563',
   },
   link: {
     color: '#075985',
     textDecoration: 'none',
   },
-  header: {
-    marginBottom: 12,
-    paddingBottom: 10,
-    borderBottom: '1px solid #d1d5db',
+  section: {
+    marginBottom: 10,
   },
-  name: {
-    fontSize: 18,
+  sectionHeading: {
+    fontSize: 10.8,
     fontWeight: 700,
     color: '#111827',
-    marginBottom: 8,
+    textTransform: 'uppercase',
+    letterSpacing: 0.35,
+    paddingBottom: 3,
+    marginBottom: 6,
+    borderBottomWidth: 0.7,
+    borderBottomColor: '#dbe3ea',
   },
-  title: {
-    fontSize: 12,
+  summary: {
+    fontSize: 8.9,
+    lineHeight: 1.38,
+  },
+  skillGroup: {
+    marginBottom: 3,
+  },
+  skillLabel: {
     fontWeight: 600,
-    color: '#374151',
-    marginBottom: 8,
+    color: '#111827',
   },
-  contactLine: {
-    fontSize: 9,
-    color: '#374151',
-    marginBottom: 2,
+  skillText: {
+    fontSize: 8.45,
+    lineHeight: 1.32,
+  },
+  experienceItem: {
+    marginBottom: 7,
+  },
+  compactExperienceItem: {
+    marginBottom: 5,
+  },
+  roleLine: {
+    fontSize: 9.45,
+    fontWeight: 600,
+    color: '#111827',
+    lineHeight: 1.25,
+  },
+  compactRoleLine: {
+    fontSize: 9.05,
+  },
+  experienceMeta: {
+    fontSize: 8.05,
+    color: '#5b6775',
+    marginTop: 1,
+    marginBottom: 2.5,
+  },
+  bullet: {
+    fontSize: 8.55,
+    lineHeight: 1.34,
+    marginBottom: 1.6,
+    paddingLeft: 7,
+  },
+  compactDescription: {
+    fontSize: 8.35,
+    lineHeight: 1.32,
+    marginTop: 1.5,
+  },
+  educationItem: {
+    fontSize: 8.65,
+    marginBottom: 2.5,
+  },
+  educationDegree: {
+    fontWeight: 600,
+    color: '#111827',
   },
 });
 
-const ResumePDF = () => (
-  <Document>
-    <Page size="A4" style={styles.page}>
+interface ExperienceEntryProps {
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  bullets: string[];
+}
 
+interface EarlierExperienceEntryProps {
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  description: string;
+}
+
+const ExperienceEntry = ({
+  role,
+  company,
+  location,
+  period,
+  bullets,
+}: ExperienceEntryProps) => (
+  <View style={styles.experienceItem} wrap={false}>
+    <Text style={styles.roleLine}>
+      {role} — {company}
+    </Text>
+    <Text style={styles.experienceMeta}>
+      {location} | {period}
+    </Text>
+    {bullets.map((bullet) => (
+      <Text key={bullet} style={styles.bullet}>
+        • {bullet}
+      </Text>
+    ))}
+  </View>
+);
+
+const EarlierExperienceEntry = ({
+  role,
+  company,
+  location,
+  period,
+  description,
+}: EarlierExperienceEntryProps) => (
+  <View
+    style={[styles.experienceItem, styles.compactExperienceItem]}
+    wrap={false}
+  >
+    <Text style={[styles.roleLine, styles.compactRoleLine]}>
+      {role} — {company}
+    </Text>
+    <Text style={styles.experienceMeta}>
+      {location} | {period}
+    </Text>
+    <Text style={styles.compactDescription}>{description}</Text>
+  </View>
+);
+
+const ResumePDF = () => (
+  <Document
+    title="Yiğit Doğan - Senior Frontend Engineer"
+    author="Yiğit Doğan"
+    subject="Senior Frontend Engineer Resume"
+    keywords="Senior Frontend Engineer, React, TypeScript, Next.js, Amsterdam, EMEA Remote"
+    language="en"
+  >
+    <Page size="A4" style={styles.page}>
       <View style={styles.header}>
         <Text style={styles.name}>Yiğit Doğan</Text>
-        <Text style={styles.title}>Senior Frontend / Product Engineer</Text>
-        <Text style={styles.contactLine}>Email: ydogan.dev@gmail.com | Phone: +90 532 510 1204 | Amsterdam, Netherlands</Text>
+        <Text style={styles.title}>
+          Senior Frontend Engineer | React, TypeScript, Next.js
+        </Text>
+        <Text style={styles.locationLine}>
+          Amsterdam, Netherlands | Open to EMEA Remote
+        </Text>
         <Text style={styles.contactLine}>
-          Portfolio: <Link style={styles.link} src="https://www.yigit-dogan.dev/">yigit-dogan.dev</Link>
-          {' | '}LinkedIn: <Link style={styles.link} src="https://www.linkedin.com/in/yigit-dogan-709b2a37">linkedin.com/in/yigit-dogan-709b2a37</Link>
-          {' | '}GitHub: <Link style={styles.link} src="https://github.com/YioGoi">github.com/YioGoi</Link>
+          Email:{' '}
+          <Link style={styles.link} src="mailto:ydogan.dev@gmail.com">
+            ydogan.dev@gmail.com
+          </Link>
+          {' | '}Phone:{' '}
+          <Link style={styles.link} src="tel:+905325101204">
+            +90 532 510 1204
+          </Link>
+          {' | '}Portfolio:{' '}
+          <Link style={styles.link} src="https://www.yigit-dogan.dev/">
+            yigit-dogan.dev
+          </Link>
+        </Text>
+        <Text style={styles.contactLine}>
+          LinkedIn:{' '}
+          <Link
+            style={styles.link}
+            src="https://www.linkedin.com/in/yigit-dogan-709b2a37"
+          >
+            linkedin.com/in/yigit-dogan-709b2a37
+          </Link>
         </Text>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.heading}>Professional Summary</Text>
-        <Text style={styles.paragraph}>
-          Senior Frontend / Product Engineer with 12+ years of experience building scalable web applications with React, Next.js, TypeScript, and Node.js. Strong focus on frontend architecture, design systems, performance optimization, accessibility, and product delivery, with hands-on experience contributing to backend integrations and API-driven systems. Experienced in modernizing legacy platforms, improving developer experience, and shipping maintainable products in cross-functional teams. Practical user of AI-assisted engineering workflows with OpenAI Codex, Cursor, Claude Code, and GitHub Copilot for prototyping, debugging, refactoring, test generation, and implementation planning while maintaining strong engineering judgment and code quality.
+        <Text style={styles.sectionHeading}>Professional Summary</Text>
+        <Text style={styles.summary}>
+          Senior Frontend Engineer with 12+ years of experience building and
+          modernizing production web applications with React, TypeScript,
+          Next.js, and JavaScript. Specialized in frontend architecture,
+          reusable component systems, data-intensive interfaces, state
+          management, performance optimization, accessibility, and automated
+          testing. Experienced in integrating API-driven and real-time systems
+          while working closely with product, design, and backend teams.
         </Text>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.heading}>Primary Technology Experience</Text>
-        <Text>JavaScript (2010–Present) – 15+ years</Text>
-        <Text>React (2013–Present) – 12+ years</Text>
-        <Text>TypeScript (2014–Present) – 9+ years</Text>
-        <Text>Node.js (2014–Present) – 9+ years</Text>
-        <Text>Next.js (2016–Present) – 8+ years</Text>
-        <Text>React Native (2017–Present) – 8+ years</Text>
-        <Text>Python (2017–Present) – 5+ years</Text>
+        <Text style={styles.sectionHeading}>Core Technical Skills</Text>
+
+        <View style={styles.skillGroup}>
+          <Text style={styles.skillText}>
+            <Text style={styles.skillLabel}>Frontend: </Text>
+            React, TypeScript, Next.js, JavaScript ES6+, React Native, HTML,
+            CSS3, SCSS/Sass, CSS Modules, Tailwind CSS, Styled Components,
+            Material UI
+          </Text>
+        </View>
+
+        <View style={styles.skillGroup}>
+          <Text style={styles.skillText}>
+            <Text style={styles.skillLabel}>Architecture & State: </Text>
+            Frontend Architecture, Component Architecture, Design Systems, SSR,
+            SSG, CSR, Redux, Redux-Saga, Zustand, React Query, RxJS, Context API
+          </Text>
+        </View>
+
+        <View style={styles.skillGroup}>
+          <Text style={styles.skillText}>
+            <Text style={styles.skillLabel}>Performance & Quality: </Text>
+            Performance Optimization, Accessibility, Jest, React Testing
+            Library, Vitest, Playwright, Cypress, Storybook
+          </Text>
+        </View>
+
+        <View style={styles.skillGroup}>
+          <Text style={styles.skillText}>
+            <Text style={styles.skillLabel}>
+              API Integration & Server-side Familiarity:{' '}
+            </Text>
+            REST APIs, GraphQL, WebSockets, Authentication, Third-party API
+            Integration, Node.js, Express, Python, Django, PostgreSQL, MongoDB
+          </Text>
+        </View>
+
+        <View style={styles.skillGroup}>
+          <Text style={styles.skillText}>
+            <Text style={styles.skillLabel}>Tooling & Delivery: </Text>
+            Git, GitHub, GitLab, Docker, Vite, Webpack, ESLint, Prettier, CI/CD,
+            Vercel, Netlify, Jira, Agile/Scrum, Code Review
+          </Text>
+        </View>
+
+        <View style={styles.skillGroup}>
+          <Text style={styles.skillText}>
+            <Text style={styles.skillLabel}>AI-assisted Workflow: </Text>
+            Claude Code, OpenAI Codex, Cursor, GitHub Copilot
+          </Text>
+        </View>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.heading}>Technical Skills</Text>
+        <Text style={styles.sectionHeading}>Professional Experience</Text>
 
-        <Text style={styles.label}>Frontend & Product Engineering</Text>
-        <Text>React • TypeScript • Next.js • JavaScript ES6+ • React Native • Frontend Architecture • Product Engineering</Text>
-        <Text>State Management: Redux • Redux Saga • Zustand • React Query • RxJS • Context API</Text>
-        <Text>Styling: CSS3 • SCSS/Sass • Tailwind CSS • Styled Components • CSS Modules • Material UI</Text>
+        <ExperienceEntry
+          role="Senior Software Engineer"
+          company="The Lab (Creative Technology Agency)"
+          location="New York, NY, USA (Remote)"
+          period="2023 - Present"
+          bullets={[
+            'Define frontend standards and reusable component patterns for white-label e-commerce platforms using React, TypeScript, and SCSS Modules.',
+            'Build and maintain shared UI components documented in Storybook, improving consistency across brands and delivery teams.',
+            'Integrate Django services with React applications through clear, type-safe API boundaries and scalable data-flow patterns.',
+            'Implement automated testing workflows with Playwright and Cypress to strengthen product reliability and CI/CD confidence.',
+          ]}
+        />
 
-        <Text style={styles.label}>Backend Engineering & APIs</Text>
-        <Text>Node.js • Express • Python • Django • REST APIs • GraphQL • PostgreSQL • MongoDB • Authentication • Third-party API Integration • WebSockets • Event-Driven Systems • API Orchestration</Text>
+        <ExperienceEntry
+          role="Senior Frontend Engineer"
+          company="Ammega Group"
+          location="Amsterdam, Netherlands (Remote)"
+          period="2023 - 2024"
+          bullets={[
+            'Designed frontend architecture for production-monitoring dashboards used across global manufacturing operations with React, Next.js, and TypeScript.',
+            'Modernized legacy jQuery applications through an incremental migration to reusable React components.',
+            'Integrated .NET backend APIs with React Query to deliver real-time operational data visualization.',
+            'Improved performance for large data sets through virtualized rendering, memoization, and targeted component updates.',
+          ]}
+        />
 
-        <Text style={styles.label}>Architecture & Product Engineering</Text>
-        <Text>Scalable Web Applications • Component Architecture • API-driven Systems • Technical Ownership • Performance Optimization • Design Systems • Accessibility</Text>
+        <ExperienceEntry
+          role="Frontend Engineer"
+          company="MDS Translation"
+          location="Istanbul, Türkiye (Remote)"
+          period="2024"
+          bullets={[
+            'Built a multilingual marketing platform with Next.js 14, TypeScript, and static generation.',
+            'Created a scalable next-intl localization architecture and CMS-agnostic content model for multiple European locales.',
+          ]}
+        />
 
-        <Text style={styles.label}>Testing & Quality Assurance</Text>
-        <Text>Jest • React Testing Library • Cypress • Playwright • Vitest • Storybook</Text>
+      </View>
+    </Page>
 
-        <Text style={styles.label}>Development Tools & CI/CD</Text>
-        <Text>Git • GitHub • GitLab • Docker • Webpack • Vite • ESLint • Prettier • CI/CD Pipelines</Text>
-        <Text>Agile/Scrum • Jira • Code Review • Vercel • Netlify</Text>
+    <Page size="A4" style={styles.page}>
+      <View style={styles.section}>
+        <Text style={styles.sectionHeading}>
+          Professional Experience — Continued
+        </Text>
 
-        <Text style={styles.label}>AI-Assisted Engineering</Text>
-        <Text>OpenAI Codex • Cursor • Claude Code • GitHub Copilot • AI-assisted debugging • Refactoring workflows • Test generation • Technical planning • Prompt-driven implementation review</Text>
+        <ExperienceEntry
+          role="Senior Frontend / Product Engineer"
+          company="Path Product"
+          location="Istanbul, Türkiye (Remote)"
+          period="2022 - 2023"
+          bullets={[
+            'Architected real-time product features with React, RxJS, and WebSocket integrations.',
+            'Designed state-management patterns for responsive UI updates across concurrent users.',
+            'Applied SSR, SSG, and CSR strategically to balance SEO, runtime performance, and developer experience.',
+            'Collaborated with backend engineers on API contracts and reliable data flows.',
+          ]}
+        />
+
+        <ExperienceEntry
+          role="Lead Frontend Developer"
+          company="Kafein Software"
+          location="Istanbul, Türkiye (Remote)"
+          period="2021 - 2022"
+          bullets={[
+            'Led frontend engineering decisions for enterprise React applications used across multiple internal products.',
+            'Built modular UI architecture with React and Redux-Saga to support scalable reuse across teams.',
+            'Mentored frontend developers through code reviews and architectural guidance, improving implementation consistency and code quality.',
+          ]}
+        />
+
+        <ExperienceEntry
+          role="Senior Frontend Developer"
+          company="NTT Data"
+          location="Istanbul, Türkiye (Onsite / Remote)"
+          period="2019 - 2021"
+          bullets={[
+            'Developed enterprise web and mobile interfaces with React and React Native integrated with .NET services.',
+            'Implemented JWT-based authentication and role-based access control for secure product workflows.',
+            'Established reusable routing and state-management patterns across large product modules.',
+          ]}
+        />
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.heading}>Experience</Text>
+        <Text style={styles.sectionHeading}>Earlier Experience</Text>
 
-        <Text style={styles.subheading}>Senior Software Engineer – The Lab (Creative Technology Agency)</Text>
-        <Text style={styles.paragraph}>New York, NY (Remote) | 2023 – Present</Text>
-        <Text>• Defined frontend technical standards for white-labeled e-commerce platforms and established reusable component patterns using React, TypeScript, and SCSS modules</Text>
-        <Text>• Built shared UI component libraries documented with Storybook, improving development velocity and cross-team consistency</Text>
-        <Text>• Integrated Django backend services with modern React architecture, enabling type-safe data flow and scalable frontend patterns</Text>
-        <Text>• Implemented automated testing workflows using Playwright and Cypress, strengthening product reliability and CI/CD confidence</Text>
-        <Text>• Used AI-assisted engineering workflows to accelerate debugging, refactoring, implementation planning, and test coverage while preserving code review standards and architectural consistency</Text>
+        <EarlierExperienceEntry
+          role="Frontend Developer"
+          company="Bulut Software"
+          location="Istanbul, Türkiye"
+          period="2019"
+          description="Built React and React Native interfaces for vendor, inventory, checkout, and payment workflows connected to legacy PHP services."
+        />
 
-        <Text style={styles.subheading}>Senior Frontend Engineer – Ammega Group</Text>
-        <Text style={styles.paragraph}>Amsterdam, Netherlands (Remote) | 2023 – 2024</Text>
-        <Text>• Directed architecture of production monitoring dashboards using React, Next.js, and TypeScript for global manufacturing operations</Text>
-        <Text>• Led migration of legacy jQuery applications to modern React architecture through incremental refactoring strategy</Text>
-        <Text>• Integrated .NET backend APIs using React Query to deliver real-time operational data visualization</Text>
-        <Text>• Optimized large-scale data rendering and dashboard performance using virtual scrolling and component memoization techniques</Text>
+        <EarlierExperienceEntry
+          role="Frontend Developer"
+          company="Tıkla Kutla"
+          location="Istanbul, Türkiye"
+          period="2018 - 2019"
+          description="Developed AngularJS booking and vendor-management modules and optimized responsive performance and SEO for an event marketplace."
+        />
 
-        <Text style={styles.subheading}>Frontend Engineer – MDS Translation</Text>
-        <Text style={styles.paragraph}>Istanbul, Turkey (Remote) | 2024</Text>
-        <Text>• Built multilingual marketing platform using Next.js 14, TypeScript, and static generation strategies</Text>
-        <Text>• Implemented scalable internationalization architecture with next-intl supporting multiple European locales</Text>
-        <Text>• Designed CMS-agnostic content architecture allowing flexible integration with headless CMS platforms</Text>
+        <EarlierExperienceEntry
+          role="Co-founder & Full-stack Developer"
+          company="Noviente Informatics Systems"
+          location="Izmir, Türkiye"
+          period="2015 - 2018"
+          description="Co-founded the company and delivered React and React Native interfaces, Node.js services, admin dashboards, and e-commerce automation workflows."
+        />
 
-        <Text style={styles.subheading}>Senior Frontend / Product Engineer – Path Product</Text>
-        <Text style={styles.paragraph}>Istanbul, Turkey (Remote) | 2022 – 2023</Text>
-        <Text>• Architected real-time product features using React, RxJS, and WebSocket integrations</Text>
-        <Text>• Designed scalable state management strategies enabling responsive UI updates across concurrent users</Text>
-        <Text>• Implemented multiple Next.js rendering strategies (SSR, CSR, SSG) to balance SEO, performance, and developer ergonomics</Text>
-        <Text>• Collaborated with backend teams to integrate API services and maintain reliable data pipelines</Text>
+        <EarlierExperienceEntry
+          role="Web Developer"
+          company="ROS Inc."
+          location="Izmir, Türkiye"
+          period="2015 - 2017"
+          description="Built responsive React and TypeScript websites with Google Maps and advertising API integrations, focusing on SEO and lead generation."
+        />
 
-        <Text style={styles.subheading}>Lead Frontend Developer – Kafein Software</Text>
-        <Text style={styles.paragraph}>Istanbul, Turkey (Remote) | 2021 – 2022</Text>
-        <Text>• Led frontend engineering decisions for enterprise React applications used across multiple internal products</Text>
-        <Text>• Built modular UI architecture using React and Redux-Saga enabling scalable code reuse across teams</Text>
-        <Text>• Mentored frontend developers through code reviews and architectural guidance improving overall code quality</Text>
+        <EarlierExperienceEntry
+          role="Founder & Full-stack Developer"
+          company="Ofism.com"
+          location="Izmir, Türkiye"
+          period="2013 - 2015"
+          description="Founded and developed an e-commerce platform using OpenCart and custom frontend components, supporting growth to 1,000+ monthly orders."
+        />
 
-        <Text break style={styles.subheading}>Senior Frontend Developer – NTT Data</Text>
-        <Text style={styles.paragraph}>Istanbul, Turkey (Onsite/Remote) | 2019 – 2021</Text>
-        <Text>• Developed enterprise SPA applications using React and React Native integrated with .NET backend systems</Text>
-        <Text>• Implemented secure authentication workflows including JWT token handling and role-based access control</Text>
-        <Text>• Established scalable routing and state management patterns across large product modules</Text>
-
-        <Text style={styles.subheading}>Frontend Developer – Bulut Software</Text>
-        <Text style={styles.paragraph}>Istanbul, Turkey | 2019</Text>
-        <Text>• Developed vendor management interfaces using React and React Native for inventory and supplier workflows</Text>
-        <Text>• Built checkout and payment UI integrations connected to legacy PHP backend services</Text>
-
-        <Text style={styles.subheading}>Frontend Developer – Tıkla Kutla</Text>
-        <Text style={styles.paragraph}>Istanbul, Turkey | 2018 – 2019</Text>
-        <Text>• Developed booking and vendor management modules using AngularJS for event marketplace platform</Text>
-        <Text>• Optimized responsive UI performance improving mobile load times and SEO visibility</Text>
-
-        <Text style={styles.subheading}>Co-founder & Fullstack Developer – Noviente Informatics Systems</Text>
-        <Text style={styles.paragraph}>Izmir, Turkey | 2015 – 2018</Text>
-        <Text>• Built full-stack platforms using React, React Native, Node.js and API-driven services</Text>
-        <Text>• Developed admin dashboards and custom workflows for e-commerce and marketing automation tools</Text>
-        <Text>• Led product development lifecycle from client requirements to deployment</Text>
-
-        <Text style={styles.subheading}>Web Developer – ROS Inc.</Text>
-        <Text style={styles.paragraph}>Izmir, Turkey | 2015 – 2017</Text>
-        <Text>• Developed responsive websites using React and TypeScript integrated with Google Maps and advertising APIs</Text>
-        <Text>• Improved lead generation through SEO optimization and frontend performance improvements</Text>
-
-        <Text style={styles.subheading}>Founder & Fullstack Developer – Ofism.com</Text>
-        <Text style={styles.paragraph}>Izmir, Turkey | 2013 – 2015</Text>
-        <Text>• Founded and developed e-commerce platform integrating OpenCart backend with custom React frontend components</Text>
-        <Text>• Built admin dashboards and checkout workflows improving inventory and order management</Text>
-        <Text>• Achieved 1000+ monthly orders through performance optimization and improved UX flows</Text>
-
-        <Text style={styles.subheading}>Web Developer – Doğan Defter</Text>
-        <Text style={styles.paragraph}>Izmir, Turkey | 2008 – 2013</Text>
-        <Text>• Developed corporate website and custom CMS using HTML, CSS, and JavaScript</Text>
-        <Text>• Improved global visibility through SEO optimization and structured content architecture</Text>
-
+        <EarlierExperienceEntry
+          role="Web Developer"
+          company="Doğan Defter"
+          location="Izmir, Türkiye"
+          period="2008 - 2013"
+          description="Developed a corporate website and custom CMS with HTML, CSS, and JavaScript and improved international visibility through SEO and structured content."
+        />
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.heading}>Education & Certifications</Text>
-        <Text>B.Sc. in Software Engineering – Technical University of America</Text>
-        <Text>M.A. in Political Science – Istanbul University</Text>
-        <Text>Meta Back-End Developer Professional Certificate – Meta, 2024</Text>
+        <Text style={styles.sectionHeading}>
+          Education & Professional Development
+        </Text>
+        <Text style={styles.educationItem}>
+          <Text style={styles.educationDegree}>
+            B.Sc. in Software Engineering
+          </Text>
+          {' — '}Technical University of America
+        </Text>
+        <Text style={styles.educationItem}>
+          <Text style={styles.educationDegree}>M.A. in Political Science</Text>
+          {' — '}Istanbul University
+        </Text>
+        <Text style={styles.educationItem}>
+          <Text style={styles.educationDegree}>
+            Meta Back-End Developer Professional Certificate
+          </Text>
+          {' — '}Meta, 2024
+        </Text>
       </View>
-
     </Page>
   </Document>
 );
