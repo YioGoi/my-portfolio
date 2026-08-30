@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import { MobileMenuProvider } from '@/context/MobileMenuContext';
 import NavBar from "@/components/NavBar";
 import MobileNavMenu from "@/components/MobileNavMenu";
+import InteractiveDotBackground from "@/components/InteractiveDotBackground";
 import "./globals.scss";
 
 
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ThemeProvider>
           <MobileMenuProvider>
+            <InteractiveDotBackground />
             <NavBar items={navItems} />
             <main style={{ paddingTop: "80px" }}>{children}</main>
             <MobileNavMenu items={navItems} />
