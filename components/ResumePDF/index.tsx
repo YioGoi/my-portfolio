@@ -212,7 +212,7 @@ const ResumePDF = () => (
           Senior Frontend Engineer | React, TypeScript, Next.js
         </Text>
         <Text style={styles.locationLine}>
-          Amsterdam, Netherlands | Open to EMEA Remote
+          Arnhem, Netherlands | Open to Hybrid Roles across Utrecht & Amsterdam
         </Text>
         <Text style={styles.contactLine}>
           Email:{' '}
