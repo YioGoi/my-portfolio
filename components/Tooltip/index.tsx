@@ -33,21 +33,23 @@ export default function Tooltip({
         if (oneTime && id) {
             const seen = localStorage.getItem(`tooltip_seen_${id}`);
             if (seen) {
-                setDismissed(true);
+                const dismissTimer = window.setTimeout(() => setDismissed(true), 0);
+                return () => window.clearTimeout(dismissTimer);
             }
         }
 
-        
         if (autoShow) {
-            // Auto show immediately
-            setVisible(true);
-            const timer = setTimeout(() => {
+            const showTimer = window.setTimeout(() => setVisible(true), 0);
+            const hideTimer = window.setTimeout(() => {
                 setVisible(false);
                 setDismissed(true);
                 localStorage.setItem(`tooltip_seen_${id}`, 'true');
-            }, 5000); // 5s duration
+            }, 5000);
 
-            return () => clearTimeout(timer);
+            return () => {
+                window.clearTimeout(showTimer);
+                window.clearTimeout(hideTimer);
+            };
         }
     }, [oneTime, id, autoShow]);
 
@@ -88,7 +90,7 @@ export default function Tooltip({
                   `}
                 >
                     {oneTime && !resumeTooltip && (
-                        <button className={styles.closeBtn} onClick={handleClose} aria-label="Dismiss tooltip">
+                        <button type="button" className={styles.closeBtn} onClick={handleClose} aria-label="Dismiss tooltip">
                             <FiX />
                             <div className={styles.handHint}>
                                 <FaHandPointLeft />

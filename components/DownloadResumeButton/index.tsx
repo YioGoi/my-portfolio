@@ -1,69 +1,48 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
-import { PDFDownloadLink } from '@react-pdf/renderer';
-import ResumePDF from '@/components/ResumePDF';
+import { useState } from 'react';
 import { TbDownload } from 'react-icons/tb';
-import { isSmallLaptop } from '@/utilities/responsive';
-
 
 import styles from './index.module.scss';
 
 export default function DownloadResumeButton() {
-    const [_isSmallLaptop, _setIsSmallLaptop] = useState<boolean | null>(null);
-    const [isClient, setIsClient] = useState(false);
+  const [isPreparing, setIsPreparing] = useState(false);
 
-    useEffect(() => {
-        setIsClient(true);
-    }, []);
+  const downloadResume = async () => {
+    if (isPreparing) return;
 
-    useEffect(() => {
-        let debounceTimer: NodeJS.Timeout;
+    setIsPreparing(true);
 
-        const handleResize = () => {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(() => {
-                _setIsSmallLaptop(isSmallLaptop());
-            }, 100);
-        }
+    try {
+      const [{ pdf }, { default: ResumePDF }] = await Promise.all([
+        import('@react-pdf/renderer'),
+        import('@/components/ResumePDF'),
+      ]);
+      const blob = await pdf(<ResumePDF />).toBlob();
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
 
-        const initialIsSmallLaptop = isSmallLaptop();
-        _setIsSmallLaptop(initialIsSmallLaptop);
-        
-        window.addEventListener('resize', handleResize);
-        return () => {
-            clearTimeout(debounceTimer);
-            window.removeEventListener('resize', handleResize);
-        }
-    }, []); // Fixed: removed dependency
-
-    const ButtonText = ({ loading }: { loading: boolean }) => {
-        if (!_isSmallLaptop) {
-            return (
-                <>
-                    {loading ? 'Preparing...' : 'Download CV'}
-                </>
-            )
-        }
-        return 'CV';
+      link.href = downloadUrl;
+      link.download = 'Yigit-Dogan-Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(downloadUrl);
+    } finally {
+      setIsPreparing(false);
     }
+  };
 
-    // Memoize the PDF document to prevent recreation on every render
-    const resumeDocument = useMemo(() => <ResumePDF />, []);
-
-    // Don't render until client-side is ready
-    if (!isClient || _isSmallLaptop === null) {
-        return null;
-    }
-
-    return (
-        <PDFDownloadLink document={resumeDocument} fileName="Yigit-Dogan-Resume.pdf" className={styles.downloadButton}>
-            {({ loading }) =>
-                <button>
-                    <TbDownload className={styles.downloadIcon} />
-                    <ButtonText loading={loading} />
-                </button>
-            }
-        </PDFDownloadLink>
-    );
+  return (
+    <button
+      type="button"
+      className={styles.downloadButton}
+      onClick={downloadResume}
+      disabled={isPreparing}
+    >
+      <TbDownload className={styles.downloadIcon} aria-hidden="true" />
+      <span className={styles.longLabel}>{isPreparing ? 'Preparing…' : 'Download CV'}</span>
+      <span className={styles.shortLabel}>{isPreparing ? '…' : 'CV'}</span>
+    </button>
+  );
 }

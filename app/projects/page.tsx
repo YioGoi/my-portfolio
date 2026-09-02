@@ -1,197 +1,150 @@
-import SectionWrapper from '@/components/SectionWrapper';
-import styles from './page.module.scss';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import Link from 'next/link';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { FaArrowRight, FaBookOpen, FaGithub } from "react-icons/fa";
 
-interface Demo {
-  title: string;
-  description: string;
-  technologies: string[];
-  githubUrl: string;
-  liveUrl?: string;
-  keyFocus: string[];
-}
+import SectionWrapper from "@/components/SectionWrapper";
+import { featuredProjects, supportingProjects } from "@/content/projects";
 
-const demos: Demo[] = [
-  {
-    title: "Translation Agent App",
-    keyFocus: ["AI", "LLM", "Translation Workflow"],
-    description:
-      "A product-oriented AI translation platform exploring how context, terminology, and multilingual workflows can improve delivery quality. The project highlights practical AI integration, user-facing product thinking, and modern frontend architecture.",
-    technologies: [
-      "React",
-      "TypeScript",
-      "AI/ML",
-      "API Integration",
-      "LLM",
-      "Prompt Engineering",
-    ],
-    githubUrl: "https://github.com/YioGoi/translation-agent-app",
-  },
-  {
-    title: "ContextLang",
-    keyFocus: ["Language Design", "Context Systems", "Interpreter"],
-    description:
-      "An experimental context-aware programming language exploring how runtime context can influence execution flow. It demonstrates systems thinking across tooling, adaptive behavior, and AI-adjacent software design.",
-    technologies: [
-      "Python",
-      "FastAPI",
-      "LangChain",
-      "Language Design",
-      "Interpreter",
-      "Groq",
-      "HuggingFace",
-      "Ollama",
-      "DeepL",
-      "React",
-      "Axios",
-      "Electron",
-      "TypeScript",
-    ],
-    githubUrl: "https://github.com/YioGoi/ContextLang",
-  },
-  {
-    title: "Reactivated Sample",
-    keyFocus: ["Django + React", "SSR", "Type-safe APIs"],
-    description:
-      "A fullstack architecture sample showing Django and React integration through Reactivated. The project focuses on server-side rendering, shared typing, and safer collaboration between backend and frontend layers.",
-    technologies: ["Django", "React", "Python", "TypeScript", "Reactivated", "SSR"],
-    githubUrl: "https://github.com/YioGoi/reactivated-sample",
-  },
-  {
-    title: "Headless CMS Architecture (Strapi + Next.js)",
-    keyFocus: ["Headless CMS", "API-driven frontend", "Content architecture"],
-    description:
-      "A content architecture sample built with Strapi and Next.js, demonstrating structured content, API delivery, and maintainable frontend patterns for content-backed platforms.",
-    technologies: [
-      "Next.js",
-      "React",
-      "Strapi",
-      "PostgreSQL",
-      "REST API",
-      "Headless CMS",
-    ],
-    githubUrl: "https://github.com/YioGoi/strapi-app",
-  },
-  {
-    title: "Graphics Canvas",
-    keyFocus: ["Real-time Collaboration", "Canvas Rendering", "WebSockets"],
-    description:
-      "A real-time collaborative canvas application built to explore high-performance graphics rendering in the browser. The project implements multi-user interaction, cursor synchronization, and efficient drawing tools using the Canvas API and WebSocket communication.",
-    technologies: [
-      "TypeScript",
-      "React 18",
-      "Canvas API",
-      "WebSocket",
-      "Node.js",
-      "Express",
-      "Webpack 5",
-    ],
-    githubUrl: "https://github.com/YioGoi/graphics-canvas",
-  },
-  {
-    title: "Next Notes App",
-    keyFocus: ["Markdown Editing", "Next.js UI Architecture"],
-    description:
-      "A lightweight note-taking application built with Next.js to explore markdown-based content editing and modern React UI patterns.",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    githubUrl: "https://github.com/YioGoi/next-notes-app",
-  },
-  {
-    title: "GraphQL Fundamentals with React",
-    keyFocus: ["GraphQL APIs", "Apollo Client", "CRUD Patterns"],
-    description:
-      "A small learning project demonstrating CRUD operations using GraphQL with React and Apollo Client, focusing on query-based data fetching and schema-driven API design.",
-    technologies: ["Apollo Client", "GraphQL", "React", "Express", "Express GraphQL"],
-    githubUrl: "https://github.com/YioGoi/grapql-fundamentals",
-  },
-  {
-    title: "Spring Boot Microservice",
-    keyFocus: ["Microservices", "Event-driven Architecture", "Kafka"],
-    description:
-      "A microservice architecture example exploring event-driven design using Kafka, relational persistence with PostgreSQL, and object storage integration with AWS S3.",
-    technologies: [
-      "Java 17",
-      "Spring Boot",
-      "Spring Data JPA",
-      "Apache Kafka",
-      "PostgreSQL",
-      "AWS S3",
-      "Docker",
-      "Maven",
-    ],
-    githubUrl: "https://github.com/YioGoi/spring-boot-kafka-postgres",
-  },
-  {
-    title: "My Portfolio",
-    keyFocus: ["Interactive UI", "3D Visualization", "Developer Portfolio"],
-    description:
-      "This portfolio website built with Next.js to showcase projects, technical experience, and interactive UI experiments including Three.js visualizations.",
-    technologies: ["Next.js", "React", "TypeScript", "SCSS", "Framer Motion", "Three.js"],
-    githubUrl: "https://github.com/YioGoi/my-portfolio",
-  },
-];
+import styles from "./page.module.scss";
 
-export default function DemosPage() {
+export const metadata: Metadata = {
+  title: "Frontend Architecture Case Studies",
+  description:
+    "Atlas and Signal Ops: senior frontend engineering case studies covering Next.js rendering, ordered Server-Sent Events, performance, accessibility, and testing.",
+};
+
+export default function ProjectsPage() {
   return (
     <SectionWrapper
       variant="slideUp"
-      customLeftWrapperClass={styles.demosLeftWrapper}
-      customSectionClass={styles.demosSection}
+      customLeftWrapperClass={styles.projectsLeftWrapper}
+      customSectionClass={styles.projectsSection}
+      customRightWrapperClass={styles.projectsVisual}
     >
-      <h1>Projects</h1>
-      <p className={styles.intro}>
-        Selected projects showing how I think across product engineering, modern frontend architecture, fullstack systems, and practical AI workflows.
-      </p>
+      <header className={styles.pageHeader}>
+        <p className={styles.eyebrow}>Selected engineering work</p>
+        <h1>Frontend architecture case studies</h1>
+        <p>
+          Two focused systems showing how I define boundaries, choose rendering and live-data
+          models, design failure recovery, and turn quality requirements into executable evidence.
+        </p>
+      </header>
 
-      <div className={styles.demosGrid}>
-        {demos.map((demo, index) => (
-          <article key={index} className={styles.demoCard}>
-            <div className={styles.cardHeader}>
-              <h2 className={styles.demoTitle}>{demo.title}</h2>
-              <div className={styles.links}>
-                <Link
-                  href={demo.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.iconLink}
-                  aria-label={`View ${demo.title} on GitHub`}
-                >
-                  <FaGithub />
-                </Link>
-                {demo.liveUrl && (
-                  <Link
-                    href={demo.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.iconLink}
-                    aria-label={`View ${demo.title} live demo`}
-                  >
-                    <FaExternalLinkAlt />
-                  </Link>
-                )}
+      <nav className={styles.projectIndex} aria-label="Case studies on this page">
+        {featuredProjects.map((project, index) => (
+          <a href={`#${project.slug}`} key={project.slug}>
+            <span>0{index + 1}</span>
+            {project.title}
+          </a>
+        ))}
+      </nav>
+
+      <div className={styles.caseStudies}>
+        {featuredProjects.map((project, projectIndex) => (
+          <article className={styles.caseStudy} id={project.slug} key={project.slug}>
+            <header className={styles.caseHeader}>
+              <div>
+                <p className={styles.eyebrow}>
+                  0{projectIndex + 1} · {project.category}
+                </p>
+                <h2>{project.title}</h2>
               </div>
+              <span className={styles.status}>{project.status}</span>
+            </header>
+
+            <p className={styles.summary}>{project.summary}</p>
+
+            <div className={styles.contextGrid}>
+              <section aria-labelledby={`${project.slug}-problem`}>
+                <h3 id={`${project.slug}-problem`}>Engineering problem</h3>
+                <p>{project.problem}</p>
+              </section>
+              <section aria-labelledby={`${project.slug}-architecture`}>
+                <h3 id={`${project.slug}-architecture`}>Architecture</h3>
+                <p>{project.architecture}</p>
+              </section>
             </div>
 
-            <p className={styles.description}>{demo.description}</p>
-
-            <p className={styles.keyFocus}>
-              Engineering Focus: {demo.keyFocus.join(" · ")}
-            </p>
-
-            <div className={styles.techStack}>
-              <h3 className={styles.techTitle}>Tech Stack:</h3>
-              <div className={styles.techTags}>
-                {demo.technologies.map((tech, techIndex) => (
-                  <span key={techIndex} className={styles.techTag}>
-                    {tech}
-                  </span>
+            <section className={styles.decisionSection} aria-labelledby={`${project.slug}-decisions`}>
+              <p className={styles.sectionLabel}>Decision record</p>
+              <h3 id={`${project.slug}-decisions`}>Choices and trade-offs</h3>
+              <div className={styles.decisionList}>
+                {project.decisions.map((item, index) => (
+                  <article key={item.title}>
+                    <span aria-hidden="true">0{index + 1}</span>
+                    <div>
+                      <h4>{item.title}</h4>
+                      <p>{item.decision}</p>
+                      <p className={styles.tradeoff}>
+                        <strong>Trade-off:</strong> {item.tradeoff}
+                      </p>
+                    </div>
+                  </article>
                 ))}
               </div>
+            </section>
+
+            <section className={styles.evidenceSection} aria-labelledby={`${project.slug}-evidence`}>
+              <div>
+                <p className={styles.sectionLabel}>Reproducible evidence</p>
+                <h3 id={`${project.slug}-evidence`}>Measured locally, scoped explicitly</h3>
+              </div>
+              <dl>
+                {project.evidence.map((item) => (
+                  <div key={item.label}>
+                    <dt>{item.label}</dt>
+                    <dd>{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p>{project.evidenceNote}</p>
+            </section>
+
+            <ul className={styles.techList} aria-label={`${project.title} technology stack`}>
+              {project.technologies.map((technology) => (
+                <li key={technology}>{technology}</li>
+              ))}
+            </ul>
+
+            <div className={styles.caseLinks}>
+              <Link href={project.sourceUrl} target="_blank" rel="noopener noreferrer">
+                <FaGithub aria-hidden="true" /> View source
+                <span className="sr-only"> (opens in a new tab)</span>
+              </Link>
+              <Link href={project.documentationUrl} target="_blank" rel="noopener noreferrer">
+                <FaBookOpen aria-hidden="true" /> Read project documentation
+                <span className="sr-only"> (opens in a new tab)</span>
+              </Link>
             </div>
           </article>
         ))}
       </div>
+
+      <section className={styles.supportingSection} aria-labelledby="supporting-work">
+        <p className={styles.eyebrow}>Supporting work</p>
+        <h2 id="supporting-work">Additional frontend architecture samples</h2>
+        <p>
+          Smaller repositories retained for the specific boundary or browser-system problem they
+          explore.
+        </p>
+        <div className={styles.supportingGrid}>
+          {supportingProjects.map((project) => (
+            <article key={project.title}>
+              <h3>{project.title}</h3>
+              <p>{project.focus}</p>
+              <ul aria-label={`${project.title} technology stack`}>
+                {project.technologies.map((technology) => (
+                  <li key={technology}>{technology}</li>
+                ))}
+              </ul>
+              <Link href={project.sourceUrl} target="_blank" rel="noopener noreferrer">
+                Source <FaArrowRight aria-hidden="true" />
+                <span className="sr-only"> (opens in a new tab)</span>
+              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
     </SectionWrapper>
   );
 }

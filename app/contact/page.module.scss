@@ -1,0 +1,76 @@
+.contactPage {
+  width: 100%;
+  max-width: 720px;
+  text-align: left;
+
+  > header {
+    padding: 2rem 0 3rem;
+
+    h1 {
+      margin-bottom: 1.15rem;
+      font-size: clamp(2.5rem, 6vw, 4.3rem);
+      line-height: 1.03;
+      letter-spacing: -0.05em;
+    }
+
+    > p:last-child {
+      max-width: 650px;
+      color: var(--muted-text);
+      font-size: 1.08rem;
+    }
+  }
+}
+
+.eyebrow {
+  margin: 0 0 0.65rem;
+  color: var(--fancy-blue-light);
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contactCard {
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border: 1px solid var(--subtle-border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.location {
+  margin: 0 0 1.5rem;
+  color: var(--muted-text);
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.82rem;
+}
+
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--text-color);
+  font-size: clamp(1.15rem, 4vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--fancy-blue-light);
+  }
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 2rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}

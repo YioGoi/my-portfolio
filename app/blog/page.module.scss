@@ -1,47 +1,78 @@
-@use "../variables" as *;
+.writingPage {
+  width: 100%;
+  max-width: 760px;
+  text-align: left;
 
-.blog {
-  padding: 4rem 1rem 1rem;
-}
+  > header {
+    padding: 2rem 0 3rem;
 
-.content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+    h1 {
+      margin-bottom: 1rem;
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      line-height: 1.03;
+      letter-spacing: -0.05em;
+    }
 
-  @media (max-width: $tablet) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.articles {
-  padding-top: 2rem;
-}
-
-.article {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  max-width: 680px;
-  border-bottom: 1px solid var(--border-color-2);
-  padding: 1rem 0;
-
-  & h2 {
-    margin-top: 0;
-  }
-
-  & p {
-    font-size: 0.875rem;
-  }
-
-  & img {
-    margin-left: 56px;
-    object-fit: contain;
-  }
-
-  @media (max-width: $tablet) {
-    & img {
-      width: 80px;
-      height: 53px;
+    > p:last-child {
+      color: var(--muted-text);
+      font-size: 1.08rem;
     }
   }
+}
+.eyebrow,
+.topic {
+  margin: 0 0 0.65rem;
+  color: var(--fancy-blue-light);
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.articleList {
+  display: grid;
+  border-top: 1px solid var(--subtle-border);
+
+  > a {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 1rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--subtle-border);
+    color: var(--text-color);
+    text-decoration: none;
+
+    &:hover h2 {
+      color: var(--fancy-blue-light);
+    }
+
+    h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+      transition: color 0.2s ease;
+    }
+
+    div > p:not(.topic) {
+      margin: 0;
+      color: var(--muted-text);
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.index {
+  color: var(--muted-text);
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.75rem;
+}
+
+.readLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+  color: var(--link-color);
+  font-size: 0.82rem;
+  font-weight: 600;
 }

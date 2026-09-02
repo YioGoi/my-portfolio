@@ -2,7 +2,7 @@
 
 import { Canvas } from '@react-three/fiber';
 import { usePathname } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { OrbitControls } from '@react-three/drei';
 import Tetrahedron from '../Tetrahedron';
 import Cube from '../Cube';
@@ -10,18 +10,12 @@ import Octahedron from '../Octahedron';
 import Dodecahedron from '../Dodecahedron';
 import Icosahedron from '../Icosahedron';
 import TriangularPrism from '../TriangularPrism';
-import { isTablet } from '@/utilities/responsive';
 
 import styles from './index.module.scss';
 
 const PlatonicObjects = () => {
   const pathname = usePathname();
   const [hovered, setHovered] = useState(false);
-  const [tablet, setTablet] = useState(false);
-
-  useEffect(() => {
-    setTablet(isTablet());
-  }, []);
 
   // Determine which solid to display based on the current route
   const solid = useMemo(() => {
@@ -66,7 +60,7 @@ const PlatonicObjects = () => {
   return (
     <Canvas
       style={{
-        width: `${tablet ? '250px' : '300px'}`,
+        width: '300px',
         height: '400px',
       }}
       className={styles.canvas}

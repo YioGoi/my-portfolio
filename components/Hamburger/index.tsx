@@ -7,14 +7,17 @@ export default function Hamburger() {
     const { showMobileMenu, setShowMobileMenu } = useMobileMenu();
 
     return (
-        <article
+        <button
+            type="button"
             className={`${styles.hamburger} ${showMobileMenu ? styles.open : ''}`}
             onClick={() => setShowMobileMenu(!showMobileMenu)}
-            aria-label="Toggle menu"
+            aria-label={showMobileMenu ? "Close menu" : "Open menu"}
+            aria-expanded={showMobileMenu}
+            aria-controls="mobile-navigation"
         >
             <span />
             <span />
             <span />
-        </article>
+        </button>
     );
 }

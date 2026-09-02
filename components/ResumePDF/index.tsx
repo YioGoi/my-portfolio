@@ -212,7 +212,7 @@ const ResumePDF = () => (
           Senior Frontend Engineer | React, TypeScript, Next.js
         </Text>
         <Text style={styles.locationLine}>
-          Arnhem, Netherlands | Open to Hybrid Roles across Utrecht & Amsterdam
+          İstanbul, Türkiye | Relocating to Croatia
         </Text>
         <Text style={styles.contactLine}>
           Email:{' '}
@@ -249,6 +249,8 @@ const ResumePDF = () => (
           management, performance optimization, accessibility, and automated
           testing. Experienced in integrating API-driven and real-time systems
           while working closely with product, design, and backend teams.
+
+          Relocating to Croatia through an EU-family residence route and seeking a long-term Croatia-based Senior Frontend position.
         </Text>
       </View>
 

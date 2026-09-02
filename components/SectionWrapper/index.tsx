@@ -18,6 +18,7 @@ interface SectionWrapperProps {
     variant?: 'slideUp' | 'slideLeft' | 'slideRight' | 'scaleUp' | 'fade';
     customSectionClass?: string; // Optional custom class for the section
     customLeftWrapperClass?: string; // Optional custom class for the left wrapper
+    customRightWrapperClass?: string;
 }
 
 const variants = {
@@ -53,6 +54,7 @@ export default function SectionWrapper({
     variant = 'slideUp', // default variant
     customSectionClass = '',
     customLeftWrapperClass = '',
+    customRightWrapperClass = '',
 }: SectionWrapperProps) {
     const { theme } = useTheme();
     const [showHint, setShowHint] = useState(false);
@@ -153,7 +155,7 @@ export default function SectionWrapper({
                     </div>
                 )}
             </div>
-            <div className={`${styles.section} ${styles.rightSection}`} ref={rightSectionRef}>
+            <div className={`${styles.section} ${styles.rightSection} ${customRightWrapperClass}`} ref={rightSectionRef}>
                 <span>
                     <Tooltip
                         content={<><TbCube /> Platonic solids represent perfect geometric structures.

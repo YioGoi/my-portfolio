@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Yiğit Doğan — Senior Frontend Engineer
 
-## Getting Started
+Portfolio built with Next.js, React, TypeScript, SCSS, Framer Motion, and Three.js. The site presents architecture-led frontend work, production foundations, selected writing, and contact information while retaining the original geometric visual language.
 
-First, run the development server:
+## Local development
+
+Requirements:
+
+- Node.js 20.9 or later (CI uses Node.js 24)
+- npm, using the committed `package-lock.json`
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quality gates
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm run build
+```
 
-## Learn More
+Run all checks in the same order as CI:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run check
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The content-policy tests protect the public location language, homepage location neutrality, Signal Ops SSE positioning, and flagship project links. GitHub Actions runs the full check on pull requests and pushes to `main`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The production script uses Next.js's supported webpack builder because the current Next.js 16.3.4 Turbopack builder stalls in this repository during optimisation; the webpack production build completes and prerenders all routes.
 
-## Deploy on Vercel
+## Content architecture
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `content/profile.ts`: personal profile, navigation, and production-foundation content.
+- `content/projects.ts`: flagship architecture case studies and supporting project links.
+- `content/writing.ts`: selected article metadata.
+- `plan.md`: implementation record and content guardrails.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The CV remains generated on demand from `components/ResumePDF/index.tsx`. There is no static CV PDF in `public/`.
+
+## Deployment
+
+No deployment is performed automatically by this repository task.
+
+### Vercel
+
+1. Push the reviewed changes to the GitHub repository.
+2. In Vercel, select **Add New → Project** and import `YioGoi/my-portfolio`.
+3. Keep the detected framework preset as **Next.js**.
+4. Use `npm ci` as the install command and `npm run build` as the build command; no environment variables are required by the current site.
+5. Deploy, then attach `www.yigit-dogan.dev` in **Project Settings → Domains**.
+6. Verify `/`, `/projects`, `/contact`, `/robots.txt`, and `/sitemap.xml`, and confirm the CV download in a browser.
+
+### Standard Node host
+
+```bash
+npm ci
+npm run check
+npm run start
+```
+
+The host should run Node.js 20.9 or later, expose the port supplied to Next.js, terminate HTTPS at the platform or reverse proxy, and set the production process to restart on failure.
