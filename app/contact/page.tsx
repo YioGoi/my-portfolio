@@ -9,7 +9,7 @@ import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact Yiğit Doğan about senior frontend engineering opportunities in Croatia.",
+  description: "Contact Yiğit Doğan about senior frontend engineering opportunities in Spain.",
 };
 
 export default function ContactPage() {

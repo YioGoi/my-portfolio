@@ -2,7 +2,7 @@
 
 ## Goal
 
-Position the site around senior frontend engineering for Croatia-based and Croatia-eligible opportunities while preserving the existing typography, geometric visual language, colour direction, and responsive character.
+Position the site around senior frontend engineering for Spain-based and Spain-eligible opportunities while preserving the existing typography, geometric visual language, colour direction, and responsive character.
 
 ## Verified baseline
 
@@ -38,8 +38,8 @@ Position the site around senior frontend engineering for Croatia-based and Croat
 ## Content guardrails
 
 - Homepage stays location-neutral.
-- Contact uses: “Based in Istanbul, Türkiye · Relocating to Croatia”.
-- No Croatia work-authorisation or sponsorship claim.
+- Contact uses: “Based in Istanbul, Türkiye · Relocating to Spain”.
+- No Spain work-authorisation or sponsorship claim.
 - No Arnhem or Amsterdam as a current personal location.
 - Signal Ops is described only as ordered/resumable Server-Sent Events (SSE), never WebSockets.
 - Measurements include their date/environment limitations and are not presented as hosted production results.

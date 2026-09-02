@@ -250,7 +250,7 @@ const ResumePDF = () => (
           testing. Experienced in integrating API-driven and real-time systems
           while working closely with product, design, and backend teams.
 
-          Relocating to Croatia through an EU-family residence route and seeking a long-term Croatia-based Senior Frontend position.
+          Relocating to Spain through an EU-family residence route and seeking a long-term Spain-based Senior Frontend position.
         </Text>
       </View>
 
