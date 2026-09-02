@@ -212,7 +212,7 @@ const ResumePDF = () => (
           Senior Frontend Engineer | React, TypeScript, Next.js
         </Text>
         <Text style={styles.locationLine}>
-          İstanbul, Türkiye | Relocating to Croatia
+          Istanbul, Türkiye | Relocating to Spain | Open to Remote & Hybrid Roles
         </Text>
         <Text style={styles.contactLine}>
           Email:{' '}
