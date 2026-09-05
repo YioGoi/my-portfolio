@@ -14,12 +14,12 @@ test("homepage leads with the senior frontend positioning and stays location-neu
   assert.doesNotMatch(homepage, /Istanbul|Netherlands|Arnhem|Amsterdam/);
 });
 
-test("contact publishes the approved relocation wording", async () => {
+test("contact publishes the approved location wording", async () => {
   const profile = await read("content/profile.ts");
 
   assert.match(
     profile,
-    /contactLocation: "Based in Arnhem, Netherlands"/,
+    /contactLocation: "Arnhem, Netherlands"/,
   );
   assert.doesNotMatch(profile, /No sponsorship required|authori[sz]ed to work in Netherlands/i);
 });
