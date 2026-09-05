@@ -2,7 +2,7 @@ export const profile = {
   name: "Yiğit Doğan",
   title: "Senior Frontend Engineer",
   currentLocation: "Istanbul, Türkiye",
-  relocationTarget: "Spain",
+  relocationTarget: "Arnhem, Netherlands",
   email: "ydogan.dev@gmail.com",
   phone: "+90 532 510 1204",
   portfolio: "https://www.yigit-dogan.dev",
@@ -17,7 +17,7 @@ export const profile = {
   ],
   summary:
     "I design and evolve frontend systems that make complex products reliable, accessible, and easier for teams to change.",
-  contactLocation: "Based in Istanbul, Türkiye · Relocating to Spain",
+  contactLocation: "Arnhem, Netherlands",
 } as const;
 
 export const navigation = [

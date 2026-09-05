@@ -11,7 +11,7 @@ test("homepage leads with the senior frontend positioning and stays location-neu
   assert.match(profile, /title: "Senior Frontend Engineer"/);
   assert.match(profile, /primaryStack: \["React", "TypeScript", "Next\.js"\]/);
   assert.match(homepage, /profile\.focusAreas\.join/);
-  assert.doesNotMatch(homepage, /Istanbul|Spain|Arnhem|Amsterdam/);
+  assert.doesNotMatch(homepage, /Istanbul|Netherlands|Arnhem|Amsterdam/);
 });
 
 test("contact publishes the approved relocation wording", async () => {
@@ -19,9 +19,9 @@ test("contact publishes the approved relocation wording", async () => {
 
   assert.match(
     profile,
-    /contactLocation: "Based in Istanbul, Türkiye · Relocating to Spain"/,
+    /contactLocation: "Based in Arnhem, Netherlands"/,
   );
-  assert.doesNotMatch(profile, /No sponsorship required|authori[sz]ed to work in Spain/i);
+  assert.doesNotMatch(profile, /No sponsorship required|authori[sz]ed to work in Netherlands/i);
 });
 
 test("Signal Ops is positioned around ordered resumable SSE", async () => {

@@ -202,7 +202,7 @@ const ResumePDF = () => (
     title="Yiğit Doğan - Senior Frontend Engineer"
     author="Yiğit Doğan"
     subject="Senior Frontend Engineer Resume"
-    keywords="Senior Frontend Engineer, React, TypeScript, Next.js, Amsterdam, EMEA Remote"
+    keywords="Senior Frontend Engineer, React, TypeScript, Next.js, Arnhem, Netherlands, EMEA Remote"
     language="en"
   >
     <Page size="A4" style={styles.page}>
@@ -212,7 +212,7 @@ const ResumePDF = () => (
           Senior Frontend Engineer | React, TypeScript, Next.js
         </Text>
         <Text style={styles.locationLine}>
-          Istanbul, Türkiye | Relocating to Spain | Open to Remote & Hybrid Roles
+          Arnhem, Netherlands | Open to Remote & Hybrid Roles
         </Text>
         <Text style={styles.contactLine}>
           Email:{' '}
@@ -250,7 +250,7 @@ const ResumePDF = () => (
           testing. Experienced in integrating API-driven and real-time systems
           while working closely with product, design, and backend teams.
 
-          Relocating to Spain through an EU-family residence route and seeking a long-term Spain-based Senior Frontend position.
+          Based in Arnhem, Netherlands and seeking a long-term Netherlands-based Senior Frontend position.
         </Text>
       </View>
 
