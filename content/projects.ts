@@ -15,17 +15,46 @@ export type FeaturedProject = {
   category: string;
   status: string;
   summary: string;
-  problem: string;
-  architecture: string;
   technologies: readonly string[];
-  decisions: readonly ProjectDecision[];
-  evidence: readonly ProjectEvidence[];
-  evidenceNote: string;
-  sourceUrl: string;
-  documentationUrl: string;
-};
+  sourceVisibility?: "public" | "private";
+  sourceUrl?: string;
+  documentationUrl?: string;
+  heroImage?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+} & (
+  | { presentation: "compact" }
+  | {
+      presentation?: "expanded";
+      problem: string;
+      architecture: string;
+      decisions: readonly ProjectDecision[];
+      evidence: readonly ProjectEvidence[];
+      evidenceNote: string;
+    }
+);
 
-export const featuredProjects = [
+export const featuredProjects: readonly FeaturedProject[] = [
+  {
+    slug: "mind-palace",
+    title: "Mind Palace",
+    category: "iOS personal organization app",
+    status: "In development",
+    summary:
+      "An iOS-first app for capturing thoughts, organizing notes by context, and setting reminders, with AI-assisted organization that keeps users in control of suggested changes.",
+    technologies: ["React Native", "Expo", "TypeScript", "Zustand", "SQLite"],
+    presentation: "compact",
+    sourceVisibility: "private",
+    heroImage: {
+      src: "/images/mind-palace-hero-banner.png",
+      alt: "Mind Palace splash artwork: a doorway into a library, with “Welcome to Mind Palace” and “This is your own space.”",
+      width: 467,
+      height: 231,
+    },
+  },
   {
     slug: "atlas",
     title: "Atlas",
@@ -133,7 +162,7 @@ export const featuredProjects = [
     sourceUrl: "https://github.com/YioGoi/signal-ops",
     documentationUrl: "https://github.com/YioGoi/signal-ops/tree/main/docs",
   },
-] as const satisfies readonly FeaturedProject[];
+] as const;
 
 export const supportingProjects = [
   {

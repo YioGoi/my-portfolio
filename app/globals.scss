@@ -53,6 +53,7 @@
 }
 
 html {
+  scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--text-color) transparent;
 }

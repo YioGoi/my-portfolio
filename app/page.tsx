@@ -83,27 +83,40 @@ export default function HomePage() {
               </div>
               <h3>{project.title}</h3>
               <p>{project.summary}</p>
-              <div className={styles.architecturePreview}>
-                <strong>Architecture</strong>
-                <span>{project.architecture}</span>
-              </div>
-              <dl className={styles.evidenceGrid}>
-                {project.evidence.map((item) => (
-                  <div key={item.label}>
-                    <dt>{item.label}</dt>
-                    <dd>{item.value}</dd>
+              {project.presentation !== "compact" && (
+                <>
+                  <div className={styles.architecturePreview}>
+                    <strong>Architecture</strong>
+                    <span>{project.architecture}</span>
                   </div>
-                ))}
-              </dl>
-              <p className={styles.evidenceNote}>{project.evidenceNote}</p>
+                  {project.evidence.length > 0 && (
+                    <>
+                      <dl className={styles.evidenceGrid}>
+                        {project.evidence.map((item) => (
+                          <div key={item.label}>
+                            <dt>{item.label}</dt>
+                            <dd>{item.value}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                      <p className={styles.evidenceNote}>{project.evidenceNote}</p>
+                    </>
+                  )}
+                </>
+              )}
               <div className={styles.cardLinks}>
                 <Link href={`/projects#${project.slug}`}>
-                  Read decisions <FaArrowRight aria-hidden="true" />
+                  {project.presentation === "compact" ? "Project overview" : "Read decisions"}{" "}
+                  <FaArrowRight aria-hidden="true" />
                 </Link>
-                <Link href={project.sourceUrl} target="_blank" rel="noopener noreferrer">
-                  <FaGithub aria-hidden="true" /> Source
-                  <span className="sr-only"> (opens in a new tab)</span>
-                </Link>
+                {project.sourceVisibility === "private" ? (
+                  <span>Private repository</span>
+                ) : project.sourceUrl ? (
+                  <Link href={project.sourceUrl} target="_blank" rel="noopener noreferrer">
+                    <FaGithub aria-hidden="true" /> Source
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </Link>
+                ) : null}
               </div>
             </article>
           ))}
