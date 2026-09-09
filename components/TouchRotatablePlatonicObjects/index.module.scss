@@ -1,0 +1,100 @@
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  border-radius: 12px;
+
+  &:focus-visible {
+    outline: 2px solid var(--fancy-blue-light);
+    outline-offset: 3px;
+  }
+}
+
+.hintPosition {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  animation: hintReveal 0.25s ease-out both;
+}
+
+.hint {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: calc(100% - 1rem);
+  padding: 0 0.125rem 0 0.875rem;
+  border: 1px solid var(--subtle-border);
+  border-radius: 12px;
+  background: var(--background);
+  color: var(--text-color);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  pointer-events: auto;
+  animation: hintBounce 1.8s ease-in-out infinite;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: calc(50% - 4px);
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid var(--subtle-border);
+    border-left: 1px solid var(--subtle-border);
+    background: var(--background);
+    transform: rotate(45deg);
+  }
+
+  &:focus-within {
+    animation-play-state: paused;
+  }
+}
+
+.hintIcon {
+  flex: 0 0 auto;
+  color: var(--fancy-blue-light);
+  font-size: 1rem;
+}
+
+.dismissHint {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted-text);
+  font-size: 1rem;
+  pointer-events: auto;
+}
+
+@keyframes hintReveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes hintBounce {
+  0%, 100% { transform: translateY(-5px); }
+  45%, 75% { transform: translateY(0); }
+  60% { transform: translateY(-2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hintPosition,
+  .hint {
+    animation: none;
+  }
+}

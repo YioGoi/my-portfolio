@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { BsChevronDoubleUp } from 'react-icons/bs';
 import { FaChevronDown } from 'react-icons/fa';
 import { motion, useReducedMotion } from 'framer-motion';
-import PlatonicObjects from '@/components/PlatonicObjects';
+import TouchRotatablePlatonicObjects from '@/components/TouchRotatablePlatonicObjects';
 import { useObjectScene } from '@/context/ObjectSceneContext';
 
 import styles from './index.module.scss';
@@ -80,7 +80,7 @@ export default function SectionWrapper({
             <div className={styles.objectAnchor} ref={registerAnchor}>
                 {!interactive && (
                     <div className={styles.passiveObject}>
-                        <PlatonicObjects />
+                        <TouchRotatablePlatonicObjects />
                     </div>
                 )}
             </div>
