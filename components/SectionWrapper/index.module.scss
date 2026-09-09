@@ -1,126 +1,117 @@
 @use "../../app/variables" as *;
 
 .sectionWrapper {
-  display: flex;
-  flex-direction: row; /* Arrange items horizontally */
-  justify-content: space-between; /* Optional: adds space between items */
-  align-items: stretch; /* Ensures items have equal height */
-  padding: 4rem 2rem;
-  margin: 0 auto;
-  max-width: 1240px;
-  gap: 2rem;
-
-  @media (max-width: $tablet) {
-    flex-direction: column;
-    padding: 4rem 1rem 1rem;
-    gap: 0;
-  }
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1; /* Each item takes equal width */
-  padding: 1rem;
-  text-align: justify;
-}
-
-.leftSection {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
+  --shape-space: 320px;
   position: relative;
+  box-sizing: border-box;
+  width: min(100% - 4rem, 1240px);
+  min-height: 420px;
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
 }
 
-.rightSection {
-  display: flex;
-  justify-content: flex-start;
+.objectAnchor {
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  width: min(280px, 100%);
+  height: 280px;
+  pointer-events: none;
+}
 
-  & span {
-    position: sticky;
-    top: 100px;
+.passiveObject {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 769px) and (pointer: fine) {
+  .passiveObject {
+    display: none;
   }
+}
+
+.contentFrame {
+  box-sizing: border-box;
+  position: relative;
+  width: calc(100% - var(--shape-space));
+  min-width: 0;
+  margin-left: auto;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contentFrame > .contentSection {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+.sectionWrapper[data-content-expanded="true"] .contentFrame {
+  width: 100%;
 }
 
 .scrollHint {
   position: fixed;
-  padding: 1rem;
+  box-sizing: border-box;
   bottom: 0;
-  z-index: 2;
-  opacity: 0.8;
-  text-align: center;
-  background: var(--background);
-
-  button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: black;
-    transition: transform 0.2s ease;
-
-    &:hover {
-      transform: scale(1.2);
-      opacity: 0.8;
-    }
-  }
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  pointer-events: none;
 }
 
-.arrowButton {
-  animation: glimpseBounce 1s ease-in-out infinite;
-  animation-delay: 1s;
-  animation-iteration-count: 6; // bounce a few times then stop
-
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: black;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
+.arrowButton,
+.backToTop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--subtle-border);
+  border-radius: 50%;
+  background: var(--background);
+  color: var(--text-color);
+  font-size: 1rem;
+  pointer-events: auto;
 
   &:hover {
-    transform: scale(1.2);
-    opacity: 0.8;
+    border-color: var(--fancy-blue-light);
   }
-}
-
-.textContent {
-  flex: 1;
-  text-align: left;
 }
 
 .backToTop {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--fancy-blue-dark);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 0.75rem;
-  cursor: pointer;
-  font-size: 1.2rem;
-  opacity: 0.8;
-  z-index: 1000;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 3;
+}
 
-  &:hover {
-    opacity: 1;
-    transform: scale(1.1);
-    transition: 0.2s ease;
+@media (max-width: $laptop) {
+  .sectionWrapper {
+    --shape-space: 280px;
   }
 }
 
-@keyframes glimpseBounce {
-  0%,
-  100% {
-    transform: translateY(0);
+@media (max-width: $tablet) {
+  .sectionWrapper {
+    width: calc(100% - 2rem);
+    padding-top: 1rem;
   }
-  50% {
-    transform: translateY(6px);
+
+  .objectAnchor {
+    top: 1rem;
+  }
+
+  .contentFrame {
+    width: 100%;
+    padding-top: 300px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contentFrame {
+    transition: none;
   }
 }

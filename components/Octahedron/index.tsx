@@ -5,12 +5,12 @@ import { useTheme } from '@/context/ThemeContext';
 import { useFrame } from '@react-three/fiber';
 import { Mesh } from 'three';
 
-const Octahedron = () => {
+const Octahedron = ({ autoRotate = true }: { autoRotate?: boolean }) => {
   const meshRef = useRef<Mesh>(null);
   const { theme } = useTheme();
 
   useFrame(() => {
-    if (meshRef.current) {
+    if (autoRotate && meshRef.current) {
       meshRef.current.rotation.x += 0.01;
     }
   });

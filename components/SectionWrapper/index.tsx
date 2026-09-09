@@ -1,179 +1,116 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
-import { useTheme } from '@/context/ThemeContext';
-import { FaChevronDown } from 'react-icons/fa';
-import { TbCube } from 'react-icons/tb';
+import { useEffect, useRef, useState } from 'react';
 import { BsChevronDoubleUp } from 'react-icons/bs';
-import { motion } from 'framer-motion';
+import { FaChevronDown } from 'react-icons/fa';
+import { motion, useReducedMotion } from 'framer-motion';
 import PlatonicObjects from '@/components/PlatonicObjects';
-import Tooltip from '../Tooltip';
-import { isTablet } from '@/utilities/responsive';
-
+import { useObjectScene } from '@/context/ObjectSceneContext';
 
 import styles from './index.module.scss';
 
 interface SectionWrapperProps {
     children: React.ReactNode;
     variant?: 'slideUp' | 'slideLeft' | 'slideRight' | 'scaleUp' | 'fade';
-    customSectionClass?: string; // Optional custom class for the section
-    customLeftWrapperClass?: string; // Optional custom class for the left wrapper
-    customRightWrapperClass?: string;
+    customSectionClass?: string;
 }
 
 const variants = {
-    slideUp: {
-        initial: { opacity: 0, y: 30 },
-        animate: { opacity: 1, y: 0 },
-        exit: { opacity: 0, y: -30 },
-    },
-    slideLeft: {
-        initial: { opacity: 0, x: -50 },
-        animate: { opacity: 1, x: 0 },
-        exit: { opacity: 0, x: -50 },
-    },
-    slideRight: {
-        initial: { opacity: 0, x: 50 },
-        animate: { opacity: 1, x: 0 },
-        exit: { opacity: 0, x: 50 },
-    },
-    scaleUp: {
-        initial: { opacity: 0, scale: 0.95 },
-        animate: { opacity: 1, scale: 1 },
-        exit: { opacity: 0, scale: 1.05 },
-    },
-    fade: {
-        initial: { opacity: 0 },
-        animate: { opacity: 1 },
-        exit: { opacity: 0 },
-    },
+    slideUp: { opacity: 0, y: 30 },
+    slideLeft: { opacity: 0, x: 50 },
+    slideRight: { opacity: 0, x: -50 },
+    scaleUp: { opacity: 0, scale: 0.95 },
+    fade: { opacity: 0 },
 };
 
 export default function SectionWrapper({
     children,
-    variant = 'slideUp', // default variant
+    variant = 'slideLeft',
     customSectionClass = '',
-    customLeftWrapperClass = '',
-    customRightWrapperClass = '',
 }: SectionWrapperProps) {
-    const { theme } = useTheme();
-    const [showHint, setShowHint] = useState(false);
-    const [leftPos, setLeftPos] = useState({ left: 0, width: 0 });
+    const reducedMotion = useReducedMotion();
+    const { expanded, interactive, registerAnchor } = useObjectScene();
+    const [scrollHint, setScrollHint] = useState({ visible: false, left: 0, width: 0 });
     const [showTopButton, setShowTopButton] = useState(false);
-    const motionVariant = variants[variant];
     const contentRef = useRef<HTMLDivElement>(null);
-    const rightSectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const handleScroll = () => {
-            const yOffset = window.pageYOffset;
-            setShowTopButton(yOffset > 300);
+        const content = contentRef.current;
+        if (!content) return;
+
+        let frame = 0;
+        const measure = () => {
+            const bounds = content.getBoundingClientRect();
+            const visible = bounds.height > window.innerHeight && bounds.bottom > window.innerHeight + 48;
+            setScrollHint(previous => (
+                previous.visible === visible && previous.left === bounds.left && previous.width === bounds.width
+                    ? previous
+                    : { visible, left: bounds.left, width: bounds.width }
+            ));
+            setShowTopButton(window.scrollY > 300);
         };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    useEffect(() => {
-        const el = contentRef.current;
-        const rightEl = rightSectionRef.current;
-        if (!el || !rightEl) return;
-
-        const checkOverflowAndScroll = () => {
-            const bounds = el.getBoundingClientRect();
-
-            // Save left width/position
-            setLeftPos(prev => {
-                const same = prev.left === bounds.left && prev.width === bounds.width;
-                return same ? prev : { left: bounds.left, width: bounds.width };
-            });
-
-            const offsetHeight = isTablet() ? el.offsetHeight + rightEl.offsetHeight : el.offsetHeight;
-            const overflows = offsetHeight > window.innerHeight;
-            const bottomVisible = bounds.bottom <= window.innerHeight;
-            const shouldShow = overflows && !bottomVisible;
-
-            setShowHint(prev => (prev !== shouldShow ? shouldShow : prev));
+        const scheduleMeasure = () => {
+            cancelAnimationFrame(frame);
+            frame = requestAnimationFrame(measure);
         };
-
-        checkOverflowAndScroll();
-
-        window.addEventListener('scroll', checkOverflowAndScroll);
-        window.addEventListener('resize', checkOverflowAndScroll);
+        const observer = new ResizeObserver(scheduleMeasure);
+        observer.observe(content);
+        scheduleMeasure();
+        window.addEventListener('scroll', scheduleMeasure, { passive: true });
+        window.addEventListener('resize', scheduleMeasure);
         return () => {
-            window.removeEventListener('scroll', checkOverflowAndScroll);
-            window.removeEventListener('resize', checkOverflowAndScroll);
+            cancelAnimationFrame(frame);
+            observer.disconnect();
+            window.removeEventListener('scroll', scheduleMeasure);
+            window.removeEventListener('resize', scheduleMeasure);
         };
     }, []);
-
-    const scrollToTop = () => {
-        if (typeof window === 'undefined') {
-            return;
-        }
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
 
     const scrollToBottom = () => {
-        if (typeof window === 'undefined') {
-            return;
-        }
-        if (contentRef.current) {
-            window.scrollTo({
-                top: contentRef.current.scrollHeight,
-                behavior: 'smooth',
-            });
-        }
+        const content = contentRef.current;
+        if (!content) return;
+        window.scrollTo({
+            top: window.scrollY + content.getBoundingClientRect().bottom - window.innerHeight,
+            behavior: reducedMotion ? 'instant' : 'smooth',
+        });
     };
 
     return (
-        <div className={styles.sectionWrapper}>
-            <div
-                className={`${styles.section} ${styles.leftSection} ${customLeftWrapperClass}`}
-                ref={contentRef}
-            >
-                <motion.section
-                    initial={motionVariant.initial}
-                    animate={motionVariant.animate}
-                    exit={motionVariant.exit}
-                    className={customSectionClass}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
-                >
-                    {children}
-                </motion.section>
-
-                {showHint && (
-                    <div
-                        className={styles.scrollHint}
-                        style={{
-                            left: leftPos.left,
-                            width: leftPos.width,
-                        }}
-                    >
-                        <button onClick={scrollToBottom} className={styles.arrowButton}>
-                            <FaChevronDown style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }} />
-                        </button>
+        <div className={styles.sectionWrapper} data-content-expanded={expanded}>
+            <div className={styles.objectAnchor} ref={registerAnchor}>
+                {!interactive && (
+                    <div className={styles.passiveObject}>
+                        <PlatonicObjects />
                     </div>
                 )}
             </div>
-            <div className={`${styles.section} ${styles.rightSection} ${customRightWrapperClass}`} ref={rightSectionRef}>
-                <span>
-                    <Tooltip
-                        content={<><TbCube /> Platonic solids represent perfect geometric structures.
-                            I like using them as a metaphor for system design and architecture.
-                            You can interact by clicking and dragging them.</>}
-                        position="bottom"
-                        oneTime={true}
-                        autoShow={true}
-                        id="platonic-objects-tooltip"
-                        objectsTooltip={true}
-                    >
-                        <PlatonicObjects />
-                    </Tooltip>
-                </span>
+
+            <div className={styles.contentFrame} ref={contentRef}>
+                <motion.section
+                    initial={reducedMotion ? false : variants[variant]}
+                    animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                    className={`${styles.contentSection} ${customSectionClass}`}
+                    transition={{ duration: reducedMotion ? 0 : 0.6, ease: 'easeOut' }}
+                >
+                    {children}
+                </motion.section>
             </div>
+
+            {scrollHint.visible && (
+                <div className={styles.scrollHint} style={{ left: scrollHint.left, width: scrollHint.width }}>
+                    <button type="button" onClick={scrollToBottom} className={styles.arrowButton} aria-label="Scroll to end of content">
+                        <FaChevronDown aria-hidden="true" />
+                    </button>
+                </div>
+            )}
             {showTopButton && (
-                <button onClick={scrollToTop} className={styles.backToTop}>
-                    <BsChevronDoubleUp />
+                <button
+                    type="button"
+                    onClick={() => window.scrollTo({ top: 0, behavior: reducedMotion ? 'instant' : 'smooth' })}
+                    className={styles.backToTop}
+                    aria-label="Back to top"
+                >
+                    <BsChevronDoubleUp aria-hidden="true" />
                 </button>
             )}
         </div>

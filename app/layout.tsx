@@ -5,6 +5,7 @@ import '@fontsource/poppins/600.css';
 import '@fontsource/poppins/700.css';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { MobileMenuProvider } from '@/context/MobileMenuContext';
+import { ObjectSceneProvider } from '@/context/ObjectSceneContext';
 import NavBar from "@/components/NavBar";
 import MobileNavMenu from "@/components/MobileNavMenu";
 import InteractiveDotBackground from "@/components/InteractiveDotBackground";
@@ -53,10 +54,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <ThemeProvider>
           <MobileMenuProvider>
-            <InteractiveDotBackground />
-            <NavBar items={[...navigation]} />
-            <main id="main-content">{children}</main>
-            <MobileNavMenu items={[...navigation]} />
+            <ObjectSceneProvider>
+              <InteractiveDotBackground />
+              <NavBar items={[...navigation]} />
+              <main id="main-content">{children}</main>
+              <MobileNavMenu items={[...navigation]} />
+            </ObjectSceneProvider>
           </MobileMenuProvider>
         </ThemeProvider>
         <script

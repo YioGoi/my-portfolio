@@ -14,9 +14,7 @@ export default function HomePage() {
   return (
     <SectionWrapper
       variant="slideUp"
-      customLeftWrapperClass={styles.homeLeftWrapper}
       customSectionClass={styles.homeContent}
-      customRightWrapperClass={styles.homeVisual}
     >
       <header className={styles.hero}>
         <div className={styles.identityRow}>

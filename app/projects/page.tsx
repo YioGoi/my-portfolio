@@ -18,9 +18,7 @@ export default function ProjectsPage() {
   return (
     <SectionWrapper
       variant="slideUp"
-      customLeftWrapperClass={styles.projectsLeftWrapper}
       customSectionClass={styles.projectsSection}
-      customRightWrapperClass={styles.projectsVisual}
     >
       <header className={styles.pageHeader}>
         <p className={styles.eyebrow}>Selected engineering work</p>

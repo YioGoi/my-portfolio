@@ -5,7 +5,7 @@ import { useTheme } from '@/context/ThemeContext';
 import { useFrame } from '@react-three/fiber';
 import { BufferGeometry, Float32BufferAttribute, Mesh } from 'three';
 
-const TriangularPrism = () => {
+const TriangularPrism = ({ autoRotate = true }: { autoRotate?: boolean }) => {
   const meshRef = useRef<Mesh>(null);
   const { theme } = useTheme();
 
@@ -44,7 +44,7 @@ const TriangularPrism = () => {
   geometry.computeVertexNormals();
 
   useFrame(() => {
-    if (meshRef.current) {
+    if (autoRotate && meshRef.current) {
       meshRef.current.rotation.y += 0.008;
     }
   });

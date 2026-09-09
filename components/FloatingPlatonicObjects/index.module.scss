@@ -1,0 +1,121 @@
+.layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.panel {
+  --object-size: min(280px, calc(100dvh - 132px), calc(100vw - 32px));
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--object-size);
+  height: calc(var(--object-size) + 40px);
+  pointer-events: none;
+  user-select: none;
+  border-radius: 16px;
+
+  &:focus-visible {
+    outline: 2px solid var(--fancy-blue-light);
+    outline-offset: 3px;
+  }
+
+  &[data-pointer-focus='true']:focus-visible {
+    outline: none;
+  }
+
+  &[data-hovered='true'] .controls,
+  &:focus-within .controls,
+  .controls:hover {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.objectBody {
+  width: 100%;
+  height: var(--object-size);
+  pointer-events: none;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  max-width: 100%;
+  width: max-content;
+  margin: 0 auto;
+  padding: 0.15rem;
+  border: 1px solid var(--subtle-border);
+  border-radius: 8px;
+  background: var(--surface-strong);
+  opacity: 0;
+  pointer-events: none;
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--text-color);
+    font: inherit;
+
+    &:hover {
+      background: var(--accent-soft);
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+}
+
+.hint {
+  padding-left: 0.3rem;
+  color: var(--muted-text);
+  font-size: 0.6rem;
+  line-height: 1.2;
+}
+
+.showButton {
+  position: absolute;
+  top: 86px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 36px;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--subtle-border);
+  border-radius: 8px;
+  background: var(--surface-strong);
+  color: var(--text-color);
+  font: inherit;
+  font-size: 0.75rem;
+  pointer-events: auto;
+}
+
+.grabCursor,
+.grabCursor * {
+  cursor: grab !important;
+}
+
+.activeCursor,
+.activeCursor * {
+  cursor: grabbing !important;
+}
+
+@media (max-width: 768px), (pointer: coarse), (pointer: none) {
+  .layer {
+    display: none;
+  }
+}

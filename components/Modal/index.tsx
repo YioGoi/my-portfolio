@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './index.module.scss';
 
 interface ModalProps {
@@ -12,14 +13,15 @@ interface ModalProps {
 export default function Modal({ isOpen, onClose, children }: ModalProps) {
   if (!isOpen) return null;
 
-  return (
-    <div className={styles.modal} onClick={onClose}>
+  return createPortal(
+    <div className={styles.modal} onClick={onClose} data-object-interaction-blocked>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}>
+        <button type="button" className={styles.closeButton} onClick={onClose} aria-label="Close image preview">
           ×
         </button>
         {children}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

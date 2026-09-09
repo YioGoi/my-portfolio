@@ -1,15 +1,5 @@
 @use "./variables" as *;
 
-.homeLeftWrapper {
-  flex: 1.75;
-  align-items: stretch;
-  overflow: visible;
-}
-
-.homeVisual {
-  flex: 0.75;
-}
-
 .homeContent {
   width: 100%;
   max-width: 800px;
@@ -410,10 +400,6 @@
 }
 
 @media (max-width: $tablet) {
-  .homeVisual {
-    display: none;
-  }
-
   .hero {
     padding-top: 1rem;
   }
