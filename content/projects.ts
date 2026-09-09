@@ -51,8 +51,8 @@ export const featuredProjects: readonly FeaturedProject[] = [
     heroImage: {
       src: "/images/mind-palace-hero-banner.png",
       alt: "Mind Palace splash artwork: a doorway into a library, with “Welcome to Mind Palace” and “This is your own space.”",
-      width: 467,
-      height: 231,
+      width: 238,
+      height: 313,
     },
   },
   {
