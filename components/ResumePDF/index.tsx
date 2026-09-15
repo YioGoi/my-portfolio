@@ -212,6 +212,9 @@ const ResumePDF = () => (
           Senior Frontend Engineer | React, TypeScript, Next.js
         </Text>
         <Text style={styles.locationLine}>
+          Technical Leadership · Mentoring · Product Ownership
+        </Text>
+        <Text style={styles.locationLine}>
           Arnhem, Netherlands | Open to Remote & Hybrid Roles
         </Text>
         <Text style={styles.contactLine}>
@@ -242,15 +245,20 @@ const ResumePDF = () => (
       <View style={styles.section}>
         <Text style={styles.sectionHeading}>Professional Summary</Text>
         <Text style={styles.summary}>
-          Senior Frontend Engineer with 12+ years of experience building and
-          modernizing production web applications with React, TypeScript,
-          Next.js, and JavaScript. Specialized in frontend architecture,
-          reusable component systems, data-intensive interfaces, state
-          management, performance optimization, accessibility, and automated
-          testing. Experienced in integrating API-driven and real-time systems
-          while working closely with product, design, and backend teams.
+          Senior Frontend Engineer with 12+ years of experience building web
+          products with React, TypeScript and Next.js. Experience includes
+          frontend leadership at Kafein and NTT Data, developer mentoring, and
+          founding Noviente and Ofism.com. Combines hands-on engineering with
+          architectural decisions, product delivery, and teaching React and
+          functional programming.
+        </Text>
+      </View>
 
-          Based in Arnhem, Netherlands and seeking a long-term Netherlands-based Senior Frontend position.
+      <View style={styles.section}>
+        <Text style={styles.skillText}>
+          <Text style={styles.skillLabel}>Teaching & Mentoring: </Text>
+          Delivered regular presentations and training sessions on React and
+          functional programming to different teams.
         </Text>
       </View>
 
@@ -376,9 +384,9 @@ const ResumePDF = () => (
           location="Istanbul, Türkiye (Remote)"
           period="2021 - 2022"
           bullets={[
-            'Led frontend engineering decisions for enterprise React applications used across multiple internal products.',
+            'Led frontend technical decisions and defined reusable architecture for enterprise React applications across multiple internal products.',
+            'Mentored frontend developers through code reviews, pair programming and architectural guidance.',
             'Built modular UI architecture with React and Redux-Saga to support scalable reuse across teams.',
-            'Mentored frontend developers through code reviews and architectural guidance, improving implementation consistency and code quality.',
           ]}
         />
 
@@ -388,9 +396,35 @@ const ResumePDF = () => (
           location="Istanbul, Türkiye (Onsite / Remote)"
           period="2019 - 2021"
           bullets={[
-            'Developed enterprise web and mobile interfaces with React and React Native integrated with .NET services.',
+            'Served as frontend lead for enterprise React applications integrated with .NET services, guiding frontend technical decisions and establishing shared routing and state-management patterns.',
+            'Developed mobile interfaces with React Native integrated with .NET services.',
             'Implemented JWT-based authentication and role-based access control for secure product workflows.',
-            'Established reusable routing and state-management patterns across large product modules.',
+          ]}
+        />
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionHeading}>Product & Entrepreneurship</Text>
+
+        <ExperienceEntry
+          role="Co-founder & Full-stack Developer"
+          company="Noviente Informatics Systems"
+          location="Izmir, Türkiye"
+          period="2015 - 2018"
+          bullets={[
+            'Co-founded the company and delivered client products from concept to deployment, combining product design, client communication and hands-on development.',
+            'Built React and React Native interfaces, Node.js services, admin dashboards and e-commerce automation workflows.',
+          ]}
+        />
+
+        <ExperienceEntry
+          role="Founder & Full-stack Developer"
+          company="Ofism.com"
+          location="Izmir, Türkiye"
+          period="2013 - 2015"
+          bullets={[
+            'Founded and built an e-commerce platform, taking responsibility for development and product delivery.',
+            'Developed the platform with OpenCart and custom frontend components, supporting growth to 1,000+ monthly orders.',
           ]}
         />
       </View>
@@ -415,27 +449,11 @@ const ResumePDF = () => (
         />
 
         <EarlierExperienceEntry
-          role="Co-founder & Full-stack Developer"
-          company="Noviente Informatics Systems"
-          location="Izmir, Türkiye"
-          period="2015 - 2018"
-          description="Co-founded the company and delivered React and React Native interfaces, Node.js services, admin dashboards, and e-commerce automation workflows."
-        />
-
-        <EarlierExperienceEntry
           role="Web Developer"
           company="ROS Inc."
           location="Izmir, Türkiye"
           period="2015 - 2017"
           description="Built responsive React and TypeScript websites with Google Maps and advertising API integrations, focusing on SEO and lead generation."
-        />
-
-        <EarlierExperienceEntry
-          role="Founder & Full-stack Developer"
-          company="Ofism.com"
-          location="Izmir, Türkiye"
-          period="2013 - 2015"
-          description="Founded and developed an e-commerce platform using OpenCart and custom frontend components, supporting growth to 1,000+ monthly orders."
         />
 
         <EarlierExperienceEntry
