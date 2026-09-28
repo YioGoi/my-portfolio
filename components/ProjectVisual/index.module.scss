@@ -1,0 +1,26 @@
+.visual {
+  margin: 1.5rem 0 0;
+
+  figcaption {
+    margin-top: 0.8rem;
+    color: var(--muted-text);
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+}
+
+.frame {
+  overflow: hidden;
+  padding: clamp(0.3rem, 1vw, 0.6rem);
+  border: 1px solid var(--subtle-border);
+  border-radius: 14px;
+  background: var(--surface-strong);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.14), 0 0 32px var(--accent-soft);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+}

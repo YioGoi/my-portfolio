@@ -4,6 +4,8 @@ import Link from "next/link";
 import { FaArrowRight, FaBookOpen, FaGithub } from "react-icons/fa";
 
 import SectionWrapper from "@/components/SectionWrapper";
+import ProjectShowcase from "@/components/ProjectShowcase";
+import ProjectVisual from "@/components/ProjectVisual";
 import { featuredProjects, supportingProjects } from "@/content/projects";
 
 import styles from "./page.module.scss";
@@ -11,7 +13,7 @@ import styles from "./page.module.scss";
 export const metadata: Metadata = {
   title: "Products, Systems, and Decisions",
   description:
-    "Mind Palace, Atlas, and Signal Ops: mobile product development and frontend architecture, including Next.js rendering, ordered Server-Sent Events, accessibility, and testing.",
+    "AI Team, Mind Palace, Atlas, and Signal Ops: AI agent orchestration, mobile product development, and frontend architecture with explicit control, validation, and human review.",
 };
 
 export default function ProjectsPage() {
@@ -24,8 +26,8 @@ export default function ProjectsPage() {
         <p className={styles.eyebrow}>Selected engineering work</p>
         <h1>Products, systems, and decisions</h1>
         <p>
-          An iOS app in development alongside focused frontend case studies exploring rendering,
-          live data, failure recovery, and measurable quality.
+          AI agent orchestration, an iOS app in development, and frontend case studies
+          exploring rendering, live data, failure recovery, and measurable quality.
         </p>
       </header>
 
@@ -41,17 +43,20 @@ export default function ProjectsPage() {
       <div className={styles.caseStudies}>
         {featuredProjects.map((project, projectIndex) => (
           <article className={styles.caseStudy} id={project.slug} key={project.slug}>
-            <header className={styles.caseHeader}>
+            <header className={`${styles.caseHeader} ${project.featured ? styles.featuredHeader : ""}`}>
               <div>
                 <p className={styles.eyebrow}>
-                  0{projectIndex + 1} · {project.category}
+                  0{projectIndex + 1} · {project.featured ? "Featured · " : ""}{project.category}
                 </p>
                 <h2>{project.title}</h2>
+                {project.subtitle && <p className={styles.subtitle}>{project.subtitle}</p>}
               </div>
               <span className={styles.status}>{project.status}</span>
             </header>
 
-            {project.heroImage && (
+            {project.heroImage && (project.featured ? (
+              <ProjectVisual image={project.heroImage} />
+            ) : (
               <Image
                 className={styles.projectHero}
                 src={project.heroImage.src}
@@ -59,11 +64,15 @@ export default function ProjectsPage() {
                 width={project.heroImage.width}
                 height={project.heroImage.height}
               />
-            )}
+            ))}
 
             <p className={styles.summary}>{project.summary}</p>
 
-            {project.presentation !== "compact" && (
+            {project.presentation === "showcase" && (
+              <ProjectShowcase showcase={project.showcase} slug={project.slug} />
+            )}
+
+            {project.presentation !== "compact" && project.presentation !== "showcase" && (
               <>
                 <div className={styles.contextGrid}>
                   <section aria-labelledby={`${project.slug}-problem`}>
@@ -126,13 +135,13 @@ export default function ProjectsPage() {
                 <span>Private repository</span>
               ) : project.sourceUrl ? (
                 <Link href={project.sourceUrl} target="_blank" rel="noopener noreferrer">
-                  <FaGithub aria-hidden="true" /> View source
+                  <FaGithub aria-hidden="true" /> {project.featured ? "GitHub" : "View source"}
                   <span className="sr-only"> (opens in a new tab)</span>
                 </Link>
               ) : null}
               {project.documentationUrl && (
                 <Link href={project.documentationUrl} target="_blank" rel="noopener noreferrer">
-                  <FaBookOpen aria-hidden="true" /> Read project documentation
+                  <FaBookOpen aria-hidden="true" /> {project.featured ? "Architecture" : "Read project documentation"}
                   <span className="sr-only"> (opens in a new tab)</span>
                 </Link>
               )}

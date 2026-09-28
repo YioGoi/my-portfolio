@@ -101,6 +101,18 @@
   font-size: 0.7rem;
 }
 
+.featuredHeader {
+  border-bottom-color: var(--fancy-blue);
+}
+
+.subtitle {
+  max-width: 36rem;
+  margin: 1rem 0 0;
+  color: var(--muted-text);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  letter-spacing: -0.02em;
+}
+
 .projectHero {
   display: block;
   width: 238px;

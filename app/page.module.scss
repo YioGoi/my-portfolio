@@ -222,6 +222,18 @@
   text-transform: uppercase;
 }
 
+.featuredCard {
+  border-color: var(--fancy-blue);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), inset 0 3px 0 var(--fancy-blue);
+}
+
+.projectCard > .projectSubtitle {
+  margin-top: 0;
+  color: var(--text-color);
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
 .architecturePreview {
   display: grid;
   gap: 0.4rem;

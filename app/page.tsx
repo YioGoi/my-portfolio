@@ -4,6 +4,7 @@ import { FaArrowRight, FaGithub } from "react-icons/fa";
 
 import DownloadResumeButton from "@/components/DownloadResumeButton";
 import SectionWrapper from "@/components/SectionWrapper";
+import ProjectVisual from "@/components/ProjectVisual";
 import { featuredProjects } from "@/content/projects";
 import { productionFoundations, profile } from "@/content/profile";
 import { selectedWriting } from "@/content/writing";
@@ -74,14 +75,22 @@ export default function HomePage() {
 
         <div className={styles.projectGrid}>
           {featuredProjects.map((project) => (
-            <article className={styles.projectCard} key={project.slug}>
+            <article className={`${styles.projectCard} ${project.featured ? styles.featuredCard : ""}`} key={project.slug}>
               <div className={styles.cardMeta}>
-                <span>{project.category}</span>
+                <span>{project.featured ? "Featured · " : ""}{project.category}</span>
                 <span>{project.status}</span>
               </div>
               <h3>{project.title}</h3>
+              {project.subtitle && <p className={styles.projectSubtitle}>{project.subtitle}</p>}
+              {project.featured && project.heroImage && <ProjectVisual image={project.heroImage} />}
               <p>{project.summary}</p>
-              {project.presentation !== "compact" && (
+              {project.presentation === "showcase" && (
+                <div className={styles.architecturePreview}>
+                  <strong>Verification scope</strong>
+                  <span>{project.showcase.verification}</span>
+                </div>
+              )}
+              {project.presentation !== "compact" && project.presentation !== "showcase" && (
                 <>
                   <div className={styles.architecturePreview}>
                     <strong>Architecture</strong>
@@ -104,14 +113,14 @@ export default function HomePage() {
               )}
               <div className={styles.cardLinks}>
                 <Link href={`/projects#${project.slug}`}>
-                  {project.presentation === "compact" ? "Project overview" : "Read decisions"}{" "}
+                  {project.presentation === "compact" ? "Project overview" : project.presentation === "showcase" ? "Read Case Study" : "Read decisions"}{" "}
                   <FaArrowRight aria-hidden="true" />
                 </Link>
                 {project.sourceVisibility === "private" ? (
                   <span>Private repository</span>
                 ) : project.sourceUrl ? (
                   <Link href={project.sourceUrl} target="_blank" rel="noopener noreferrer">
-                    <FaGithub aria-hidden="true" /> Source
+                    <FaGithub aria-hidden="true" /> {project.featured ? "GitHub" : "Source"}
                     <span className="sr-only"> (opens in a new tab)</span>
                   </Link>
                 ) : null}

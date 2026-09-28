@@ -9,11 +9,21 @@ export type ProjectEvidence = {
   label: string;
 };
 
+export type ProjectShowcase = {
+  sections: readonly { title: string; body: string }[];
+  workflow: readonly string[];
+  outcome: string;
+  highlights: readonly string[];
+  verification: string;
+};
+
 export type FeaturedProject = {
   slug: string;
   title: string;
   category: string;
   status: string;
+  featured?: boolean;
+  subtitle?: string;
   summary: string;
   technologies: readonly string[];
   sourceVisibility?: "public" | "private";
@@ -24,9 +34,11 @@ export type FeaturedProject = {
     alt: string;
     width: number;
     height: number;
+    caption?: string;
   };
 } & (
   | { presentation: "compact" }
+  | { presentation: "showcase"; showcase: ProjectShowcase }
   | {
       presentation?: "expanded";
       problem: string;
@@ -38,6 +50,60 @@ export type FeaturedProject = {
 );
 
 export const featuredProjects: readonly FeaturedProject[] = [
+  {
+    slug: "ai-team",
+    title: "AI Team",
+    category: "AI engineering orchestration",
+    status: "Codex live-verified",
+    featured: true,
+    subtitle: "An engineering orchestration layer for AI coding agents.",
+    presentation: "showcase",
+    summary:
+      "AI Team turns independent coding agents into a controlled software-delivery workflow. A local TypeScript/Node.js orchestrator coordinates planning, implementation, review, and QA, enforces execution budgets, validates real repository changes, and returns an evidenced candidate for final human review.",
+    technologies: ["TypeScript", "Node.js", "CLI", "Git worktrees", "Codex", "Claude Code"],
+    sourceUrl: "https://github.com/YioGoi/ai-team",
+    documentationUrl: "https://github.com/YioGoi/ai-team#repository-layout",
+    heroImage: {
+      src: "/images/ai-team-dashboard.png",
+      alt: "AI Team monitoring concept with agent cards, activity feed, task progress, and a workflow overview.",
+      width: 1536,
+      height: 1024,
+      caption:
+        "Monitoring UI concept. AI Team runs in the CLI today; the illustrated roles and deployment activity are conceptual. The system does not auto-merge or auto-deploy.",
+    },
+    showcase: {
+      sections: [
+        {
+          title: "Problem",
+          body: "Single AI coding sessions are useful, but usually lack orchestration, bounded recovery, validation discipline, and trustworthy evidence.",
+        },
+        {
+          title: "System",
+          body: "A deterministic orchestrator coordinates Architect, Implementer, Reviewer, and QA roles in separate processes. Candidate validators and recorded verification evidence gate the handoff.",
+        },
+        {
+          title: "Control",
+          body: "Milestones, rounds, repair budgets, and invocation/time limits bound execution. Git worktrees isolate changes; immutable task/config snapshots and persisted run state support pause, resume, cancel, recovery, and explicit reconciliation. Final approval stays with the human.",
+        },
+        {
+          title: "Extensibility",
+          body: "Provider adapters support codex-only, claude-only, and mixed profiles. The CLI-first architecture leaves room for a future monitoring UI, MCP, and Obsidian integrations.",
+        },
+      ],
+      workflow: ["Human", "Orchestrator", "Architect", "Implementer", "Validators", "Reviewer + QA"],
+      outcome: "READY_FOR_HUMAN_REVIEW",
+      highlights: [
+        "Multi-agent engineering workflow",
+        "Provider-agnostic orchestration",
+        "Git worktree isolation",
+        "Validation with recorded evidence",
+        "Recovery-aware execution",
+        "Human-controlled final approval",
+      ],
+      verification:
+        "Codex-based live workflows are verified on macOS. Claude Code and mixed-provider workflows are implemented and offline-tested; live use remains unverified and is planned for expansion.",
+    },
+  },
   {
     slug: "mind-palace",
     title: "Mind Palace",
@@ -184,4 +250,3 @@ export const supportingProjects = [
     sourceUrl: "https://github.com/YioGoi/graphics-canvas",
   },
 ] as const;
-
